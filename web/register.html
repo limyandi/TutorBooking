@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Register Page</title>
+    </head>
+    <body>
+        <h2>Register Page</h2>
+        <form method="post" action="main.jsp">
+            <table>
+                <tr><td>Full Name:</td><td><input type="text" name="name"></td></tr>
+                <tr><td>Email:</td><td><input type="text" name="email"></td></tr>
+                <tr><td>Password:</td><td><input type="password" name="password"></td></tr>
+                <tr><td>Date of Birth:</td><td><input type="date" name="dob"></td></tr>
+                <tr><td>User type:</td><td>
+                        <select name="usertype">
+                            <option value="student">Student</option>
+                            <option value="tutor">Tutor</option>
+                        </select></td></tr>
+                <tr><td></td><td><input type="submit" value="Register"></td></tr>
+            </table>            
+        </form>
+        <p>If you already have an account, Click <u><a href="login.html">here</a></u>.</p>
+    </body>
+</html>
