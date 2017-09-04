@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--TODO:Do we need user type? -->
+<students>
+    <student>
+        <name>Rico</name>
+        <email>rico@gmail.com</email>
+        <password>123456</password>
+        <dateofbirth>09/09/1998</dateofbirth>
+        <usertype>Student</usertype>
+    </student>
+    <student>
+        <name>Jason</name>
+        <email>jason@gmail.com</email>
+        <password>628412</password>
+        <dateofbirth>10/10/1997</dateofbirth>
+        <usertype>Student</usertype>
+    </student>
+    <student>
+        <name>Kaho</name>
+        <email>kaho@gmail.com</email>
+        <password>123456</password>
+        <dateofbirth>22/01/1996</dateofbirth>
+        <usertype>Student</usertype>
+    </student>
+    <student>
+        <name>Alviandy</name>
+        <email>alviandy@gmail.com</email>
+        <password>123456</password>
+        <dateofbirth>03/11/1998</dateofbirth>
+        <usertype>Student</usertype> 
+    </student>
+    <student>
+        <name>Deddy</name>
+        <email>deddy@gmail.com</email>
+        <password>123456</password>
+        <dateofbirth>21/04/1998</dateofbirth>
+        <usertype>Student</usertype>
+    </student>
+</students>
