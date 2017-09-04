@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--TODO: Do we need usertype?-->
+<tutors>
+    <tutor>
+        <name>Rico</name>
+        <email>rico@gmail.com</email>
+        <password>123456</password>
+        <dateofbirth>09/09/1998</dateofbirth>
+        <usertype>Tutor</usertype>
+        <status>available</status>
+    </tutor>
+    <tutor>
+        <name>Rico</name>
+        <email>rico@gmail.com</email>
+        <password>123456</password>
+        <dateofbirth>09/09/1998</dateofbirth>
+        <usertype>Tutor</usertype>
+        <status>unvailable</status>
+    </tutor>
+    <tutor>
+        <name>Rico</name>
+        <email>rico@gmail.com</email>
+        <password>123456</password>
+        <dateofbirth>09/09/1998</dateofbirth>
+        <usertype>Tutor</usertype>
+        <status>available</status>
+    </tutor>
+    <tutor>
+        <name>Rico</name>
+        <email>rico@gmail.com</email>
+        <password>123456</password>
+        <dateofbirth>09/09/1998</dateofbirth>
+        <usertype>Tutor</usertype>
+        <status>available</status>
+    </tutor>
+    <tutor>
+        <name>Rico</name>
+        <email>rico@gmail.com</email>
+        <password>123456</password>
+        <dateofbirth>09/09/1998</dateofbirth>
+        <usertype>Tutor</usertype>
+        <status>available</status>
+    </tutor>
+</tutors>
