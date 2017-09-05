@@ -9,9 +9,36 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Main Page</title>
     </head>
+    <% String filePath = application.getRealPath("WEB-INF/students.xml"); %>
+    <jsp:useBean id="userApp" class="source.userApp" scope="application">
+        <jsp:setProperty name="userApp" property="filePath" value="<%=filePath%>"/>
+    </jsp:useBean>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Main Page</h1>
+        <!-- Handle if user is tutor or student 
+        (if user is tutor, 
+        do not display search form) -->
+        <form action="main.jsp" method="POST">
+            <table>
+                <tr><td><input type="text" name="category"/></td>
+                    <td><select name="catval">
+                    <option value="subject">Subject</option>
+                    <option value="tutorname">Tutor Name</option>
+                    <option value="tutorstatus">Tutor Status</option>
+                        </select></td>
+            </tr>
+            <tr><td><input type="submit" value="Enter"/></td></tr>
+            </table>
+        </form>
+        <!-- Display result here, 
+        check the value of 
+        'category' and 'catval'
+        -->
+        
+        
+        <a href='booking.jsp'>Booking</a>
+        <a href='account.jsp'>Account</a>
     </body>
 </html>
