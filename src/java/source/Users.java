@@ -9,6 +9,12 @@ import java.util.ArrayList;
  *
  * @author limyandivicotrico
  */
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "users")
 public class Users {
     private ArrayList<User> users;
     
@@ -21,7 +27,7 @@ public class Users {
     }
     
     public void addUser(User user){
-        this.users.add(user);
+        users.add(user);
     }
     
     public void removeUser(User user){
