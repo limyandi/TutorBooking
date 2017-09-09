@@ -35,7 +35,7 @@ public class userApp implements Serializable{
     }
 
     public Users getUsers() {
-        return users;
+        return this.users;
     }
 
     public void setUsers(Users users) {
@@ -47,8 +47,7 @@ public class userApp implements Serializable{
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Unmarshaller unmarshaller = jc.createUnmarshaller();
         FileInputStream fin = new FileInputStream(filePath);
-        //this.setUsers((Users) unmarshaller.unmarshal(fin));
-        users = (Users) unmarshaller.unmarshal(fin);
+        this.setUsers((Users) unmarshaller.unmarshal(fin));
         fin.close();
     }
     
