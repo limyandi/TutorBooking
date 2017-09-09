@@ -2,6 +2,8 @@ package source;
 
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,8 +13,9 @@ import java.io.Serializable;
 
 /**
  *
- * @author limyandivicotrico
+ * @author Jason
  */
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User implements Serializable {
     private String email;
     private String firstName;
