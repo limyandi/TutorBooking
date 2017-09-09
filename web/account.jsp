@@ -15,23 +15,33 @@
         <!-- haven't done yet-->
         <%
             User user = (User) session.getAttribute("user");
-            String name = request.getParameter("name");
+            String fname = request.getParameter("Fname");
+            String lname = request.getParameter("Lname");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            String gender = request.getParameter("gender");
-            String favcol = request.getParameter("favcol");
+            String dob = request.getParameter("dob");
         %>
         <h1>Account Page</h1>
         <% 
-            if(email != null && name != null && password != null 
-                    && gender != null && favcol !=null) {
+            if(email != null && fname != null && lname != null 
+                    && password != null && dob !=null) {
             //TODO: Do we need to update this to XML too?
             user.setEmail(email);
-            user.setFirstName(name);
+            user.setFirstName(fname);
+            user.setLastName(lname);
             user.setPassword(password);
+            user.setDob(dob);
             }
         %>
-
-
+        <form method="post" action="main.jsp">
+            <table>
+                <tr><td>First Name:</td><td><input type="text" name="Fname"></td></tr>
+                <tr><td>Last Name:</td><td><input type="text" name="Lname"></td></tr>
+                <tr><td>Email:</td><td><input type="text" name="email"></td></tr>
+                <tr><td>Password:</td><td><input type="password" name="password"></td></tr>
+                <tr><td>Date of Birth:</td><td><input type="date" name="dob"></td></tr>
+                <tr><td></td><td><input type="submit" value="Register"></td></tr>
+            </table>            
+        </form>
     </body>
 </html>

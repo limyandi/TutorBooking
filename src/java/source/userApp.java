@@ -25,35 +25,39 @@ public class userApp implements Serializable{
     public userApp() {
     }
     
+    public userApp(String filePath, Users users) {
+        this.filePath = filePath;
+        this.users = users;
+    }
+    
     public String getFilePath(){
         return this.filePath;
     }
 
     public Users getUsers() {
-        return this.users;
+        return users;
     }
 
     public void setUsers(Users users) {
         this.users = users;
     }
-     
-    public userApp(Users users) {
-        this.users = users;
-    }
     
-    public void setFilePath(String filePath) throws Exception{
+    public void setFilePath(String filePath) throws Exception {
         this.filePath = filePath;
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Unmarshaller unmarshaller = jc.createUnmarshaller();
         FileInputStream fin = new FileInputStream(filePath);
-        this.setUsers((Users) unmarshaller.unmarshal(fin));
+        //this.setUsers((Users) unmarshaller.unmarshal(fin));
+        users = (Users) unmarshaller.unmarshal(fin);
         fin.close();
     }
     
-    public void updateUsers() throws Exception{
+    public void updateUsers(Users users, String filePath) throws Exception {
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Marshaller marshaller = jc.createMarshaller();
         FileOutputStream fos = new FileOutputStream(this.getFilePath());
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(users, fos);
         fos.close();
     }
             
