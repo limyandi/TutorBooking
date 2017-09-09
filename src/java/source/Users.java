@@ -4,12 +4,19 @@
  * and open the template in the editor.
  */
 package source;
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  *
  * @author limyandivicotrico
  */
-public class Users {
+import javax.xml.bind.annotation.*;
+
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "students")
+public class Users implements Serializable {
+    @XmlElement(name = "student")
     private ArrayList<User> users;
     
     public Users(){
@@ -21,7 +28,7 @@ public class Users {
     }
     
     public void addUser(User user){
-        this.users.add(user);
+        users.add(user);
     }
     
     public void removeUser(User user){
@@ -30,9 +37,17 @@ public class Users {
     
     public User login(String email, String password){
         for(User user: this.users){
-            if(user.getEmail().equals(email)&&user.getPassword().equals(password)){
+            if(user.getEmail().equals(email)&&user.getPassword().equals(password))
                 return user;
-            }
+        }
+        return null;
+    }
+    
+    //TODO: May be too redundant
+    public User checkExistingEmail(String email) {
+        for(User user: this.users) {
+            if(user.getEmail().equals(email))
+                return user;
         }
         return null;
     }

@@ -25,6 +25,11 @@ public class userApp implements Serializable{
     public userApp() {
     }
     
+    public userApp(String filePath, Users users) {
+        this.filePath = filePath;
+        this.users = users;
+    }
+    
     public String getFilePath(){
         return this.filePath;
     }
@@ -36,12 +41,8 @@ public class userApp implements Serializable{
     public void setUsers(Users users) {
         this.users = users;
     }
-     
-    public userApp(Users users) {
-        this.users = users;
-    }
     
-    public void setFilePath(String filePath) throws Exception{
+    public void setFilePath(String filePath) throws Exception {
         this.filePath = filePath;
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Unmarshaller unmarshaller = jc.createUnmarshaller();
@@ -50,10 +51,12 @@ public class userApp implements Serializable{
         fin.close();
     }
     
-    public void updateUsers() throws Exception{
+    public void updateUsers(Users users, String filePath) throws Exception {
         JAXBContext jc = JAXBContext.newInstance(Users.class);
         Marshaller marshaller = jc.createMarshaller();
         FileOutputStream fos = new FileOutputStream(this.getFilePath());
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        marshaller.marshal(users, fos);
         fos.close();
     }
             
