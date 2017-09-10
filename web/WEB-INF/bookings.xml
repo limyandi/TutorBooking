@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- mockup: bookings.xml has to be empty 
+TODO: DELETE THIS MOCKUP BEFORE SUBMISSION
+<bookings>
+    <booking id="1">
+        <tutoremail></tutoremail>
+        <tutorname></tutorname>
+        <subjectname></subjectname>
+        <studentemail></studentemail>
+        <studentname></studentname>
+        <status></status>
+    </booking>
+</bookings> 
+-->
+
+<bookings>
+</bookings>
+
