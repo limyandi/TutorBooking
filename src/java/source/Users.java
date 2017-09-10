@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name = "students")
 public class Users implements Serializable {
     @XmlElement(name = "student")
-    private ArrayList<User> users;
+    private ArrayList<User> users = new ArrayList<User>();
     
     public Users(){
         
