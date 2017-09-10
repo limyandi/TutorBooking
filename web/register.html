@@ -6,6 +6,20 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        <script type="text/javascript">
+            function userType(type) {
+                var specialty = document.getElementById('specialty');
+                var specialtylabel = document.getElementById('specialtylabel');
+                if(type === 'tutor') {
+                    specialty.style.display='block';
+                    specialtylabel.style.display='block';
+                }
+                else {
+                    specialty.style.display='none';
+                    specialtylabel.style.display='none';
+                }
+            }
+        </script>
         <title>Register Page</title>
     </head>
     <body>
@@ -18,10 +32,19 @@ and open the template in the editor.
                 <tr><td>Password:</td><td><input type="password" name="password"></td></tr>
                 <tr><td>Date of Birth:</td><td><input type="date" name="dob"></td></tr>
                 <tr><td>User type:</td><td>
-                        <select name="usertype">
+                        <select onchange='userType(this.value);' name="usertype">
                             <option value="student">Student</option>
                             <option value="tutor">Tutor</option>
                         </select></td></tr>
+                <tr><td><p id= "specialtylabel" style='display:none;'>Specialty:</p></td><td>
+                        <select name="specialty" id="specialty" style='display:none;'>
+                            <option value='WSD'>Web Services Development</option>
+                            <option value='USP'>Unix Systems Programming</option>
+                            <option value='SEP'>Software Engineering Practice</option>
+                            <option value='AppProg'>Application Programming</option>
+                            <option value='MobileApp'>Mobile Applications Development</option>
+                        </select>
+                </td></tr>
                 <tr><td></td><td><input type="submit" value="Register"></td></tr>
             </table>            
         </form>

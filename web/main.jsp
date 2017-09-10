@@ -30,10 +30,15 @@
     <body>
         <% 
         if (user == null) {
-            User newUser = new User(fname, lname, email, password, dob, userType);
-            session.setAttribute("user", newUser);
-            users.addUser(newUser);
-            userApp.updateUsers(users, filePath);
+            if (userType.equals("student")) {
+                User newUser = new User(fname, lname, email, password, dob, userType);
+                session.setAttribute("user", newUser);
+                users.addUser(newUser);
+                userApp.updateUsers(users, filePath);
+            }
+            else {
+                // IF user is Tutor.
+            }
         %>
         <h1>Main Page</h1>
         <!-- Handle if user is tutor or student 
