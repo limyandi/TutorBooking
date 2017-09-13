@@ -1,44 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--TODO: Do we need usertype?-->
-<tutors>
+<tutors xmlns="http://www.uts.edu.au/31284/wsd-tutors"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-tutors tutors.xsd">
     <tutor>
-        <name>Rico</name>
+        <firstname>Rico</firstname>
+        <lastname>Brilliant</lastname>
         <email>rico@gmail.com</email>
         <password>123456</password>
         <dateofbirth>09/09/1998</dateofbirth>
-        <usertype>Tutor</usertype>
+        <usertype>tutor</usertype>
+        <subject>WSD</subject>
         <status>available</status>
     </tutor>
     <tutor>
-        <name>Rico</name>
+        <firstname>Rico</firstname>
+        <lastname>Brilliant</lastname>
         <email>rico@gmail.com</email>
         <password>123456</password>
         <dateofbirth>09/09/1998</dateofbirth>
-        <usertype>Tutor</usertype>
+        <usertype>tutor</usertype>
+        <subject>USP</subject>
         <status>unvailable</status>
     </tutor>
     <tutor>
-        <name>Rico</name>
+        <firstname>Rico</firstname>
+        <lastname>Brilliant</lastname>
         <email>rico@gmail.com</email>
         <password>123456</password>
         <dateofbirth>09/09/1998</dateofbirth>
-        <usertype>Tutor</usertype>
+        <usertype>tutor</usertype>
+        <subject>SEP</subject>
         <status>available</status>
     </tutor>
     <tutor>
-        <name>Rico</name>
+        <firstname>Rico</firstname>
+        <lastname>Brilliant</lastname>
         <email>rico@gmail.com</email>
         <password>123456</password>
         <dateofbirth>09/09/1998</dateofbirth>
-        <usertype>Tutor</usertype>
+        <usertype>tutor</usertype>
+        <subject>AppProg</subject>
         <status>available</status>
     </tutor>
     <tutor>
-        <name>Rico</name>
+        <firstname>Rico</firstname>
+        <lastname>Brilliant</lastname>
         <email>rico@gmail.com</email>
         <password>123456</password>
         <dateofbirth>09/09/1998</dateofbirth>
-        <usertype>Tutor</usertype>
+        <usertype>tutor</usertype>
+        <subject>MobileApp</subject>
         <status>available</status>
     </tutor>
 </tutors>
