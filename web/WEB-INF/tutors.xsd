@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ targetNamespace="http://www.uts.edu.au/31284/wsd-tutors"
+ xmlns="http://www.uts.edu.au/31284/wsd-tutors"
+ elementFormDefault="qualified">
+    
+    <xs:simpleType name="name">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([A-Z][a-z]+)"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="email">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([A-Za-z\._]+)@(([a-z-]+)\.)+([a-z-]+)"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Any alphanumeric characters and included some wild symbols with a minimum length of 6 and maximum length of 16.  -->
+    <xs:simpleType name="password">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([A-Za-z0-9!@#$%^*\?]{6,16})"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="dob">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{1,2}/\d{1,2}/\d{1,4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    
+    <!--TODO: DO WE NEED FOR USERTYPE? -->
+    <xs:simpleType name="usertype">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="tutor"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="subject">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="WSD"/>
+            <xs:enumeration value="USP"/>
+            <xs:enumeration value="SEP"/>
+            <xs:enumeration value="AppProg"/>
+            <xs:enumeration value="MobileApp"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!--TODO DO WE NEED FOR STATUS OF TUTOR? -->
+    
+    <xs:element name="tutors">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tutor" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="firstname" type="name"/>
+                            <xs:element name="lastname" type="name"/>
+                            <xs:element name="email" type="email"/>
+                            <xs:element name="password" type="password"/>
+                            <xs:element name="dateofbirth" type="dob"/>
+                            <xs:element name="usertype" type="usertype"/>
+                            <xs:element name="subject" type="subject"/>
+                            <xs:element name="status" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>
+

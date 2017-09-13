@@ -25,7 +25,7 @@
         <% 
             if(email != null && fname != null && lname != null 
                     && password != null && dob !=null) {
-            //TODO: Do we need to update this to XML too?
+            //TODO: Do we need to update this to XML too? And if we do how?
             user.setEmail(email);
             user.setFirstName(fname);
             user.setLastName(lname);
