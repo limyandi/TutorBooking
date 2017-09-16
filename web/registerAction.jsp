@@ -20,9 +20,11 @@
             String dob = request.getParameter("dob");
             String userType = request.getParameter("usertype");
             String filePath = application.getRealPath("WEB-INF/students.xml");
+            String schemaPath = application.getRealPath("WEB-INF/students.xsd");
         %>
         <jsp:useBean id="userApp" class="source.userApp" scope="application">
             <jsp:setProperty name="userApp" property="filePath" value="<%=filePath%>"/>
+            <jsp:setProperty name="userApp" property="schemaPath" value="<%=schemaPath%>"/>
         </jsp:useBean>
         <%
             Users users = userApp.getUsers();
@@ -35,7 +37,7 @@
                     User newUser = new User(fname, lname, email, password, dob, userType);
                     session.setAttribute("user", newUser);
                     users.addUser(newUser);
-                    userApp.updateUsers(users, filePath);
+                    userApp.updateUsers(users, filePath, schemaPath);
                 } else { //handle if user is tutor
 
                 }

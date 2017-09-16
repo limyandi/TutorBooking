@@ -5,32 +5,47 @@
  */
 package source;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.Serializable;
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
 
 /**
  *
  * @author limyandivicotrico
  */
-public class userApp implements Serializable{
+public class userApp implements Serializable {
+
     private Users users;
     private String filePath;
+    private String schemaPath;
 
     public userApp() {
     }
-    
-    public userApp(String filePath, Users users) {
-        this.filePath = filePath;
+
+    public userApp(Users users, String filePath, String schemaPath) {
         this.users = users;
+        this.filePath = filePath;
+        this.schemaPath = schemaPath;
     }
-    
-    public String getFilePath(){
+
+    public String getSchemaPath() {
+        return schemaPath;
+    }
+
+    public void setSchemaPath(String schemaPath) {
+        this.schemaPath = schemaPath;
+    }
+
+    public String getFilePath() {
         return this.filePath;
     }
 
@@ -41,7 +56,7 @@ public class userApp implements Serializable{
     public void setUsers(Users users) {
         this.users = users;
     }
-    
+
     public void setFilePath(String filePath) throws Exception {
         this.filePath = filePath;
         JAXBContext jc = JAXBContext.newInstance(Users.class);
@@ -50,14 +65,22 @@ public class userApp implements Serializable{
         this.setUsers((Users) unmarshaller.unmarshal(fin));
         fin.close();
     }
-    
-    public void updateUsers(Users users, String filePath) throws Exception {
+
+    public void updateUsers(Users users, String filePath, String schemaPath) throws Exception {
+        SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        Schema schema = sf.newSchema(new File(schemaPath));
+        
         JAXBContext jc = JAXBContext.newInstance(Users.class);
+        
         Marshaller marshaller = jc.createMarshaller();
         FileOutputStream fos = new FileOutputStream(this.getFilePath());
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        
+        marshaller.setSchema(schema);
+        marshaller.setEventHandler(new XMLValidation());
+        
         marshaller.marshal(users, fos);
         fos.close();
     }
-            
+
 }
