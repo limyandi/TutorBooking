@@ -26,16 +26,16 @@ import javax.xml.validation.SchemaFactory;
  * @author limyandivicotrico
  */
 
-public class userApp implements Serializable {
+public class UserApp implements Serializable {
 
     private Users users;
     private String filePath;
     private String schemaPath;
 
-    public userApp() {
+    public UserApp() {
     }
 
-    public userApp(Users users, String filePath, String schemaPath) {
+    public UserApp(Users users, String filePath, String schemaPath) {
         this.users = users;
         this.filePath = filePath;
         this.schemaPath = schemaPath;

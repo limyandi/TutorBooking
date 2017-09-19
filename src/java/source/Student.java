@@ -5,10 +5,14 @@
  */
 package source;
 
+import javax.xml.bind.annotation.*;
+
 /**
  *
  * @author limyandivicotrico
  */
-public class Student {
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "student")
+public class Student extends User{
     
 }
