@@ -51,4 +51,25 @@ public class Users implements Serializable {
         }
         return null;
     }
+    
+    public Users getStudents(){
+        Users students = new Users();
+        for(User user:this.users)
+        {
+            if(user.getRole()=="student"){
+                students.addUser(user);
+            }
+        }
+        return students;
+    }
+    public Users getTutors(){
+        Users tutors = new Users();
+        for(User user:this.users)
+        {
+            if(user.getRole()=="tutor"){
+                tutors.addUser(user);
+            }
+        }
+        return tutors;
+    }
 }
