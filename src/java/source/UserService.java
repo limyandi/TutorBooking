@@ -15,27 +15,34 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 @Path("/user")
 public class UserService 
 {
     @Context
     private ServletContext application;
     
-    private userApp getUserApp() throws Exception
+    private UserApp getUserApp() throws Exception
     {
         synchronized (application)
                 {
-                    userApp userapp = (userApp) application.getAttribute("userApp");
+                    UserApp userapp = (UserApp) application.getAttribute("userApp");
                     if(userapp == null)
                     {
-                        userapp = new userApp();
-                        userapp.setFilePath(application.getRealPath("WEB-INF/users.xml"));
+                        userapp = new UserApp();
+                        userapp.setFilePath(application.getRealPath("WEB-INF/students.xml"));
                         application.setAttribute("userApp", userapp);
                     }
                     return userapp;
                 }
     }
     
+    @Path("hello")
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String hello() {
+        return "Hello World";
+    }
     
     @Path("student")
     @GET
