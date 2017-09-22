@@ -9,7 +9,7 @@ package source;
  *
  * @author Jason
  */
-
+/*
 import javax.servlet.ServletContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,6 +17,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 @Path("/user")
+
 public class UserService 
 {
     @Context
@@ -47,7 +48,8 @@ public class UserService
     @Path("student")
     @GET
     @Produces("text/xml")
-    public Users getUsers() throws Exception{
-        return getUserApp().getUsers();
+    public Students getStudents() throws Exception{
+        return getUserApp().;
     }
 }
+*/
