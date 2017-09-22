@@ -26,17 +26,17 @@ import javax.xml.validation.SchemaFactory;
  * @author limyandivicotrico
  */
 
-public class UserApp implements Serializable {
+public class TutorApp implements Serializable {
 
-    private Users users;
+    private Tutors tutors;
     private String filePath;
     private String schemaPath;
 
-    public UserApp() {
+    public TutorApp() {
     }
 
-    public UserApp(Users users, String filePath, String schemaPath) {
-        this.users = users;
+    public TutorApp(Tutors tutors, String filePath, String schemaPath) {
+        this.tutors = tutors;
         this.filePath = filePath;
         this.schemaPath = schemaPath;
     }
@@ -53,28 +53,28 @@ public class UserApp implements Serializable {
         return this.filePath;
     }
 
-    public Users getUsers() {
-        return this.users;
+    public Tutors getTutors() {
+        return this.tutors;
     }
 
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setTutors(Tutors tutors) {
+        this.tutors = tutors;
     }
 
     public void setFilePath(String filePath) throws Exception {
         this.filePath = filePath;
-        JAXBContext jc = JAXBContext.newInstance(Users.class);
+        JAXBContext jc = JAXBContext.newInstance(Tutors.class);
         Unmarshaller unmarshaller = jc.createUnmarshaller();
         FileInputStream fin = new FileInputStream(filePath);
-        this.setUsers((Users) unmarshaller.unmarshal(fin));
+        this.setTutors((Tutors) unmarshaller.unmarshal(fin));
         fin.close();
     }
 
-    public void updateUsers(Users users, String filePath, String schemaPath) throws Exception {
+    public void updateTutors(Tutors tutors, String filePath, String schemaPath) throws Exception {
         SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         Schema schema = sf.newSchema(new File(schemaPath));
 
-        JAXBContext jc = JAXBContext.newInstance(Users.class);
+        JAXBContext jc = JAXBContext.newInstance(Tutors.class);
 
         Marshaller marshaller = jc.createMarshaller();
         FileOutputStream fos = new FileOutputStream(this.getFilePath());
@@ -89,7 +89,7 @@ public class UserApp implements Serializable {
             }
         });
 
-        marshaller.marshal(users, fos);
+        marshaller.marshal(tutors, fos);
         fos.close();
     }
 
