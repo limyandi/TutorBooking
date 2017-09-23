@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.*;
  * @author limyandivicotrico
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "students", namespace="http://www.uts.edu.au/31284/wsd-students")
+@XmlRootElement(name = "students", namespace = "http://www.uts.edu.au/31284/wsd-students")
 public class Students {
     @XmlElement(name="student")
     private ArrayList<Student> students = new ArrayList<Student>();
@@ -31,11 +31,11 @@ public class Students {
     }
     
     public void removeStudent(Student student){
-        this.students.remove(student);
+        students.remove(student);
     }
     
     public Student login(String email, String password){
-        for(Student student: this.students){
+        for(Student student: students){
             if(student.getEmail().equals(email)&&student.getPassword().equals(password))
                 return student;
         }
@@ -44,7 +44,7 @@ public class Students {
     
     //TODO: May be too redundant
     public Student checkExistingEmail(String email) {
-        for(Student student: this.students) {
+        for(Student student: students) {
             if(student.getEmail().equals(email))
                 return student;
         }

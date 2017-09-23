@@ -77,7 +77,7 @@ public class StudentApp implements Serializable {
         JAXBContext jc = JAXBContext.newInstance(Students.class);
 
         Marshaller marshaller = jc.createMarshaller();
-        FileOutputStream fos = new FileOutputStream(this.getFilePath());
+        FileOutputStream fos = new FileOutputStream(filePath);
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
         marshaller.setSchema(schema);
