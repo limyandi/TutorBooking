@@ -36,9 +36,9 @@
             if (student == null) {
                 Student newStudent = new Student(fname, lname, email, password, dob, userType);
                 session.setAttribute("student", newStudent);
-                students.addStudent(student);
+                students.addStudent(newStudent);
                 studentApp.updateStudents(students, filePath, schemaPath);
-        %> <p>Successful</p>
+        %> <p>Successfully registered, Click <a href="main.jsp">here</a> to go to the main page.</p>
         <%
         } else {
 
@@ -60,11 +60,11 @@
 
             if (tutor == null) {
                 Tutor newTutor = new Tutor(fname, lname, email, password, dob, userType, specialty, "available");
-                session.setAttribute("student", newTutor);
-                tutors.addTutor(tutor);
+                session.setAttribute("tutor", newTutor);
+                tutors.addTutor(newTutor);
                 tutorApp.updateTutors(tutors, filePath, schemaPath);
         %>
-        <p>Successful</p>
+        <p>Successfully registered, Click <a href="main.jsp">here</a> to go to the main page.</p>
         <%
         } else {
         %>
@@ -73,6 +73,5 @@
                 }
             }
         %>
-
     </body>
 </html>
