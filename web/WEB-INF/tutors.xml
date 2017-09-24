@@ -21,7 +21,7 @@
         <dateofbirth>09/09/1998</dateofbirth>
         <usertype>tutor</usertype>
         <subject>USP</subject>
-        <status>unvailable</status>
+        <status>unavailable</status>
     </tutor>
     <tutor>
         <firstname>Rico</firstname>
