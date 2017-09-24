@@ -37,7 +37,7 @@
             <table>
                 <tr><td>First Name:</td><td><input type="text" name="Fname" value="<%= user.getFirstName() %>"></td></tr>
                 <tr><td>Last Name:</td><td><input type="text" name="Lname" value="<%= user.getLastName() %>"></td></tr>
-                <tr><td>Email:</td><td><input type="text" name="email" value="<%= user.getEmail() %>"></td></tr>
+                <tr><td>Email:</td><td><input type="email" name="email" value="<%= user.getEmail() %>"></td></tr>
                 <tr><td>Password:</td><td><input type="password" name="password" value="<%= user.getPassword() %>"></td></tr>
                 <tr><td>Date of Birth:</td><td><input type="date" name="dob" value="<%= user.getDob() %>"></td></tr>
                 <tr><td></td><td><input type="submit" value="Update"></td></tr>

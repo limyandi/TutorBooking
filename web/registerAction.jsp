@@ -19,30 +19,59 @@
             String password = request.getParameter("password");
             String dob = request.getParameter("dob");
             String userType = request.getParameter("usertype");
-            String filePath = application.getRealPath("WEB-INF/students.xml");
+            String filePath;
+            String schemaPath;
+            if (userType.equals("student")) {
+                filePath = application.getRealPath("WEB-INF/students.xml");
+                schemaPath = application.getRealPath("WEB-INF/students.xsd");
         %>
-        <jsp:useBean id="userApp" class="source.userApp" scope="application">
-            <jsp:setProperty name="userApp" property="filePath" value="<%=filePath%>"/>
+        <jsp:useBean id="studentApp" class="source.StudentApp" scope="application">
+            <jsp:setProperty name="studentApp" property="filePath" value="<%=filePath%>"/>
+            <jsp:setProperty name="studentApp" property="schemaPath" value="<%=schemaPath%>"/>
         </jsp:useBean>
         <%
-            Users users = userApp.getUsers();
-            User user = users.checkExistingEmail(email);
-        %>
-    <body>
-        <%
-            if (user == null) {
-                if (userType.equals("student")) {
-                    User newUser = new User(fname, lname, email, password, dob, userType);
-                    session.setAttribute("user", newUser);
-                    users.addUser(newUser);
-                    userApp.updateUsers(users, filePath);
-                } else { //handle if user is tutor
+            Students students = studentApp.getStudents();
+            Student student = students.checkExistingEmail(email);
 
-                }
+            if (student == null) {
+                Student newStudent = new Student(fname, lname, email, password, dob, userType);
+                session.setAttribute("student", newStudent);
+                students.addStudent(newStudent);
+                studentApp.updateStudents(students, filePath, schemaPath);
+        %> <p>Successfully registered, Click <a href="main.jsp">here</a> to go to the main page.</p>
+        <%
+        } else {
+
         %>
-        <p>Registered successfully. Click <a href="main.jsp"> here </a> to go to the main page.</p>
-        <% } else { %>
         <p>User with that email already exists, Click <a href="register.html"> here </a> to register again.</p>
-        <% } %>
+        <%            }
+        } else {
+            String specialty = request.getParameter("specialty");
+            filePath = application.getRealPath("WEB-INF/tutors.xml");
+            schemaPath = application.getRealPath("WEB-INF/tutors.xsd");
+        %>
+        <jsp:useBean id="tutorApp" class="source.TutorApp" scope="application">
+            <jsp:setProperty name="tutorApp" property="filePath" value="<%=filePath%>"/>
+            <jsp:setProperty name="tutorApp" property="schemaPath" value="<%=schemaPath%>"/>
+        </jsp:useBean>
+        <%
+            Tutors tutors = tutorApp.getTutors();
+            Tutor tutor = tutors.checkExistingEmail(email);
+
+            if (tutor == null) {
+                Tutor newTutor = new Tutor(fname, lname, email, password, dob, userType, specialty, "available");
+                session.setAttribute("tutor", newTutor);
+                tutors.addTutor(newTutor);
+                tutorApp.updateTutors(tutors, filePath, schemaPath);
+        %>
+        <p>Successfully registered, Click <a href="main.jsp">here</a> to go to the main page.</p>
+        <%
+        } else {
+        %>
+        <p>User with that email already exists, Click <a href="register.html"> here </a> to register again.</p>
+        <%
+                }
+            }
+        %>
     </body>
 </html>

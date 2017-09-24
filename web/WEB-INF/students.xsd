@@ -7,7 +7,7 @@
     
     <xs:simpleType name="name">
         <xs:restriction base="xs:string">
-            <xs:pattern value="([A-Z][a-z]+)"/>
+            <xs:pattern value="([A-Za-z]+)"/>
         </xs:restriction>
     </xs:simpleType>
     
