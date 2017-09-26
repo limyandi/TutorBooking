@@ -34,9 +34,9 @@
             Student student = students.checkExistingEmail(email);
 
             if (student == null) {
-                Student newStudent = new Student(fname, lname, email, password, dob, userType);
-                session.setAttribute("student", newStudent);
-                students.addStudent(newStudent);
+                Student user = new Student(fname, lname, email, password, dob, userType);
+                session.setAttribute("student", user);
+                students.addStudent(user);
                 studentApp.updateStudents(students, filePath, schemaPath);
         %> <p>Successfully registered, Click <a href="main.jsp">here</a> to go to the main page.</p>
         <%
@@ -59,9 +59,9 @@
             Tutor tutor = tutors.checkExistingEmail(email);
 
             if (tutor == null) {
-                Tutor newTutor = new Tutor(fname, lname, email, password, dob, userType, specialty, "available");
-                session.setAttribute("tutor", newTutor);
-                tutors.addTutor(newTutor);
+                Tutor user = new Tutor(fname, lname, email, password, dob, userType, specialty, "available");
+                session.setAttribute("user", user);
+                tutors.addTutor(user);
                 tutorApp.updateTutors(tutors, filePath, schemaPath);
         %>
         <p>Successfully registered, Click <a href="main.jsp">here</a> to go to the main page.</p>

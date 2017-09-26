@@ -3,4 +3,5 @@
     <system systemId="http://localhost:8080/webservices/StudentApp?wsdl" uri="wsdl/localhost_8080/webservices/StudentApp.wsdl"/>
     <system systemId="http://localhost:8080/webservices/StudentApp?xsd=1" uri="wsdl/localhost_8080/webservices/StudentApp.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/webservices/StudentApp?xsd=2" uri="wsdl/localhost_8080/webservices/StudentApp.xsd_2.xsd"/>
+    <system systemId="http://localhost:8080/webservices/StudentApp?xsd=3" uri="wsdl/localhost_8080/webservices/StudentApp.xsd_3.xsd"/>
 </catalog>

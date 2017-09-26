@@ -27,6 +27,7 @@ public class Student {
     private String dob;
     @XmlElement(name = "usertype")
     private String role;
+    private Bookings bookings;
     
     public Student(String firstName, String lastName, String email, String password, String dob, String role) {
         this.firstName = firstName;
@@ -89,4 +90,12 @@ public class Student {
         this.role = role;
     }
     
+    public void addBooking() {
+        Booking booking = new Booking();
+        booking.setStudentEmail(email);
+        booking.setStudentFirstName(firstName);
+        booking.setStudentLastName(lastName);
+        booking.setStatus("active");
+        bookings.addBooking(booking);
+    }
 }

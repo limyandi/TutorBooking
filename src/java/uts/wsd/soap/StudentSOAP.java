@@ -34,7 +34,7 @@ public class StudentSOAP {
             StudentApp studentApp = (StudentApp) application.getAttribute("studentApp");
             if (studentApp == null) {
                 studentApp = new StudentApp();
-                studentApp.setFilePath(application.getRealPath("WEB-INF/students.xml"));
+                studentApp.setFilePath(application.getRealPath("web/WEB-INF/students.xml"));
                 application.setAttribute("studentApp", studentApp);
             }
             return studentApp;
@@ -54,9 +54,7 @@ public class StudentSOAP {
     
     //TODO: LOGOUT.
     
-    
-    
-    
+    //TODO: CREATE A BOOKING.
     
     /**
      * This is a sample web service operation

@@ -30,6 +30,7 @@ public class Tutor {
     private String subject;
     @XmlElement(name = "status")
     private String status;
+    private Booking booking;
     
     public Tutor(String firstName, String lastName, String email, String password, String dob, String role, String specialty, String available) {
         this.firstName = firstName;
@@ -108,7 +109,11 @@ public class Tutor {
     public void setStatus(String status) {
         this.status = status;
     }
-
+    
+    public void cancelBooking() {
+        booking.setStatus("cancelled");
+        status = "available";
+    }
   
     
     
