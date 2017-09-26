@@ -12,9 +12,10 @@
         <title>Account Page</title>
     </head>
     <body>
-        <!-- ADD CANCEL ACCOUNT -->
+        <!-- TODO: ADD CANCEL ACCOUNT -->
+        <!-- TODO: ADD TUTOR --> 
         <%
-            User user = (User) session.getAttribute("user");
+            Student user = (Student) session.getAttribute("user");
             String fname = request.getParameter("Fname");
             String lname = request.getParameter("Lname");
             String email = request.getParameter("email");

@@ -22,9 +22,10 @@ public class StudentClient {
             System.out.println("Main Menu");
             System.out.println("1. Login");
             System.out.println("2. Logout");
-            System.out.println("3. View all bookings");
-            System.out.println("4. Cancel a booking");
-            System.out.println("5. Exit");
+            System.out.println("3. Create a booking");
+            System.out.println("4. View all bookings");
+            System.out.println("5. Cancel a booking");
+            System.out.println("6. Exit");
             String choice = in.next();
             switch(choice) {
                 case "1":
@@ -35,10 +36,14 @@ public class StudentClient {
                     //TODO: LOGOUT
                     break;
                 case "3":
-                    //TODO: VIEW BOOKINGS
+                    //TODO: CREATE A BOOKING
+                    break;
                 case "4":
-                    //TODO: CANCEL BOOKING
+                    //TODO: VIEW ALL BOOKINGS
+                    break;
                 case "5":
+                    //TODO: CANCEL A BOOKING
+                case "6":
                     exit();
                     break;
                 default:
@@ -49,19 +54,20 @@ public class StudentClient {
         
     }
     
-    private static Student login() {
+    private static void login() {
         student = null;
         System.out.println("Please Enter your email!");
         String email = in.next();
         System.out.println("Please enter your password!");
         String password = in.next();
-        if(students.studentLogin(email, password) != null) {
-            student = students.studentLogin(email, password);
+        student = students.studentLogin(email,password);
+        if(student != null) 
             System.out.println("Login successfully!");
-        }
         else 
             System.out.println("No matching user with that password found");
-        return student;
+    }
+    
+    private static void createBooking() {
     }
     
     private static void exit() {

@@ -1,4 +1,8 @@
-<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://www.uts.edu.au/31284/wsd-students" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://www.uts.edu.au/31284/wsd-students">
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://www.uts.edu.au/31284/wsd-students" xmlns:ns1="http://www.uts.edu.au/31284/wsd-bookings" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://www.uts.edu.au/31284/wsd-students">
+
+<xs:import namespace="http://www.uts.edu.au/31284/wsd-bookings" schemaLocation="http://localhost:8080/webservices/StudentApp?xsd=2"/>
+
+<xs:element name="booking" type="tns:booking"/>
 
 <xs:element name="student" type="tns:student"/>
 
@@ -10,6 +14,26 @@
 <xs:element name="password" type="xs:string" minOccurs="0"/>
 <xs:element name="dateofbirth" type="xs:string" minOccurs="0"/>
 <xs:element name="usertype" type="xs:string" minOccurs="0"/>
+<xs:element name="bookings" type="tns:bookings" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="bookings">
+<xs:sequence>
+<xs:element ref="tns:booking" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="booking">
+<xs:sequence>
+<xs:element name="tutoremail" type="xs:string" minOccurs="0"/>
+<xs:element name="tutorfirstname" type="xs:string" minOccurs="0"/>
+<xs:element name="tutorlastname" type="xs:string" minOccurs="0"/>
+<xs:element name="subjectname" type="xs:string" minOccurs="0"/>
+<xs:element name="studentemail" type="xs:string" minOccurs="0"/>
+<xs:element name="studentfirstname" type="xs:string" minOccurs="0"/>
+<xs:element name="studentlastname" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>
