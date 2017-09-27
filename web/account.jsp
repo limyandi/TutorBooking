@@ -12,7 +12,6 @@
         <title>Account Page</title>
     </head>
     <body>
-        <!-- TODO: ADD CANCEL ACCOUNT -->
         <!-- TODO: ADD TUTOR --> 
         <%
             Student user = (Student) session.getAttribute("user");
@@ -34,7 +33,7 @@
             user.setDob(dob);
             }
         %>
-        <form method="post" action="main.jsp">
+        <form method="post" action="account.jsp">
             <table>
                 <tr><td>First Name:</td><td><input type="text" name="Fname" value="<%= user.getFirstName() %>"></td></tr>
                 <tr><td>Last Name:</td><td><input type="text" name="Lname" value="<%= user.getLastName() %>"></td></tr>
@@ -44,5 +43,8 @@
                 <tr><td></td><td><input type="submit" value="Update"></td></tr>
             </table>            
         </form>
+                <form method="post" action="index.jsp" onsubmit="return confirm('do you really want to delete your account?')">
+                    <input type="submit" value="Delete account" name="delete">
+                </form>
     </body>
 </html>

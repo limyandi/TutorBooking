@@ -42,7 +42,7 @@ public class Students {
         return null;
     }
     
-    //TODO: May be too redundant
+    // Check if the student with this email exists.
     public Student checkExistingEmail(String email) {
         for(Student student: students) {
             if(student.getEmail().equals(email))

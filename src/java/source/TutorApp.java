@@ -71,26 +71,13 @@ public class TutorApp implements Serializable {
     }
 
     public void updateTutors(Tutors tutors, String filePath, String schemaPath) throws Exception {
-        SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        Schema schema = sf.newSchema(new File(schemaPath));
-
         JAXBContext jc = JAXBContext.newInstance(Tutors.class);
 
         Marshaller marshaller = jc.createMarshaller();
         FileOutputStream fos = new FileOutputStream(this.getFilePath());
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-        marshaller.setSchema(schema);
-        marshaller.setEventHandler(new ValidationEventHandler() {
-            @Override
-            public boolean handleEvent(ValidationEvent event) {
-                System.out.println("MESSAGE:  " + event.getMessage());
-                return true;
-            }
-        });
-
         marshaller.marshal(tutors, fos);
         fos.close();
     }
-
 }

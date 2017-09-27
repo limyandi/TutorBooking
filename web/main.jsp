@@ -41,7 +41,9 @@
 
         <% }%>
 
-        <!-- Display result here, 
+        <!-- 
+        TODO: USE XSLT TO DISPLAY TUTOR.
+        Display result here, 
         check the value of 
         'category' and 'catval'
         -->
