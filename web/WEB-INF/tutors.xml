@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--TODO: Do we need usertype?-->
 <tutors xmlns="http://www.uts.edu.au/31284/wsd-tutors"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-tutors tutors.xsd">
     <tutor>
         <firstname>Rico</firstname>
         <lastname>Brilliant</lastname>
-        <email>rico@gmail.com</email>
+        <email>bakaka@gmail.com</email>
         <password>123456</password>
         <dateofbirth>09/09/1998</dateofbirth>
         <usertype>tutor</usertype>
@@ -16,7 +15,7 @@
     <tutor>
         <firstname>Rico</firstname>
         <lastname>Brilliant</lastname>
-        <email>rico@gmail.com</email>
+        <email>rico@koko.com</email>
         <password>123456</password>
         <dateofbirth>09/09/1998</dateofbirth>
         <usertype>tutor</usertype>
@@ -26,7 +25,7 @@
     <tutor>
         <firstname>Rico</firstname>
         <lastname>Brilliant</lastname>
-        <email>rico@gmail.com</email>
+        <email>limyandi@gmail.com</email>
         <password>123456</password>
         <dateofbirth>09/09/1998</dateofbirth>
         <usertype>tutor</usertype>
@@ -36,7 +35,7 @@
     <tutor>
         <firstname>Rico</firstname>
         <lastname>Brilliant</lastname>
-        <email>rico@gmail.com</email>
+        <email>yokatana@gmail.com</email>
         <password>123456</password>
         <dateofbirth>09/09/1998</dateofbirth>
         <usertype>tutor</usertype>
@@ -46,7 +45,7 @@
     <tutor>
         <firstname>Rico</firstname>
         <lastname>Brilliant</lastname>
-        <email>rico@gmail.com</email>
+        <email>atsui@gmail.com</email>
         <password>123456</password>
         <dateofbirth>09/09/1998</dateofbirth>
         <usertype>tutor</usertype>

@@ -54,6 +54,11 @@ and open the template in the editor.
     </xs:simpleType>
     
     <!--TODO DO WE NEED FOR STATUS OF TUTOR? -->
+    <xs:simpleType name="status">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="available|unavailable"/>
+        </xs:restriction>
+    </xs:simpleType>
     
     <xs:element name="tutors">
         <xs:complexType>
@@ -68,7 +73,7 @@ and open the template in the editor.
                             <xs:element name="dateofbirth" type="dob"/>
                             <xs:element name="usertype" type="usertype"/>
                             <xs:element name="subject" type="subject"/>
-                            <xs:element name="status" type="xs:string"/>
+                            <xs:element name="status" type="status"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

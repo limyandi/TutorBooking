@@ -23,6 +23,7 @@
                 Student user = users.login(email, password);
                 if (user != null) {
                     session.setAttribute("user", user);
+                    response.sendRedirect("main.jsp");
         %>
 
         <p>Login successful. Click <a href="main.jsp"> here </a> to return to the main page.</p>
@@ -42,6 +43,7 @@
                 Tutor user = tutors.login(email, password);
                 if (user != null) {
                     session.setAttribute("user", user);
+                    response.sendRedirect("main.jsp");
         %>
 
         <p>Login successful. Click <a href="main.jsp"> here </a> to return to the main page.</p>
@@ -50,6 +52,9 @@
         <p>Password incorrect. Click <a href="login.html"> here </a> to try again.</p>
         <% }
             }%>
+
+    </body>
+</html>
 
     </body>
 </html>

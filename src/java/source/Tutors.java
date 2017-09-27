@@ -42,7 +42,7 @@ public class Tutors{
         return null;
     }
     
-    //TODO: May be too redundant
+    // Check if the tutor with the existing email exists.
     public Tutor checkExistingEmail(String email) {
         for(Tutor tutor: this.tutors) {
             if(tutor.getEmail().equals(email))

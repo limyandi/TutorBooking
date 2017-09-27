@@ -30,7 +30,6 @@ public class StudentApp implements Serializable {
 
     private Students students;
     private String filePath;
-    private String schemaPath;
 
     public StudentApp() {
     }
@@ -38,15 +37,6 @@ public class StudentApp implements Serializable {
     public StudentApp(Students students, String filePath, String schemaPath) {
         this.students = students;
         this.filePath = filePath;
-        this.schemaPath = schemaPath;
-    }
-
-    public String getSchemaPath() {
-        return schemaPath;
-    }
-
-    public void setSchemaPath(String schemaPath) {
-        this.schemaPath = schemaPath;
     }
 
     public String getFilePath() {
@@ -70,24 +60,12 @@ public class StudentApp implements Serializable {
         fin.close();
     }
 
-    public void updateStudents(Students students, String filePath, String schemaPath) throws Exception {
-        SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        Schema schema = sf.newSchema(new File(schemaPath));
-
+    public void updateStudents(Students students, String filePath) throws Exception {
         JAXBContext jc = JAXBContext.newInstance(Students.class);
 
         Marshaller marshaller = jc.createMarshaller();
         FileOutputStream fos = new FileOutputStream(filePath);
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-        marshaller.setSchema(schema);
-        marshaller.setEventHandler(new ValidationEventHandler() {
-            @Override
-            public boolean handleEvent(ValidationEvent event) {
-                System.out.println("MESSAGE:  " + event.getMessage());
-                return true;
-            }
-        });
 
         marshaller.marshal(students, fos);
         fos.close();
