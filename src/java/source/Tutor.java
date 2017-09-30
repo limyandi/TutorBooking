@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "tutor")
-public class Tutor {
+public class Tutor extends User{
     @XmlElement(name= "firstname")
     private String firstName;
     @XmlElement(name = "lastname")
@@ -30,17 +30,17 @@ public class Tutor {
     private String subject;
     @XmlElement(name = "status")
     private String status;
-    private Booking booking;
+    private Booking currentBooking;
     
-    public Tutor(String firstName, String lastName, String email, String password, String dob, String role, String specialty, String available) {
+    public Tutor(String firstName, String lastName, String email, String password, String dob, String role, String subject, String status) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.dob = dob;
         this.role = role;
-        this.subject = specialty;
-        this.status = available;
+        this.subject = subject;
+        this.status = status;
     }
 
     public Tutor() {
@@ -110,11 +110,21 @@ public class Tutor {
         this.status = status;
     }
     
+    public Booking getCurrentBooking() {
+        return currentBooking;
+    }
+
+    public void setCurrentBooking(Booking currentBooking) {
+        this.currentBooking = currentBooking;
+    }
+    
     public void cancelBooking() {
-        booking.setStatus("cancelled");
+        currentBooking.setStatus("cancelled");
         status = "available";
     }
-  
     
-    
+    public void completeBooking() {
+        currentBooking.setStatus("completed");
+        status = "available";
+    }
 }

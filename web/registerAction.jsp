@@ -23,11 +23,9 @@
             String schemaPath;
             if (userType.equals("student")) {
                 filePath = application.getRealPath("WEB-INF/students.xml");
-                schemaPath = application.getRealPath("WEB-INF/students.xsd");
         %>
         <jsp:useBean id="studentApp" class="source.StudentApp" scope="application">
             <jsp:setProperty name="studentApp" property="filePath" value="<%=filePath%>"/>
-            <jsp:setProperty name="studentApp" property="schemaPath" value="<%=schemaPath%>"/>
         </jsp:useBean>
         <%
             Students students = studentApp.getStudents();
@@ -35,24 +33,20 @@
 
             if (student == null) {
                 Student user = new Student(fname, lname, email, password, dob, userType);
-                session.setAttribute("student", user);
+                session.setAttribute("user", user);
                 students.addStudent(user);
-                studentApp.updateStudents(students, filePath, schemaPath);
-        %> <p>Successfully registered, Click <a href="main.jsp">here</a> to go to the main page.</p>
-        <%
-        } else {
-
+                studentApp.updateStudents(students, filePath);
+                response.sendRedirect("main.jsp");
+            } else {
         %>
         <p>User with that email already exists, Click <a href="register.html"> here </a> to register again.</p>
         <%            }
-        } else {
+            } else {
             String specialty = request.getParameter("specialty");
             filePath = application.getRealPath("WEB-INF/tutors.xml");
-            schemaPath = application.getRealPath("WEB-INF/tutors.xsd");
         %>
         <jsp:useBean id="tutorApp" class="source.TutorApp" scope="application">
             <jsp:setProperty name="tutorApp" property="filePath" value="<%=filePath%>"/>
-            <jsp:setProperty name="tutorApp" property="schemaPath" value="<%=schemaPath%>"/>
         </jsp:useBean>
         <%
             Tutors tutors = tutorApp.getTutors();
@@ -62,16 +56,14 @@
                 Tutor user = new Tutor(fname, lname, email, password, dob, userType, specialty, "available");
                 session.setAttribute("user", user);
                 tutors.addTutor(user);
-                tutorApp.updateTutors(tutors, filePath, schemaPath);
-        %>
-        <p>Successfully registered, Click <a href="main.jsp">here</a> to go to the main page.</p>
-        <%
-        } else {
+                tutorApp.updateTutors(tutors, filePath);
+                response.sendRedirect("main.jsp");
+            } else {
         %>
         <p>User with that email already exists, Click <a href="register.html"> here </a> to register again.</p>
         <%
                 }
-            }
+             }
         %>
     </body>
 </html>

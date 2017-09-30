@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "student")
-public class Student {
+public class Student extends User{
     
     @XmlElement(name= "firstname")
     private String firstName;
@@ -90,8 +90,11 @@ public class Student {
         this.role = role;
     }
     
-    public void addBooking() {
-        Booking booking = new Booking();
+    public void addBooking(Booking booking, Tutor tutor) {
+        booking.setTutorEmail(tutor.getEmail());
+        booking.setTutorFirstName(tutor.getFirstName());
+        booking.setTutorLastName(tutor.getLastName());
+        booking.setSubjectName(tutor.getSubject());
         booking.setStudentEmail(email);
         booking.setStudentFirstName(firstName);
         booking.setStudentLastName(lastName);
