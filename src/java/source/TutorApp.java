@@ -30,23 +30,13 @@ public class TutorApp implements Serializable {
 
     private Tutors tutors;
     private String filePath;
-    private String schemaPath;
 
     public TutorApp() {
     }
 
-    public TutorApp(Tutors tutors, String filePath, String schemaPath) {
+    public TutorApp(Tutors tutors, String filePath) {
         this.tutors = tutors;
         this.filePath = filePath;
-        this.schemaPath = schemaPath;
-    }
-
-    public String getSchemaPath() {
-        return schemaPath;
-    }
-
-    public void setSchemaPath(String schemaPath) {
-        this.schemaPath = schemaPath;
     }
 
     public String getFilePath() {
@@ -70,7 +60,7 @@ public class TutorApp implements Serializable {
         fin.close();
     }
 
-    public void updateTutors(Tutors tutors, String filePath, String schemaPath) throws Exception {
+    public void updateTutors(Tutors tutors, String filePath) throws Exception {
         JAXBContext jc = JAXBContext.newInstance(Tutors.class);
 
         Marshaller marshaller = jc.createMarshaller();

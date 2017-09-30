@@ -34,7 +34,7 @@ public class StudentApp implements Serializable {
     public StudentApp() {
     }
 
-    public StudentApp(Students students, String filePath, String schemaPath) {
+    public StudentApp(Students students, String filePath) {
         this.students = students;
         this.filePath = filePath;
     }

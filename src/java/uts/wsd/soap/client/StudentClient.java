@@ -68,6 +68,9 @@ public class StudentClient {
     }
     
     private static void createBooking() {
+        if(student != null) {
+            
+        }
     }
     
     private static void exit() {

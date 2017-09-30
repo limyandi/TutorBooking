@@ -24,14 +24,9 @@
                 if (user != null) {
                     session.setAttribute("user", user);
                     response.sendRedirect("main.jsp");
-        %>
-
-        <p>Login successful. Click <a href="main.jsp"> here </a> to return to the main page.</p>
-        <% } else { %>
-        <p>Password incorrect. Click <a href="login.html"> here </a> to try again.</p>
-        <% }
-        } else {
-            filePath = application.getRealPath("WEB-INF/tutors.xml");
+                }
+            } else {
+                filePath = application.getRealPath("WEB-INF/tutors.xml");
         %>
 
         <jsp:useBean id="TutorApp" class="source.TutorApp" scope="application">
@@ -44,14 +39,11 @@
                 if (user != null) {
                     session.setAttribute("user", user);
                     response.sendRedirect("main.jsp");
-        %>
-
-        <p>Login successful. Click <a href="main.jsp"> here </a> to return to the main page.</p>
-        <% } %>
-        <% } else { %>
+                } 
+             } else { %>
         <p>Password incorrect. Click <a href="login.html"> here </a> to try again.</p>
         <% }
-            }%>
+        }%>
 
     </body>
 </html>

@@ -54,8 +54,10 @@ public class StudentSOAP {
     
     //TODO: LOGOUT.
     
-    //TODO: CREATE A BOOKING.
-    
+    //TODO: CREATE A BOOKING. //TODO: HOW DO I ACCESS THE STUDENT FROM STUDENT LOGIN?.
+    public void createBooking(Student student, Booking booking, Tutor tutor) {
+        student.addBooking(booking, tutor);
+    }
     /**
      * This is a sample web service operation
      */
