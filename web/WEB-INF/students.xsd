@@ -30,8 +30,6 @@
         </xs:restriction>
     </xs:simpleType>
     
-    
-    <!--TODO: DO WE NEED FOR USERTYPE? -->
     <xs:simpleType name="usertype">
         <xs:restriction base="xs:string">
             <xs:pattern value="student"/>

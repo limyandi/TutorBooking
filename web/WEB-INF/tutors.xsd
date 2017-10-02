@@ -45,11 +45,7 @@ and open the template in the editor.
     
     <xs:simpleType name="subject">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="WSD"/>
-            <xs:enumeration value="USP"/>
-            <xs:enumeration value="SEP"/>
-            <xs:enumeration value="AppProg"/>
-            <xs:enumeration value="MobileApp"/>
+            <xs:pattern value="WSD|USP|SEP|AppProg|MobileApp"/>
         </xs:restriction>
     </xs:simpleType>
     
