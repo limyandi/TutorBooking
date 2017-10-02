@@ -16,6 +16,8 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(name = "booking")
 public class Booking implements Serializable {
     
+    @XmlAttribute(name="id")
+    private int id;
     @XmlElement(name= "tutoremail")
     private String tutorEmail;
     @XmlElement(name = "tutorfirstname")
