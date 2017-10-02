@@ -12,6 +12,7 @@ import source.Bookings;
 import javax.xml.bind.JAXBException;
 import java.io.*;
 import javax.servlet.ServletContext;
+import source.Booking;
 import source.BookingApp;
 
 /**
@@ -55,5 +56,33 @@ public class BookingService {
     @Produces("text/xml")
     public Bookings getBookings() throws JAXBException, IOException, IOException {
         return getBookingApp().getBookings();
+    }
+    
+    @Path("idsearch")
+    @GET
+    @Produces("text/xml")
+    public Booking getBookingByID(@QueryParam("id")int id) throws Exception{
+        return getBookingApp().getBookings().getBooking(id);
+    }
+    
+    @Path("emailsearch")
+    @GET
+    @Produces("text/xml")
+    public Bookings getBookingByEmail(@QueryParam("email")String email) throws Exception{
+        return getBookingApp().getBookings().getByEmail(email);
+    }
+    
+    @Path("subjectsearch")
+    @GET
+    @Produces("text/xml")
+    public Bookings getBookingByName(@QueryParam("subject")String name) throws Exception{
+        return getBookingApp().getBookings().getBySubject(name);
+    }
+    
+    @Path("statussearch")
+    @GET
+    @Produces("text/xml")
+    public Bookings getBookingByStatus(@QueryParam("status")String name) throws Exception{
+        return getBookingApp().getBookings().getByStatus(name);
     }
 }

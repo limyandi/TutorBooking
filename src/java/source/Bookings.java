@@ -32,4 +32,43 @@ public class Bookings {
     public void removeBooking(Booking booking) {
         bookings.remove(booking);
     }
+    
+    public Booking getBooking(int id){
+        for(Booking booking: this.bookings){
+            if(booking.getId() == id){
+                return booking;
+            }   
+        }
+        return null;
+    }
+    
+    public Bookings getByStatus(String status){
+        Bookings bookings = new Bookings();
+        for(Booking booking: this.bookings){
+            if(booking.getStatus().equals(status)){
+                bookings.addBooking(booking);
+            }
+        }
+        return bookings;
+    }
+    
+    public Bookings getByEmail(String email){
+        Bookings bookings = new Bookings();
+        for(Booking booking: this.bookings){
+            if(booking.getStudentEmail().equals(email)){
+                bookings.addBooking(booking);
+            }
+        }
+        return bookings;
+    }
+    
+    public Bookings getBySubject(String subject){
+        Bookings bookings = new Bookings();
+        for(Booking booking: this.bookings){
+            if(booking.getSubjectName().equals(subject)){
+                bookings.addBooking(booking);
+            }
+        }
+        return bookings;
+    }
 }
