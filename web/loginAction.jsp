@@ -15,12 +15,11 @@
         <jsp:useBean id="StudentApp" class="source.StudentApp" scope="application">
             <jsp:setProperty name="StudentApp" property="filePath" value="<%=filePath%>"/>
         </jsp:useBean>
-        
         <%
             String email = request.getParameter("email");
             String password = request.getParameter("password");
         %>
-        <jsp:useBean id="loginHandler" class="source.Login" scope="request">
+        <jsp:useBean id="loginHandler" class="uts.wsd.registerlogin.Login" scope="request">
             <jsp:setProperty name="loginHandler" property="email" value="<%=email%>"/>
             <jsp:setProperty name="loginHandler" property="password" value="<%=password%>"/>
         </jsp:useBean>
@@ -53,7 +52,7 @@
                         response.sendRedirect("main.jsp");
                     } 
                  } else { %>
-        <p>Password incorrect. Click <a href="login.html"> here </a> to try again.</p>
+        <p>Password incorrect. Click <a href="login.jsp"> here </a> to try again.</p>
         <%       }        
             }
         }%>

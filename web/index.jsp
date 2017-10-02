@@ -12,11 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <% String filePath = application.getRealPath("WEB-INF/students.xml"); %>
+        <% String filePath = application.getRealPath("WEB-INF/students.xml");%>
         <jsp:useBean id="StudentApp" class="source.StudentApp" scope="application">
             <jsp:setProperty name="StudentApp" property="filePath" value="<%=filePath%>"/>
         </jsp:useBean>
-        <% 
+        <%
             String answer = request.getParameter("delete");
             if (answer != null) {
                 Students students = StudentApp.getStudents();
@@ -27,6 +27,6 @@
             session.invalidate();
         %>
         <h1 align="center">Welcome to the UTS Tutor System</h1>
-        <p align="center"> <u><a href="register.html">Register</a></u> | <u><a href="login.html">Login</a></u></p>
+        <p align="center"> <u><a href="register.jsp">Register</a></u> | <u><a href="login.jsp">LoginADS</a></u></p>
     </body>
 </html>

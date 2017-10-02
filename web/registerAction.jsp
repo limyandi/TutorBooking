@@ -21,6 +21,20 @@
             String userType = request.getParameter("usertype");
             String filePath;
             String schemaPath;
+        %>
+        <jsp:useBean id="registerHandler" class="uts.wsd.registerlogin.Register" scope="request">
+        </jsp:useBean>
+        <%
+            registerHandler.setFirstname(fname);
+            registerHandler.setLastname(lname);
+            registerHandler.setEmail(email);
+            registerHandler.setPassword(password);
+            registerHandler.setDob(dob);
+            if(!registerHandler.validateRegister()) {
+                session.setAttribute("registerData", registerHandler);
+                response.sendRedirect("register.jsp");
+            }
+            else {
             if (userType.equals("student")) {
                 filePath = application.getRealPath("WEB-INF/students.xml");
         %>
@@ -39,7 +53,7 @@
                 response.sendRedirect("main.jsp");
             } else {
         %>
-        <p>User with that email already exists, Click <a href="register.html"> here </a> to register again.</p>
+        <p>User with that email already exists, Click <a href="register.jsp"> here </a> to register again.</p>
         <%            }
             } else {
             String specialty = request.getParameter("specialty");
@@ -60,10 +74,11 @@
                 response.sendRedirect("main.jsp");
             } else {
         %>
-        <p>User with that email already exists, Click <a href="register.html"> here </a> to register again.</p>
+        <p>User with that email already exists, Click <a href="register.jsp"> here </a> to register again.</p>
         <%
                 }
              }
+            }
         %>
     </body>
 </html>

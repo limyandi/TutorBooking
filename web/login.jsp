@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<%@page contentType="text/html" pageEncoding="UTF-8" import="source.Login"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="uts.wsd.registerlogin.Login"%>
 <html>
     <head>
         <title>Login Page</title>
@@ -20,15 +20,15 @@ and open the template in the editor.
             <table>
                 <tr>
                     <td>Email/Username:</td><td><input type="email" name="email" value="<%=login.getEmail()%>"></td>
-                    <td><%=login.getEmailError()%></td>
+                    <td><%=login.getErrorMessage("email")%></td>
                 </tr>
                 <tr>
                     <td>Password:</td><td><input type="password" name="password" value="<%=login.getPassword()%>"></td>
-                    <td><%=login.getPasswordError()%></td>
+                    <td><%=login.getErrorMessage("password")%></td>
                 </tr>
                 <tr><td></td><td><input type="submit" value="Login"></td></tr>
             </table>            
         </form>
-        <p>Click here to <u><a href="register.html">Register</a></u>.</p>
+        <p>Click here to <u><a href="register.jsp">Register</a></u>.</p>
     </body>
 </html>
