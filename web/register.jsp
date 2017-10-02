@@ -51,8 +51,7 @@
                     <td><%=register.getErrorMessage("password")%></td>
                 </tr>
                 <tr>
-                    <td>Date of Birth:</td><td><input type="date" name="dob" value="<%=register.getDob()%>"></td>
-                    <td><%=register.getErrorMessage("dob")%></td>
+                    <td>Date of Birth:</td><td><input type="date" name="dob"></td>
                 </tr>
                 <tr>
                     <td>User type:</td><td>

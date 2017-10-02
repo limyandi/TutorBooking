@@ -22,6 +22,7 @@ public class Login implements Serializable {
     public Login() {
         this.email = "";
         this.password = "";
+        errors = new Hashtable();
     }
     
     public Login(String email, String password) {

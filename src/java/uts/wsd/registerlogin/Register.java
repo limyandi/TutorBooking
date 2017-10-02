@@ -19,7 +19,6 @@ public class Register implements Serializable {
     private String password;
     private String firstname;
     private String lastname;
-    private String dob;
     private Hashtable errors;
     
     public Register() {
@@ -27,7 +26,6 @@ public class Register implements Serializable {
         this.password = "";
         this.firstname = "";
         this.lastname = "";
-        this.dob = "";
         errors = new Hashtable();
     }
     
@@ -35,8 +33,7 @@ public class Register implements Serializable {
         this.email = email;
         this.password = password;
         this.firstname = firstname;
-        this.lastname = lastname;
-        this.dob = dob;
+        this.lastname = lastname;  
     }
     
     public boolean validateRegister() {
@@ -61,14 +58,7 @@ public class Register implements Serializable {
             errors.put("lastname", "Please enter a valid name");
             allValidated = false;
         }
-        
-        Pattern dobPattern = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{1,4}");
-        Matcher dobMatcher = dobPattern.matcher(dob);
-        if(!dobMatcher.find()) {
-            errors.put("dob", "Please enter a valid date of birth");
-            allValidated = false;
-        }
-        
+   
         return allValidated;
     }
     
@@ -102,14 +92,6 @@ public class Register implements Serializable {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
     }
 
     public String getErrorMessage(String errorType) {

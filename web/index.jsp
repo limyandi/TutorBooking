@@ -27,6 +27,6 @@
             session.invalidate();
         %>
         <h1 align="center">Welcome to the UTS Tutor System</h1>
-        <p align="center"> <u><a href="register.jsp">Register</a></u> | <u><a href="login.jsp">LoginADS</a></u></p>
+        <p align="center"> <u><a href="register.jsp">Register</a></u> | <u><a href="login.jsp">Login</a></u></p>
     </body>
 </html>

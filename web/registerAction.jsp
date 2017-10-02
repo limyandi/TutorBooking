@@ -29,7 +29,6 @@
             registerHandler.setLastname(lname);
             registerHandler.setEmail(email);
             registerHandler.setPassword(password);
-            registerHandler.setDob(dob);
             if(!registerHandler.validateRegister()) {
                 session.setAttribute("registerData", registerHandler);
                 response.sendRedirect("register.jsp");
