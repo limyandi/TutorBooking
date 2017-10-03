@@ -9,10 +9,10 @@
     <xsl:template match="page">
         <html>
             <head>
-                <title>Main Menu</title>
+                <title></title>
             </head>
             <body>
-                <h1>Main Menu</h1>
+                <h1><xsl:value-of select="@title"/></h1>
                 <xsl:apply-templates/>
             </body>
         </html>
