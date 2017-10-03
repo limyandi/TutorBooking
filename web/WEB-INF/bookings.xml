@@ -19,6 +19,7 @@ TODO: DELETE THIS MOCKUP BEFORE SUBMISSION
        xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-bookings bookings.xsd">
     <!-- TODO: DELETE THIS MOCKUP BEFORE SUBMISSION, ONLY FOR TESTING. -->
     <booking>
+        <id>7</id>
         <tutoremail>rico@gmail.com</tutoremail>
         <tutorfirstname>Rico</tutorfirstname>
         <tutorlastname>Brilliant</tutorlastname>
