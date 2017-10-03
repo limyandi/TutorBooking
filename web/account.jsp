@@ -1,5 +1,5 @@
 <%@page contentType="text/xml" pageEncoding="UTF-8"%><?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="account.xsl"?>
+<?xml-stylesheet type="text/xsl" href="./xsl/account.xsl"?>
 <%@page import="source.*"%>
 <!DOCTYPE html>
 
@@ -19,11 +19,7 @@
     if (email != null && fname != null && lname != null
             && password != null && dob != null) {
         //TODO: MARSHAL. (Change the current session of user data and then marshal it.)
-        user.setEmail(email);
-        user.setFirstName(fname);
-        user.setLastName(lname);
-        user.setPassword(password);
-        user.setDob(dob);
+        user.updateDetails(fname, lname, email, password, dob);
         if (session.getAttribute("user") instanceof Tutor) {
             String specialty = request.getParameter("specialty");
             if (specialty != null) {
