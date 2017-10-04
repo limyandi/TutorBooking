@@ -24,37 +24,35 @@
             <jsp:setProperty name="loginHandler" property="password" value="<%=password%>"/>
         </jsp:useBean>
         <%
-            if(!loginHandler.validateLogin()) {
+            if (!loginHandler.validateLogin()) {
                 session.setAttribute("loginData", loginHandler);
                 response.sendRedirect("login.jsp");
-            }
-            else {
-                Students users = StudentApp.getStudents();
-                if (users != null) {
-                    Student user = users.login(email, password);
-                    if (user != null) {
-                        session.setAttribute("user", user);
-                        response.sendRedirect("main.jsp");
-                    }
-                } 
-                else {
+            } else {
+                Students students = StudentApp.getStudents();
+                Student student = students.login(email, password);
+                if (student != null) {
+                    session.setAttribute("user", student);
+                    response.sendRedirect("main.jsp");
+                } else {
                     filePath = application.getRealPath("WEB-INF/tutors.xml");
         %>
         <jsp:useBean id="TutorApp" class="source.TutorApp" scope="application">
             <jsp:setProperty name="TutorApp" property="filePath" value="<%=filePath%>"/>
         </jsp:useBean>
         <%
-                Tutors tutors = TutorApp.getTutors();
-                if (tutors != null) {
-                    Tutor user = tutors.login(email, password);
-                    if (user != null) {
-                        session.setAttribute("user", user);
-                        response.sendRedirect("main.jsp");
-                    } 
-                 } else { %>
-        <p>Password incorrect. Click <a href="login.jsp"> here </a> to try again.</p>
-        <%       }        
+            Tutors tutors = TutorApp.getTutors();
+            Tutor tutor = tutors.login(email, password);
+            if (tutor != null) {
+                session.setAttribute("user", tutor);
+                response.sendRedirect("main.jsp");
+            } else {
+
+        %>
+
+        <p>Password incorrect. Click <a href="login.jsp"> here </a> to try again.</p>   
+        <%          }
+                }
             }
-        }%>
+        %>
     </body>
 </html>
