@@ -6,41 +6,57 @@
     <xsl:template match="page">
         <html>
             <head>
-                <title><xsl:value-of select="@title"/></title>
+                <title>
+                    <xsl:value-of select="@title"/>
+                </title>
             </head>
             <body>
-                <h2><xsl:value-of select="@title"/></h2>
-                <xsl:apply-templates/>
+                <h2>
+                    <xsl:value-of select="@title"/>
+                </h2>
+                <form action="loginAction.jsp" method="POST">
+                    <table>
+                        <xsl:apply-templates/>
+                        <tr>
+                            <td><input type="submit" value="Login"/></td>
+                        </tr>
+                    </table>
+                </form>
             </body>
         </html>
     </xsl:template>
     
     <xsl:template match="inputs">
-        <form action="loginAction.jsp" method="POST">
-            <table>
-                <tr>
-                    <xsl:apply-templates/>
-                    <td><input type="submit" value="Login"/></td>
-                </tr>
-            </table>
-        </form>
+        <tr>
+            <xsl:apply-templates/>
+        </tr>
     </xsl:template>
     
     <xsl:template match="email">
-        <td>Email:</td>
-        <td><input type="email" name="email" value="{.}"/></td>
+            <td>Email:</td>
+            <td>
+                <input type="email" name="email" value="{.}"/>
+            </td>
     </xsl:template>
     
     <xsl:template match="emailerror">
-        <td><xsl:value-of select="."/></td>
+            <td>
+                <xsl:value-of select="."/>
+            </td>
     </xsl:template>
     
     <xsl:template match="password">
-        <td>Password:</td>
-        <td><input type="password" name="password" value="{.}"/></td>
+        <tr>
+            <td>Password:</td>
+            <td>
+                <input type="password" name="password" value="{.}"/>
+            </td>
+        </tr>
     </xsl:template>
     
     <xsl:template match="passworderror">
-        <td><xsl:value-of select="."/></td>
+            <td>
+                <xsl:value-of select="."/>
+            </td>
     </xsl:template>
 </xsl:stylesheet>
