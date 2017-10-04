@@ -10,6 +10,12 @@ package source;
  * @author limyandivicotrico
  */
 public abstract class User {
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private String dob;
+    
     public abstract String getFirstName();
    
     public abstract void setFirstName(String firstName);
@@ -40,5 +46,13 @@ public abstract class User {
     
     public String getSubject() {
         return "";
+    }
+    
+    public void updateDetails(String firstName, String lastName, String email, String password, String dob) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+        setPassword(password);
+        setDob(dob);
     }
 }

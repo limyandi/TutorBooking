@@ -61,14 +61,16 @@
                         </select></td>
                 </tr>
                 <tr>
-                    <td><p id= "specialtylabel" style='display:none;'>Specialty:</p></td><td>
+                    <td><p id= "specialtylabel" style='display:none;'>Specialty:</p></td>
+                    <td>
                         <select name="specialty" id="specialty" style='display:none;'>
                             <option value='WSD'>Web Services Development</option>
                             <option value='USP'>Unix Systems Programming</option>
                             <option value='SEP'>Software Engineering Practice</option>
                             <option value='AppProg'>Application Programming</option>
                             <option value='MobileApp'>Mobile Applications Development</option>
-                        </select></td>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td></td><td><input type="submit" value="Register"></td>

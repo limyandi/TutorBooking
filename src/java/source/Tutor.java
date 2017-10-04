@@ -127,4 +127,5 @@ public class Tutor extends User{
         currentBooking.setStatus("completed");
         status = "available";
     }
+    
 }
