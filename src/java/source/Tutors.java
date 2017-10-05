@@ -50,4 +50,44 @@ public class Tutors{
         }
         return null;
     }
+    
+    public ArrayList<Tutor> getByStatus(String status) {
+        ArrayList<Tutor> tutors = new ArrayList<Tutor>();
+        for(Tutor tutor: this.tutors){
+            if(tutor.getStatus().equals(status)){
+                tutors.add(tutor);
+            }   
+        }
+        return tutors;
+    }
+    
+    public ArrayList<Tutor> getByFirstName(String firstName) {
+        ArrayList<Tutor> tutors = new ArrayList<Tutor>();
+        for(Tutor tutor: this.tutors){
+            if(tutor.getFirstName().equals(firstName)){
+                tutors.add(tutor);
+            }   
+        }
+        return tutors;
+    }
+    
+    public Tutors getByLastName(String lastName) {
+        Tutors tutors = new Tutors();
+        for(Tutor tutor: this.tutors){
+            if(tutor.getLastName().equals(lastName)){
+                tutors.addTutor(tutor);
+            }   
+        }
+        return tutors;
+    }
+    
+    public ArrayList<Tutor> getBySubject(String subject) {
+        ArrayList<Tutor> tutors = new ArrayList<Tutor>();
+        for(Tutor tutor: this.tutors){
+            if(tutor.getSubject().equals(subject)){
+                tutors.add(tutor);
+            }   
+        }
+        return tutors;
+    }
 }

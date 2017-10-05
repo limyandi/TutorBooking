@@ -41,7 +41,32 @@ public class Student extends User{
     public Student() {
         
     }
+    
+    public void addBooking(Booking booking, Tutor tutor) {
+        booking.setTutorEmail(tutor.getEmail());
+        booking.setTutorFirstName(tutor.getFirstName());
+        booking.setTutorLastName(tutor.getLastName());
+        booking.setSubjectName(tutor.getSubject());
+        booking.setStudentEmail(email);
+        booking.setStudentFirstName(firstName);
+        booking.setStudentLastName(lastName);
+        booking.setStatus("active");
+        bookings.addBooking(booking);
+    }
+    
+    public void cancelBooking(Booking booking, Tutor tutor) {
+        tutor.setStatus("available");
+        bookings.removeBooking(booking);
+    }
 
+    public Bookings getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Bookings bookings) {
+        this.bookings = bookings;
+    }
+    
     public String getFirstName() {
         return firstName;
     }
@@ -88,17 +113,5 @@ public class Student extends User{
 
     public void setRole(String role) {
         this.role = role;
-    }
-    
-    public void addBooking(Booking booking, Tutor tutor) {
-        booking.setTutorEmail(tutor.getEmail());
-        booking.setTutorFirstName(tutor.getFirstName());
-        booking.setTutorLastName(tutor.getLastName());
-        booking.setSubjectName(tutor.getSubject());
-        booking.setStudentEmail(email);
-        booking.setStudentFirstName(firstName);
-        booking.setStudentLastName(lastName);
-        booking.setStatus("active");
-        bookings.addBooking(booking);
     }
 }
