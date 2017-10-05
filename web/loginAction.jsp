@@ -48,7 +48,6 @@
             } else {
 
         %>
-
         <p>Password incorrect. Click <a href="login.jsp"> here </a> to try again.</p>   
         <%          }
                 }
