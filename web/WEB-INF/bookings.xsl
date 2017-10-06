@@ -44,7 +44,7 @@
     <xsl:template match="x:booking">
         <tr>
             <td>
-                <xsl:value-of select="x:id"/>
+                <xsl:value-of select="@id"/>
             </td>
             <td>
                 <xsl:value-of select="x:tutorfirstname"/>
