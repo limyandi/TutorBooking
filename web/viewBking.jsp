@@ -1,6 +1,6 @@
 <%-- 
-    Document   : booking
-    Created on : 19/09/2017, 10:27:40 PM
+    Document   : viewBking
+    Created on : 19/09/2017, 10:29:45 PM
     Author     : Carl
 --%>
 
@@ -9,5 +9,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <c:import var="xml" url="/WEB-INF/bookings.xml" />
-<c:import var="xslt" url="/WEB-INF/bookings.xsl" />
+<c:import var="xslt" url="/WEB-INF/viewBking.xsl" />
 <x:transform xml="${xml}" xslt="${xslt}" />

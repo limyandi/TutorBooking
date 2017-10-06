@@ -35,6 +35,31 @@ public class Booking implements Serializable {
     @XmlElement(name = "status")
     private String status;
 
+    public Booking(String id, String tutorEmail, String tutorFirstName, String tutorLastName, String subjectName, String studentEmail, String studentFirstName, String studentLastName, String status) {
+        this.id = id;
+        this.tutorEmail = tutorEmail;
+        this.tutorFirstName = tutorFirstName;
+        this.tutorLastName = tutorLastName;
+        this.subjectName = subjectName;
+        this.studentEmail = studentEmail;
+        this.studentFirstName = studentFirstName;
+        this.studentLastName = studentLastName;
+        this.status = status;
+    }
+
+    public Booking() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    
+
     public String getTutorEmail() {
         return tutorEmail;
     }
