@@ -3,7 +3,7 @@
 <bookings xmlns="http://www.uts.edu.au/31284/wsd-bookings"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-bookings bookings.xsd">
-    <booking>
+ <booking>
         <id>1</id>
         <tutoremail>rico@gmail.com</tutoremail>
         <tutorfirstname>Rico</tutorfirstname>
@@ -12,51 +12,7 @@
         <studentemail>limyandi@gmail.com</studentemail>
         <studentfirstname>Limyandi</studentfirstname>
         <studentlastname>Vicotrico</studentlastname>
-        <status>completed</status>
-    </booking>
-    <booking>
-        <id>2</id>
-        <tutoremail>carl@gmail.com</tutoremail>
-        <tutorfirstname>Carl</tutorfirstname>
-        <tutorlastname>Brilliant</tutorlastname>
-        <subjectname>USP</subjectname>
-        <studentemail>limyandi@gmail.com</studentemail>
-        <studentfirstname>Limyandi</studentfirstname>
-        <studentlastname>Vicotrico</studentlastname>
         <status>active</status>
-    </booking>
-    <booking>
-        <id>3</id>
-        <tutoremail>jackson@gmail.com</tutoremail>
-        <tutorfirstname>Jackson</tutorfirstname>
-        <tutorlastname>Brilliant</tutorlastname>
-        <subjectname>AppProg</subjectname>
-        <studentemail>limyandi@gmail.com</studentemail>
-        <studentfirstname>Limyandi</studentfirstname>
-        <studentlastname>Vicotrico</studentlastname>
-        <status>cancelled</status>
-    </booking>
-    <booking>
-        <id>4</id>
-        <tutoremail>darren@gmail.com</tutoremail>
-        <tutorfirstname>Darren</tutorfirstname>
-        <tutorlastname>Brilliant</tutorlastname>
-        <subjectname>SEP</subjectname>
-        <studentemail>limyandi@gmail.com</studentemail>
-        <studentfirstname>Limyandi</studentfirstname>
-        <studentlastname>Vicotrico</studentlastname>
-        <status>completed</status>
-    </booking>
-    <booking>
-        <id>5</id>
-        <tutoremail>ryan@gmail.com</tutoremail>
-        <tutorfirstname>Ryan</tutorfirstname>
-        <tutorlastname>Brilliant</tutorlastname>
-        <subjectname>MobileApp</subjectname>
-        <studentemail>limyandi@gmail.com</studentemail>
-        <studentfirstname>Limyandi</studentfirstname>
-        <studentlastname>Vicotrico</studentlastname>
-        <status>completed</status>
-    </booking>
+</booking>
 </bookings>
 

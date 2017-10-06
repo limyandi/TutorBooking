@@ -21,6 +21,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Tutor</th>   
+                        <th>Subject</th>
                         <th>Subject</th>   
                     </tr>
                     <xsl:apply-templates/>

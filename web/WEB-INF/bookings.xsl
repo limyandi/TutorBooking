@@ -54,7 +54,10 @@
                 <xsl:value-of select="x:subjectname"/>
             </td>
             <td>
-                <a href="booking.jsp">cancel</a>
+                <form action="bookingAction.jsp">
+                    <id></id>
+                    <input type="submit" value="cancel"/>
+                </form>
             </td>
         </tr>
     </xsl:template>

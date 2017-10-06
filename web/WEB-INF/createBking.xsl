@@ -9,52 +9,38 @@
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
-                xmlns:x="http://www.uts.edu.au/31284/wsd-bookings" exclude-result-prefixes="x">
+                xmlns:x="http://www.uts.edu.au/31284/wsd-tutors" exclude-result-prefixes="x">
     <!-- TODO customize transformation rules 
          syntax recommendation http://www.w3.org/TR/xslt 
     -->
-    <xsl:template match="x:bookings">
+    <xsl:template match="x:tutors">
         <html>
             <body>
                 <h2>Create a booking</h2>
                 <table>
                     <tr>
-                        <th>ID</th>
-                        <th>Tutor</th>   
                         <th>Subject</th>   
+                        <th>Tutor</th>
+                        <th>Tutor Email</th>   
                     </tr>
                     <xsl:apply-templates/>
-                </table>
-                <table>
-                    <tr>
-                        <th>
-                            <form action="booking.jsp">
-                                <input type="submit" value="Book" />
-                            </form>
-                        </th>
-                        <th>
-                            <form action="booking.jsp">
-                                <input type="reset" value="Reset" />
-                            </form>
-                        </th>
-                    </tr>
                 </table>
             </body>
         </html>
     </xsl:template>
-    <xsl:template match="x:booking">
+    <xsl:template match="x:tutor">
         <tr>
             <td>
-                <xsl:value-of select="x:id"/>
+                <xsl:value-of select="x:subject"/>
             </td>
             <td>
-                <xsl:value-of select="x:tutorfirstname"/>
+                <xsl:value-of select="x:firstname"/> <xsl:text> </xsl:text> <xsl:value-of select="x:lastname"/>
             </td>
             <td>
-                <xsl:value-of select="x:subjectname"/>
+                <xsl:value-of select="x:email"/>
             </td>
             <td>
-                <input type="checkbox"></input>
+                <a href="createBkingAction.jsp?tutorEmail={email}">Book</a>
             </td>
         </tr>
     </xsl:template>

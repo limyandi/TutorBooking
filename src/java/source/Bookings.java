@@ -32,4 +32,14 @@ public class Bookings {
     public void removeBooking(Booking booking) {
         bookings.remove(booking);
     }
+    
+    public Booking checkId(String id) {
+        for (Booking booking: bookings) {
+            if(booking.getId().equals(id)) {
+                return booking;
+            }
+            return null;
+        }
+
+    }
 }
