@@ -1,0 +1,57 @@
+/* CSS Document */
+body{
+    font-family: arial,helvetica, sans-serif;
+    margin: auto;
+    padding: 0;
+    background: #ffffff;
+}
+.headname{
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+    margin: auto;
+}
+.headname h1{
+   font-size: 120px;
+    margin: auto;
+}
+.headname img{
+    width: 150px;
+    height: 150px;
+}
+.nav{
+    background-color: #3366ff;
+}
+.nav ul{
+    width: 680px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+.nav li{
+    display: inline-block;
+    padding: 30px;
+}
+.nav li a{
+    text-decoration: none;
+    font-size: 28px;
+    color: #ffffff;
+    
+}
+.nav li a:visited{
+    color: #ffffff;
+}
+.nav li a:hover{
+    border-top: 3px solid #ff9900;
+}
+#login-text{
+    font-size: 20px;
+}
+.container{
+    width: 1024px;
+    margin: auto;
+}
+.booking{
+    
+}

@@ -4,8 +4,8 @@
     Author     : Carl
 --%>
 
-<%@page import="source.Tutors"%>
-<%@page import="source.Tutor"%>
+<%@page import="source.Student"%>
+<%@page import="source.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,6 +23,7 @@
         <%
             Tutors tutors = TutorApp.getTutors();
             Tutor tutor = tutors.checkExistingEmail(email);
+            Student student = (Student)session.getAttribute(Student);
         %>
             
     </body>
