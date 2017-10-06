@@ -35,7 +35,7 @@ public class Booking implements Serializable {
     @XmlElement(name = "status")
     private String status;
 
-    public Booking(String id, String tutorEmail, String tutorFirstName, String tutorLastName, String subjectName, String studentEmail, String studentFirstName, String studentLastName, String status) {
+    public Booking(int id, String tutorEmail, String tutorFirstName, String tutorLastName, String subjectName, String studentEmail, String studentFirstName, String studentLastName, String status) {
         this.id = id;
         this.tutorEmail = tutorEmail;
         this.tutorFirstName = tutorFirstName;
@@ -50,16 +50,14 @@ public class Booking implements Serializable {
     public Booking() {
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     
-    
-
     public String getTutorEmail() {
         return tutorEmail;
     }
@@ -123,9 +121,4 @@ public class Booking implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    public int getId() {
-        return id;
-    }
-    
 }
