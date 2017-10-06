@@ -14,4 +14,5 @@
         <input type="password" label="Password" name="password"><%=login.getPassword()%></input>
         <error><%=login.getErrorMessage("password")%></error>
     </inputs>
+    <link to="register.jsp">Go to Register Page.</link>
 </page>

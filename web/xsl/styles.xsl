@@ -36,11 +36,27 @@
                     subject.style.display = 'none';
                     }
                     }
+                    function userType(type) {
+                    var specialty = document.getElementById('specialty');
+                    var specialtylabel = document.getElementById('specialtylabel');
+                    if(type === 'tutor') {
+                    specialty.style.display='block';
+                    specialtylabel.style.display='block';
+                    }
+                    else {
+                    specialty.style.display='none';
+                    specialtylabel.style.display='none';
+                    }
+                    }
                 </script>
-                <title><xsl:value-of select="@title"/></title>
+                <title>
+                    <xsl:value-of select="@title"/>
+                </title>
             </head>
             <body>
-                <h1><xsl:value-of select="@title"/></h1>
+                <h1>
+                    <xsl:value-of select="@title"/>
+                </h1>
                 <xsl:apply-templates/>
             </body>
         </html>
@@ -48,7 +64,9 @@
     
     <xsl:template match="link">
         <p align="center"> 
-            <a href="{@to}"><xsl:apply-templates/></a> 
+            <a href="{@to}">
+                <xsl:apply-templates/>
+            </a> 
         </p>
     </xsl:template>
     
@@ -67,16 +85,22 @@
     
     <xsl:template match="input">
         <tr>
-            <td><xsl:value-of select="@label"/></td>
-            <td><input type="{@type}" name="{@name}" value="{.}"/></td>
+            <td>
+                <xsl:value-of select="@label"/>
+            </td>
+            <td>
+                <input type="{@type}" name="{@name}" value="{.}"/>
+            </td>
         </tr>
     </xsl:template>
     
     <xsl:template match="select">
         <tr>
-            <td><xsl:value-of select="@label"/></td>
             <td>
-                <select name="{@name}">
+                <xsl:value-of select="@label"/>
+            </td>
+            <td>
+                <select onchange="{@onchange}" name="{@name}" id="{@id}" style="{@style}">
                     <xsl:apply-templates/>
                 </select>
             </td>
@@ -84,7 +108,9 @@
     </xsl:template>
     
     <xsl:template match="option">
-        <option value="{@value}"><xsl:value-of select="."/></option>
+        <option value="{@value}">
+            <xsl:apply-templates/>
+        </option>
     </xsl:template>
     
     <!-- TODO: MAKE A CHANGE ON IT (NOT REUSABLE) -->
@@ -96,10 +122,21 @@
     
     <xsl:template match="error">
         <tr>
-            <td></td><td><xsl:apply-templates/></td>
+            <td></td>
+            <td>
+                <xsl:apply-templates/>
+            </td>
         </tr>
     </xsl:template>
     
+    <xsl:template match="para">
+        <tr>
+            <td>
+                <p id="{@id}" style="{@style}">
+                    <xsl:apply-templates/>
+                </p>
+            </td>
+        </tr>
+    </xsl:template>
     
-
 </xsl:stylesheet>
