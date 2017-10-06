@@ -66,4 +66,14 @@ public class BookingApp {
         fos.close();
     }
     
+    public void addBooking(String tutorEmail, String studentEmail, String filePath) throws JAXBException, IOException {
+        Tutor tutor = this.tutor.getTutor(tutorEmail);
+        Student student = this.student.getStudent(studentEmail);
+        
+        if(tutor != null && student!= null && tutor.getStatus().equals("available")){
+            this.bookings.addBooking(tutor, student);
+        }
+        this.updateBookings(bookings, );
+        this.updateTutorsXML();
+    }
 }

@@ -33,6 +33,7 @@ public class Bookings {
         bookings.remove(booking);
     }
     
+<<<<<<< HEAD
     public Booking getBooking(int id){
         for(Booking booking: this.bookings){
             if(booking.getId() == id){
@@ -70,5 +71,15 @@ public class Bookings {
             }
         }
         return bookings;
+    }
+    
+    public Booking checkId(String id) {
+        for (Booking booking: bookings) {
+            if(booking.getId().equals(id)) {
+                return booking;
+            }
+            return null;
+        }
+
     }
 }
