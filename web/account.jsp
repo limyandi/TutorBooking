@@ -1,5 +1,5 @@
 <%@page contentType="text/xml" pageEncoding="UTF-8"%><?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./xsl/account.xsl"?>
+<?xml-stylesheet type="text/xsl" href="./xsl/styles.xsl"?>
 <%@page import="source.*"%>
 <!DOCTYPE html>
 
@@ -29,14 +29,20 @@
     }
 %>
 <page title="Profile for <%= user.getFirstName()%> <%= user.getLastName()%>">
-    <inputs>
-        <firstname><%= user.getFirstName()%></firstname>
-        <lastname><%= user.getLastName()%></lastname>
-        <email><%= user.getEmail()%></email>
-        <password><%= user.getPassword()%></password>
-        <dob><%= user.getDob()%></dob>
+    <inputs action="account.jsp" value="Update">
+        <input type="text" label="First Name" name="Fname"><%= user.getFirstName()%></input>
+        <input type="text" label="Last Name" name="Lname"><%= user.getLastName()%></input>
+        <input type="email" label="Email" name="email"><%= user.getEmail()%></input>
+        <input type="password" label="Password" name="password"><%= user.getPassword()%></input>
+        <input type="date" label="Date of Birth" name="dob"><%= user.getDob()%></input>
         <% if (session.getAttribute("user") instanceof Tutor) {%>
-        <specialty><%= user.getSubject()%></specialty>
+        <select name="specialty" label="Subject">
+            <option value='WSD'>Web Services Development</option>
+            <option value='USP'>Unix Systems Programming</option>
+            <option value='SEP'>Software Engineering Practice</option>
+            <option value='AppProg'>Application Programming</option>
+            <option value='MobileApp'>Mobile Applications Development</option>
+        </select>
         <% } %>
     </inputs>
     <delete/>

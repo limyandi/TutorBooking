@@ -1,18 +1,8 @@
-<%-- 
-    Document   : index
-    Created on : Sep 13, 2017, 1:35:44 PM
-    Author     : limyandivicotrico
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8" import="source.*"%>
+<%@page contentType="text/xml" pageEncoding="UTF-8" import="source.*"%><?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./xsl/styles.xsl"?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>   
-        <%
+<page title="Index Page">
+    <%
             String answer = request.getParameter("delete");
             if (answer != null) {
                 String filePath;
@@ -41,7 +31,6 @@
             }
             session.invalidate();
         %>
-        <h1 align="center">Welcome to the UTS Tutor System</h1>
-        <p align="center"> <u><a href="register.jsp">Register</a></u> | <u><a href="login.jsp">Login</a></u></p>
-    </body>
-</html>
+    <link to="register.jsp">Register</link>
+    <link to="login.jsp">Login</link>
+</page>

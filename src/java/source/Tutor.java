@@ -45,6 +45,16 @@ public class Tutor extends User{
 
     public Tutor() {
     }
+    
+       public void cancelBooking() {
+        currentBooking.setStatus("cancelled");
+        status = "available";
+    }
+    
+    public void completeBooking() {
+        currentBooking.setStatus("completed");
+        status = "available";
+    }
 
     public String getFirstName() {
         return firstName;
@@ -117,15 +127,4 @@ public class Tutor extends User{
     public void setCurrentBooking(Booking currentBooking) {
         this.currentBooking = currentBooking;
     }
-    
-    public void cancelBooking() {
-        currentBooking.setStatus("cancelled");
-        status = "available";
-    }
-    
-    public void completeBooking() {
-        currentBooking.setStatus("completed");
-        status = "available";
-    }
-    
 }
