@@ -58,20 +58,20 @@ public class BookingService {
         return getBookingApp().getBookings();
     }
 
-    @Path("generalsearch")
+    @Path("search")
     @GET
     @Produces("text/xml")
-    public Bookings getBookingGeneral(@QueryParam("search") String search) throws Exception {
+    public Bookings getBookingGeneral(@QueryParam("email") String email, @QueryParam("subject") String subject, @QueryParam("status") String status, @QueryParam("id") String id) throws Exception {
         int searchInt;
         Bookings returnable = new Bookings();
-        returnable.addBookings(getBookingByEmail(search));
-        returnable.addBookings(getBookingByName(search));
-        returnable.addBookings(getBookingByStatus(search));
+        returnable.addBookings(getBookingByEmail(email));
+        returnable.addBookings(getBookingByName(subject));
+        returnable.addBookings(getBookingByStatus(status));
         //convert search to int in case it happens to be an id
         try {
-            searchInt = Integer.parseInt(search);
+            searchInt = Integer.parseInt(id);
         } catch (NumberFormatException e) {
-            searchInt = 0;
+            searchInt = 9999;
         }
         returnable.addBooking(getBookingByID(searchInt));
         return returnable;
