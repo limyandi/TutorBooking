@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="tutors.xsl"?>
+<?xml-stylesheet type="text/xsl" href="bookings2.xsl"?>
 <bookings xmlns="http://www.uts.edu.au/31284/wsd-bookings"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.uts.edu.au/31284/wsd-bookings bookings.xsd">
-    <!-- TODO: DELETE THIS MOCKUP BEFORE SUBMISSION, ONLY FOR TESTING. -->
     <booking id="1">
         <tutoremail>rico@gmail.com</tutoremail>
         <tutorfirstname>Rico</tutorfirstname>
