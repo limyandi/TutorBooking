@@ -7,7 +7,7 @@
         <html>
             <head>
                 <link rel="stylesheet"   
-                 href="./bootstrap.css" type="text/css"/>
+                 href="../css/bootstrap.css" type="text/css"/>
                 <style>
                     
                 </style>

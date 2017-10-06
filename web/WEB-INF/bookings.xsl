@@ -7,7 +7,6 @@
     Description:
         Purpose of transformation follows.
 -->
-
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
                 xmlns:x="http://www.uts.edu.au/31284/wsd-bookings" exclude-result-prefixes="x">
     <!-- TODO customize transformation rules 
@@ -62,3 +61,4 @@
         </tr>
     </xsl:template>
 </xsl:stylesheet>
+
