@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
         <%
             String fname = request.getParameter("Fname");
             String lname = request.getParameter("Lname");
@@ -19,8 +20,7 @@
             String password = request.getParameter("password");
             String dob = request.getParameter("dob");
             String userType = request.getParameter("usertype");
-            String filePath;
-            String schemaPath;
+
         %>
         <jsp:useBean id="registerHandler" class="uts.wsd.registerlogin.Register" scope="request">
         </jsp:useBean>
@@ -34,21 +34,23 @@
                 response.sendRedirect("register.jsp");
             }
             else {
-            if (userType.equals("student")) {
-                filePath = application.getRealPath("WEB-INF/students.xml");
+                String studentFilePath = application.getRealPath("WEB-INF/students.xml");
+                String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
         %>
-        <jsp:useBean id="studentApp" class="source.StudentApp" scope="application">
-            <jsp:setProperty name="studentApp" property="filePath" value="<%=filePath%>"/>
+        <jsp:useBean id="userApp" class="source.UserApp" scope="application">
+            <jsp:setProperty name="userApp" property="studentFilePath" value="<%=studentFilePath%>"/>
+            <jsp:setProperty name="userApp" property="tutorFilePath" value="<%=tutorFilePath%>"/>
         </jsp:useBean>
+            
         <%
-            Students students = studentApp.getStudents();
+            if (userType.equals("student")) {
+            Students students = userApp.getStudents();
             Student student = students.checkExistingEmail(email);
 
             if (student == null) {
                 Student user = new Student(fname, lname, email, password, dob, userType);
                 session.setAttribute("user", user);
-                students.addStudent(user);
-                studentApp.updateStudents(students, filePath);
+                userApp.studentRegister(student);
                 response.sendRedirect("main.jsp");
             } else {
         %>
@@ -56,20 +58,14 @@
         <%            }
             } else {
             String specialty = request.getParameter("specialty");
-            filePath = application.getRealPath("WEB-INF/tutors.xml");
-        %>
-        <jsp:useBean id="tutorApp" class="source.TutorApp" scope="application">
-            <jsp:setProperty name="tutorApp" property="filePath" value="<%=filePath%>"/>
-        </jsp:useBean>
-        <%
-            Tutors tutors = tutorApp.getTutors();
+            Tutors tutors = userApp.getTutors();
             Tutor tutor = tutors.checkExistingEmail(email);
 
             if (tutor == null) {
                 Tutor user = new Tutor(fname, lname, email, password, dob, userType, specialty, "available");
                 session.setAttribute("user", user);
                 tutors.addTutor(user);
-                tutorApp.updateTutors(tutors, filePath);
+                userApp.tutorRegister(tutor);
                 response.sendRedirect("main.jsp");
             } else {
         %>

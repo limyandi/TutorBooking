@@ -4,7 +4,6 @@
     Author     : Carl
 --%>
 
-<%@page import="source.Student"%>
 <%@page import="source.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

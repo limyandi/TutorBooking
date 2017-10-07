@@ -11,10 +11,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <% String filePath = application.getRealPath("WEB-INF/students.xml");%>
-        <jsp:useBean id="StudentApp" class="source.StudentApp" scope="application">
-            <jsp:setProperty name="StudentApp" property="filePath" value="<%=filePath%>"/>
-        </jsp:useBean>
         <%
             String email = request.getParameter("email");
             String password = request.getParameter("password");
@@ -28,25 +24,26 @@
                 session.setAttribute("loginData", loginHandler);
                 response.sendRedirect("login.jsp");
             } else {
-                Students students = StudentApp.getStudents();
+                String studentFilePath = application.getRealPath("WEB-INF/students.xml");
+                String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
+        %>
+        <jsp:useBean id="userApp" class="source.UserApp" scope="application">
+            <jsp:setProperty name="userApp" property="studentFilePath" value="<%=studentFilePath%>"/>
+            <jsp:setProperty name="userApp" property="tutorFilePath" value="<%=tutorFilePath%>"/>
+        </jsp:useBean>
+        <%
+                Students students = userApp.getStudents();
                 Student student = students.login(email, password);
                 if (student != null) {
                     session.setAttribute("user", student);
                     response.sendRedirect("main.jsp");
                 } else {
-                    filePath = application.getRealPath("WEB-INF/tutors.xml");
-        %>
-        <jsp:useBean id="TutorApp" class="source.TutorApp" scope="application">
-            <jsp:setProperty name="TutorApp" property="filePath" value="<%=filePath%>"/>
-        </jsp:useBean>
-        <%
-            Tutors tutors = TutorApp.getTutors();
-            Tutor tutor = tutors.login(email, password);
-            if (tutor != null) {
-                session.setAttribute("user", tutor);
-                response.sendRedirect("main.jsp");
-            } else {
-
+                    Tutors tutors = userApp.getTutors();
+                    Tutor tutor = tutors.login(email, password);
+                    if (tutor != null) {
+                    session.setAttribute("user", tutor);
+                    response.sendRedirect("main.jsp");
+                    } else {
         %>
         <p>Password incorrect. Click <a href="login.jsp"> here </a> to try again.</p>   
         <%          }
