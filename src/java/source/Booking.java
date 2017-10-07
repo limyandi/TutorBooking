@@ -15,10 +15,10 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "booking")
 public class Booking implements Serializable {
-    
-    @XmlAttribute(name="id")
+
+    @XmlAttribute(name = "id")
     private int id;
-    @XmlElement(name= "tutoremail")
+    @XmlElement(name = "tutoremail")
     private String tutorEmail;
     @XmlElement(name = "tutorfirstname")
     private String tutorFirstName;
@@ -58,6 +58,19 @@ public class Booking implements Serializable {
         this.id = id;
     }
     
+    
+
+    public Booking(Tutor tutor, Student student) {
+        this.status = "incomplete";
+        this.studentEmail = student.getEmail();
+        this.studentFirstName = student.getFirstName();
+        this.studentLastName = student.getLastName();
+        this.subjectName = tutor.getSubject();
+        this.tutorEmail = tutor.getEmail();
+        this.tutorFirstName = tutor.getFirstName();
+        this.tutorLastName = tutor.getLastName();
+    }
+
     public String getTutorEmail() {
         return tutorEmail;
     }
