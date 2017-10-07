@@ -1,31 +1,46 @@
 <%@page contentType="text/xml" pageEncoding="UTF-8"%><?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="./xsl/main.xsl"?>
+<?xml-stylesheet type="text/xsl" href="./xsl/styles.xsl"?>
 <%@page import="java.util.ArrayList"%>
 <%@page import="source.*"%>
 <!DOCTYPE html>
 <page title="Main Page">
+    <navigation/>
     <% if (session.getAttribute("user") instanceof Student) { %>
-    <search>
-        <subject></subject>
-        <tutorname></tutorname>
-        <status></status>
-    </search>
-    <% String filePath = application.getRealPath("WEB-INF/tutors.xml");%>
-    <jsp:useBean id="tutorApp" class="source.TutorApp" scope="application">
-        <jsp:setProperty name="tutorApp" property="filePath" value="<%=filePath%>"/>
+    <inputs action="main.jsp" value="Search">
+        <select label="Search" onchange="userChoice(this.value)" name="choice">
+            <option value="subject">Subject</option>
+            <option value="name">Name</option>
+            <option value="status">Status</option>
+        </select>
+        <select name="subject" id="subject" style="display:block;">
+            <option value='WSD'>Web Services Development</option>
+            <option value='USP'>Unix Systems Programming</option>
+            <option value='SEP'>Software Engineering Practice</option>
+            <option value='AppProg'>Application Programming</option>
+            <option value='MobileApp'>Mobile Applications Development</option>
+        </select>
+        <input type="text" id="name" name="name" style="display:none;"/>
+        <select name="status" id="status" style="display:none;">
+            <option value="available">Available</option>
+            <option value="unavailable">Unavailable</option>
+        </select>
+    </inputs>
+    <% String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");%>
+    <jsp:useBean id="userApp" class="source.UserApp" scope="application">
+        <jsp:setProperty name="userApp" property="filePath" value="<%=tutorFilePath%>"/>
     </jsp:useBean>
     <% String choice = request.getParameter("choice");
         ArrayList<Tutor> lists = null;
         if (choice != null) {
             if (choice.equals("subject")) {
                 String subject = request.getParameter("subject");
-                lists = tutorApp.getTutors().getBySubject(subject);
+                lists = userApp.getTutors().getBySubject(subject);
             } else if (choice.equals("name")) {
                 String name = request.getParameter("name");
-                lists = tutorApp.getTutors().getByFirstName(name);
+                lists = userApp.getTutors().getByFirstName(name);
             } else if (choice.equals("status")) {
                 String status = request.getParameter("status");
-                lists = tutorApp.getTutors().getByStatus(status);
+                lists = userApp.getTutors().getByStatus(status);
             }
         }
     %>
@@ -44,5 +59,4 @@
     </tutors>
     <%}
     }%>
-    <navigation/>
 </page>

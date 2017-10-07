@@ -8,6 +8,7 @@
     }
 %>
 <page title="Login Page">
+    <navnonauth/>
     <inputs action="loginAction.jsp" value="Login">
         <input type="text" label="Email" name="email"><%=login.getEmail()%></input>
         <error><%=login.getErrorMessage("email")%></error>

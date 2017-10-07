@@ -34,7 +34,6 @@ public class Booking implements Serializable {
     private String studentLastName;
     @XmlElement(name = "status")
     private String status;
-<<<<<<< HEAD
 
     public Booking(int id, String tutorEmail, String tutorFirstName, String tutorLastName, String subjectName, String studentEmail, String studentFirstName, String studentLastName, String status) {
         this.id = id;
@@ -57,18 +56,6 @@ public class Booking implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-=======
-    
-    public Booking(Tutor tutor, Student student){
-        this.status="incomplete";
-        this.studentEmail=student.getEmail();
-        this.studentFirstName=student.getFirstName();
-        this.studentLastName=student.getLastName();
-        this.subjectName=tutor.getSubject();
-        this.tutorEmail=tutor.getEmail();
-        this.tutorFirstName=tutor.getFirstName();
-        this.tutorLastName=tutor.getLastName();
->>>>>>> 8849b6281214063476df949d4e8eff0a9d850717
     }
     
     public String getTutorEmail() {

@@ -48,8 +48,8 @@
             Student student = students.checkExistingEmail(email);
 
             if (student == null) {
-                Student user = new Student(fname, lname, email, password, dob, userType);
-                session.setAttribute("user", user);
+                student = new Student(fname, lname, email, password, dob, userType);
+                session.setAttribute("user", student);
                 userApp.studentRegister(student);
                 response.sendRedirect("main.jsp");
             } else {
@@ -62,9 +62,8 @@
             Tutor tutor = tutors.checkExistingEmail(email);
 
             if (tutor == null) {
-                Tutor user = new Tutor(fname, lname, email, password, dob, userType, specialty, "available");
-                session.setAttribute("user", user);
-                tutors.addTutor(user);
+                tutor = new Tutor(fname, lname, email, password, dob, userType, specialty, "available");
+                session.setAttribute("user", tutor);
                 userApp.tutorRegister(tutor);
                 response.sendRedirect("main.jsp");
             } else {
