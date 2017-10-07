@@ -6,6 +6,7 @@
 package source.soap.client;
 
 import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.HashMap;
 
@@ -45,7 +46,7 @@ public class BookingServiceClient {
                 case "student":
                     //studentMenu(student);
                     boolean keep = true;
-                    while (keep) {
+                    while (keep == true) {
                         System.out.println("Main Menu");
                         System.out.println("1. Logout");
                         System.out.println("2. Create a booking");
@@ -61,27 +62,33 @@ public class BookingServiceClient {
                                 System.out.println("Please select a tutor");
                                 int i = 1;
                                 int tutorid;
+                                //hashmap to be used for actual booking process
                                 HashMap<Integer, String> tutorlist = new HashMap<Integer, String>();
                                 for (Tutor tutora : bookingService.getTutorsByStatus("available")) {
                                     String s;
-                                    s = (i + " "+tutora.getFirstName()+" "+tutora.getLastName()+", Subject: " +tutora.getSubject());
+                                    s = (i + " " + tutora.getFirstName() + " " + tutora.getLastName() + ", Subject: " + tutora.getSubject());
                                     tutorlist.put(i, s);
                                     System.out.println(s);
+                                    tutorlist.put(i, tutora.getEmail());
                                     i++;
                                 }
                                 try {
                                     String pre = scanner.next();
                                     tutorid = parseInt(pre);
-                                }
-                                catch (NumberFormatException e){
+                                } catch (NumberFormatException e) {
                                     System.out.println("Please enter a valid number");
                                     tutorid = 0;
                                 }
                                 
-
+                                bookingService.makeEmailBooking(student, tutorlist.get(tutorid));
+                                break;
+                            default:
+                                System.out.println("Please use a valid number and try again");
+                                break;
                         }
-                        break;
                     }
+                    break;
+
                 case "tutor":
                     //tutorMenu(tutor);
                     break;

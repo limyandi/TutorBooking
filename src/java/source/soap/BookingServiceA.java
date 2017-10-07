@@ -109,4 +109,13 @@ public class BookingServiceA {
         ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
         getUserApp().updateBookingsXML();
     }
+    
+    @WebMethod
+    public void makeEmailBooking(Student student, String tutorEmail) throws IOException, Exception{
+        Tutor tutor = getUserApp().getTutors().checkExistingEmail(tutorEmail);
+        tutor.setStatus("unavailable");
+        getUserApp().getBookings().addBooking(new Booking(tutor, student));
+        ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
+        getUserApp().updateBookingsXML();
+    }
 }

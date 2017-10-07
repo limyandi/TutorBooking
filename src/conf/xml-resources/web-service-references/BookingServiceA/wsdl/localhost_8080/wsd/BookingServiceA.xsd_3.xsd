@@ -1,8 +1,8 @@
-<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://soap.source/" xmlns:ns2="http://www.uts.edu.au/31284/wsd-bookings" xmlns:ns1="http://www.uts.edu.au/31284/wsd-students" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://soap.source/">
-
-<xs:import namespace="http://www.uts.edu.au/31284/wsd-students" schemaLocation="http://localhost:8080/wsd/BookingServiceA?xsd=1"/>
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://soap.source/" xmlns:ns2="http://www.uts.edu.au/31284/wsd-students" xmlns:ns1="http://www.uts.edu.au/31284/wsd-bookings" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://soap.source/">
 
 <xs:import namespace="http://www.uts.edu.au/31284/wsd-bookings" schemaLocation="http://localhost:8080/wsd/BookingServiceA?xsd=2"/>
+
+<xs:import namespace="http://www.uts.edu.au/31284/wsd-students" schemaLocation="http://localhost:8080/wsd/BookingServiceA?xsd=1"/>
 
 <xs:element name="Exception" type="tns:Exception"/>
 
@@ -34,6 +34,10 @@
 
 <xs:element name="makeBookingResponse" type="tns:makeBookingResponse"/>
 
+<xs:element name="makeEmailBooking" type="tns:makeEmailBooking"/>
+
+<xs:element name="makeEmailBookingResponse" type="tns:makeEmailBookingResponse"/>
+
 <xs:element name="studentLogin" type="tns:studentLogin"/>
 
 <xs:element name="studentLoginResponse" type="tns:studentLoginResponse"/>
@@ -42,13 +46,38 @@
 
 <xs:element name="tutorLoginResponse" type="tns:tutorLoginResponse"/>
 
+<xs:complexType name="studentLogin">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="studentLoginResponse">
+<xs:sequence>
+<xs:element name="return" type="ns2:student" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="IOException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getAvailable">
 <xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="getAvailableResponse">
 <xs:sequence>
-<xs:element name="return" type="ns1:bookings" minOccurs="0"/>
+<xs:element name="return" type="ns2:bookings" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -68,31 +97,6 @@
 
 <xs:complexType name="stackTraceElement" final="extension restriction">
 <xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="IOException">
-<xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="Exception">
-<xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="studentLogin">
-<xs:sequence>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="password" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="studentLoginResponse">
-<xs:sequence>
-<xs:element name="return" type="ns1:student" minOccurs="0"/>
-</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="hello">
@@ -115,7 +119,7 @@
 
 <xs:complexType name="getTutorsByStatusResponse">
 <xs:sequence>
-<xs:element name="return" type="ns1:tutor" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="ns2:tutor" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -127,7 +131,7 @@
 
 <xs:complexType name="getSubjectTutorsResponse">
 <xs:sequence>
-<xs:element name="return" type="ns1:tutor" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="ns2:tutor" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -140,18 +144,18 @@
 
 <xs:complexType name="tutorLoginResponse">
 <xs:sequence>
-<xs:element name="return" type="ns1:tutor" minOccurs="0"/>
+<xs:element name="return" type="ns2:tutor" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="makeBooking">
+<xs:complexType name="makeEmailBooking">
 <xs:sequence>
-<xs:element name="arg0" type="ns1:student" minOccurs="0"/>
-<xs:element name="arg1" type="ns1:tutor" minOccurs="0"/>
+<xs:element name="arg0" type="ns2:student" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="makeBookingResponse">
+<xs:complexType name="makeEmailBookingResponse">
 <xs:sequence/>
 </xs:complexType>
 
@@ -161,7 +165,18 @@
 
 <xs:complexType name="getTutorsResponse">
 <xs:sequence>
-<xs:element name="return" type="ns1:tutor" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="ns2:tutor" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="makeBooking">
+<xs:sequence>
+<xs:element name="arg0" type="ns2:student" minOccurs="0"/>
+<xs:element name="arg1" type="ns2:tutor" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="makeBookingResponse">
+<xs:sequence/>
 </xs:complexType>
 </xs:schema>

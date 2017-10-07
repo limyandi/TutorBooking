@@ -11,13 +11,22 @@ import javax.xml.bind.annotation.*;
  *
  * @author limyandivicotrico
  */
+/**
+ * Important note The fields firstName and lastName were changed to firstname
+ * and lastname respectively. The reason for this break from convention is that
+ * the SOAP service we were using returned null if they were named as such.
+ * Reasons for this are unknown.
+ *
+ * @author Jason
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "tutor")
-public class Tutor extends User{
-    @XmlElement(name= "firstname")
-    private String firstName;
+public class Tutor extends User {
+
+    @XmlElement(name = "firstname")
+    private String firstname;
     @XmlElement(name = "lastname")
-    private String lastName;
+    private String lastname;
     @XmlElement(name = "email")
     private String email;
     @XmlElement(name = "password")
@@ -31,10 +40,10 @@ public class Tutor extends User{
     @XmlElement(name = "status")
     private String status;
     private Booking currentBooking;
-    
+
     public Tutor(String firstName, String lastName, String email, String password, String dob, String role, String subject, String status) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstName;
+        this.lastname = lastName;
         this.email = email;
         this.password = password;
         this.dob = dob;
@@ -45,31 +54,31 @@ public class Tutor extends User{
 
     public Tutor() {
     }
-    
-       public void cancelBooking() {
+
+    public void cancelBooking() {
         currentBooking.setStatus("cancelled");
         status = "available";
     }
-    
+
     public void completeBooking() {
         currentBooking.setStatus("completed");
         status = "available";
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstname;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstname = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return lastname;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastname = lastName;
     }
 
     public String getEmail() {
@@ -119,7 +128,7 @@ public class Tutor extends User{
     public void setStatus(String status) {
         this.status = status;
     }
-    
+
     public Booking getCurrentBooking() {
         return currentBooking;
     }
