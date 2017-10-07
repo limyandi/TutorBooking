@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
  targetNamespace="http://www.uts.edu.au/31284/wsd-bookings"
  xmlns="http://www.uts.edu.au/31284/wsd-bookings"

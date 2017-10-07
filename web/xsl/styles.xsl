@@ -17,6 +17,8 @@
     <xsl:template match="page">
         <html>
             <head>
+                <link rel="stylesheet"   
+                      href="./css/style.css" type="text/css"/>
                 <script type="text/javascript">
                     function userChoice(type) {
                     var subject = document.getElementById('subject');
@@ -137,6 +139,31 @@
                 </p>
             </td>
         </tr>
+    </xsl:template>
+    
+    <xsl:template match="navigation">
+        <header>
+            <div class="headname">
+                <img src="./css/logo.png"/>
+                <h1>UTS Tutor</h1>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="main.jsp">Home</a>
+                    </li>
+                    <li>
+                        <a href="account.jsp">My Account</a>
+                    </li>
+                    <li>
+                        <a href="booking.jsp">Booking</a>
+                    </li>
+                    <li>
+                        <a href="index.jsp">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
     </xsl:template>
     
 </xsl:stylesheet>

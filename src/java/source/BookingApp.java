@@ -55,7 +55,6 @@ public class BookingApp {
     }
     
     public void updateBookings(Bookings bookings, String filePath) throws PropertyException, FileNotFoundException, JAXBException, IOException {
-        SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         JAXBContext jc = JAXBContext.newInstance(Bookings.class);
 
         Marshaller marshaller = jc.createMarshaller();
