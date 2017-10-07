@@ -91,9 +91,29 @@ public class UserApp implements Serializable {
         updateTutorsXML();
     }
     
-    public void createBooking(String studentEmail, Tutor tutor) throws Exception {
-        Booking booking = students.checkExistingEmail(studentEmail).createBooking(tutor);
+    public void createBooking(Student student, Tutor tutor) throws Exception {
+        // Create booking requires an id of the booking and the details of the tutor.
+        Booking booking = student.createBooking(bookings.getBookings().size() + 1, tutor);
         bookings.addBooking(booking);
+        updateBookingsXML();
+        updateTutorsXML();
+    }
+    
+    // We need tutor here because we need to set the status of tutor become available again.
+    public void studentCancelBooking(int bookingId, Student student, Tutor tutor) throws Exception {
+        student.cancelBooking(bookings, bookingId, tutor);
+        updateBookingsXML();
+        updateTutorsXML();
+    }
+    
+    public void tutorCancelBooking(int bookingId, Tutor tutor) throws Exception {
+        tutor.cancelBooking(bookings, bookingId);
+        updateBookingsXML();
+        updateTutorsXML();
+    }
+    
+    public void completeBooking(int bookingId, Tutor tutor) throws Exception {
+        tutor.completeBooking(bookings, bookingId);
         updateBookingsXML();
         updateTutorsXML();
     }

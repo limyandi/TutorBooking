@@ -203,7 +203,7 @@
     
     <xsl:template match="tutor">
         <tr>
-            <td><a href="createBooking.jsp?tutorEmail={email}"><xsl:value-of select="email"/></a></td>
+            <td><a href="./createBooking.jsp?tutorEmail={email}"><xsl:value-of select="email"/></a></td>
             <td><xsl:value-of select="firstname"/></td>
             <td><xsl:value-of select="lastname"/></td>
             <td><xsl:value-of select="subject"/></td>
