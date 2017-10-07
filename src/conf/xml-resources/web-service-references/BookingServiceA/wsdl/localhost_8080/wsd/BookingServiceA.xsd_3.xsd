@@ -10,9 +10,17 @@
 
 <xs:element name="JAXBException" type="tns:JAXBException"/>
 
+<xs:element name="cancelBooking" type="tns:cancelBooking"/>
+
+<xs:element name="cancelBookingResponse" type="tns:cancelBookingResponse"/>
+
 <xs:element name="getAvailable" type="tns:getAvailable"/>
 
 <xs:element name="getAvailableResponse" type="tns:getAvailableResponse"/>
+
+<xs:element name="getBookingByStatus" type="tns:getBookingByStatus"/>
+
+<xs:element name="getBookingByStatusResponse" type="tns:getBookingByStatusResponse"/>
 
 <xs:element name="getBookingStudentEmail" type="tns:getBookingStudentEmail"/>
 
@@ -72,6 +80,19 @@
 <xs:complexType name="Exception">
 <xs:sequence>
 <xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getBookingByStatus">
+<xs:sequence>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
+<xs:element name="student" type="ns2:student" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getBookingByStatusResponse">
+<xs:sequence>
+<xs:element name="return" type="ns2:booking" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -139,6 +160,28 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="makeEmailBooking">
+<xs:sequence>
+<xs:element name="student" type="ns2:student" minOccurs="0"/>
+<xs:element name="tutorEmail" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="makeEmailBookingResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="cancelBooking">
+<xs:sequence>
+<xs:element name="student" type="ns2:student" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cancelBookingResponse">
+<xs:sequence/>
+</xs:complexType>
+
 <xs:complexType name="tutorLogin">
 <xs:sequence>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
@@ -150,17 +193,6 @@
 <xs:sequence>
 <xs:element name="return" type="ns2:tutor" minOccurs="0"/>
 </xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="makeEmailBooking">
-<xs:sequence>
-<xs:element name="student" type="ns2:student" minOccurs="0"/>
-<xs:element name="tutorEmail" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="makeEmailBookingResponse">
-<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="getTutors">
