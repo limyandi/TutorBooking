@@ -112,16 +112,31 @@ public class BookingServiceA {
     
     @WebMethod
     public void makeEmailBooking(@WebParam(name="student")Student student, @WebParam(name="tutorEmail")String tutorEmail) throws IOException, Exception{
-        Tutor tutor = getUserApp().getTutors().checkExistingEmail(tutorEmail);
-        tutor.setStatus("unavailable");
-        getUserApp().getBookings().addBooking(new Booking(tutor, student));
-        ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
-        getUserApp().updateBookingsXML();
-        getUserApp().updateTutorsXML();
+        UserApp userApp = getUserApp();
+        Booking booking = student.createBooking(userApp.getTutors().checkExistingEmail(tutorEmail));
+        userApp.getBookings().addBooking(booking);
+        userApp.updateBookingsXML();
+        userApp.updateTutorsXML();
     }
     
     @WebMethod
     public ArrayList<Booking> getBookingStudentEmail(@WebParam(name="studentEmail")String studentEmail) throws IOException, Exception{
         return getUserApp().getBookings().getByEmail(studentEmail).getBookings();
+    }
+    
+    @WebMethod
+    public ArrayList<Booking> getBookingByStatus(@WebParam(name="status")String status, @WebParam(name="student")Student student) throws IOException, Exception{
+        return getUserApp().getBookings().getByStatus(status).getBookings();
+    }
+    @WebMethod
+    public void cancelBooking(@WebParam(name="student")Student student, @WebParam(name="id")int id) throws IOException, Exception{
+        UserApp userApp = getUserApp();
+        userApp.getBookings().getBooking(id).setStatus("cancelled");
+        Tutors tutors = userApp.getTutors();
+        String email = userApp.getBookings().getBooking(id).getTutorEmail();
+        Tutor tutor = tutors.checkExistingEmail(email);
+        tutor.cancelBooking();
+        userApp.updateBookingsXML();
+        userApp.updateTutorsXML();
     }
 }
