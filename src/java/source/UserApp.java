@@ -71,13 +71,23 @@ public class UserApp implements Serializable {
         fos.close();
     }
     
-        public void studentRegister(Student student) throws Exception {
+    public void studentRegister(Student student) throws Exception {
         students.addStudent(student);
         updateStudentsXML();
     }
     
     public void tutorRegister(Tutor tutor) throws Exception {
         tutors.addTutor(tutor);
+        updateTutorsXML();
+    }
+    
+    public void removeStudent(Student student) throws Exception {
+        students.removeStudent(student);
+        updateStudentsXML();
+    }
+    
+    public void removeTutor(Tutor tutor) throws Exception {
+        tutors.removeTutor(tutor);
         updateTutorsXML();
     }
 

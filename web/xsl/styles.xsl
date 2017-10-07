@@ -91,7 +91,7 @@
                 <xsl:value-of select="@label"/>
             </td>
             <td>
-                <input type="{@type}" name="{@name}" value="{.}"/>
+                <input type="{@type}" name="{@name}" value="{.}" id="{@id}" style="{@style}"/>
             </td>
         </tr>
     </xsl:template>
@@ -164,6 +164,50 @@
                 </ul>
             </div>
         </header>
+    </xsl:template>
+    
+    <xsl:template match="navnonauth">
+        <header>
+            <div class="headname">
+                <img src="./css/logo.png"/>
+                <h1>UTS Tutor</h1>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="login.jsp">Login</a>
+                    </li>
+                    <li>
+                        <a href="register.jsp">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+    </xsl:template>
+    
+    <xsl:template match="tutors">
+        <table>
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Subject</th>
+                </tr>
+            </thead>
+            <tbody>
+                <xsl:apply-templates/>
+            </tbody>
+        </table>
+    </xsl:template>
+    
+    <xsl:template match="tutor">
+        <tr>
+            <td><a href="createBooking.jsp?tutorEmail={email}"><xsl:value-of select="email"/></a></td>
+            <td><xsl:value-of select="firstname"/></td>
+            <td><xsl:value-of select="lastname"/></td>
+            <td><xsl:value-of select="subject"/></td>
+        </tr>
     </xsl:template>
     
 </xsl:stylesheet>

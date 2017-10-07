@@ -2,35 +2,25 @@
 <?xml-stylesheet type="text/xsl" href="./xsl/styles.xsl"?>
 <!DOCTYPE html>
 <page title="Index Page">
+    <navnonauth/>
     <%
             String answer = request.getParameter("delete");
             if (answer != null) {
-                String filePath;
-                if (session.getAttribute("user") instanceof Student) {
-                    filePath = application.getRealPath("WEB-INF/students.xml");
-        %>
-        <jsp:useBean id="StudentApp" class="source.StudentApp" scope="application">
-            <jsp:setProperty name="StudentApp" property="filePath" value="<%=filePath%>"/>
+                String studentFilePath = application.getRealPath("WEB-INF/students.xml");
+                String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
+    %>    
+        <jsp:useBean id="userApp" class="source.UserApp" scope="application">
+            <jsp:setProperty name="userApp" property="studentFilePath" value="<%=studentFilePath%>"/>
+            <jsp:setProperty name="userApp" property="tutorFilePath" value="<%=tutorFilePath%>"/>
         </jsp:useBean>
         <%
-                    Students students = StudentApp.getStudents();
-                    students.removeStudent((Student) session.getAttribute("user"));
-                    StudentApp.updateStudents(students, filePath);
+            if (session.getAttribute("user") instanceof Student) {
+                    userApp.removeStudent((Student)session.getAttribute("user"));
                 }
-                else {
-                    filePath = application.getRealPath("WEB-INF/tutors.xml");
-        %>
-        <jsp:useBean id="TutorApp" class="source.TutorApp" scope="application">
-            <jsp:setProperty name="TutorApp" property="filePath" value="<%=filePath%>"/>
-        </jsp:useBean>
-        <%
-                    Tutors tutors = TutorApp.getTutors();
-                    tutors.removeTutor((Tutor) session.getAttribute("user"));
-                    TutorApp.updateTutors(tutors, filePath);
+            else {
+                    userApp.removeTutor((Tutor)session.getAttribute("user"));
                 }
             }
             session.invalidate();
         %>
-    <link to="register.jsp">Register</link>
-    <link to="login.jsp">Login</link>
 </page>
