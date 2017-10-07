@@ -47,6 +47,18 @@ public class Booking implements Serializable {
         this.status = status;
     }
 
+    public Booking(int id, Tutor tutor, Student student, String status) {
+        this.id = id;
+        this.tutorEmail = tutor.getEmail();
+        this.tutorFirstName = tutor.getFirstName();
+        this.tutorLastName = tutor.getLastName();
+        this.subjectName = tutor.getSubject();
+        this.studentEmail = student.getEmail();
+        this.studentFirstName = student.getFirstName();
+        this.studentLastName = student.getLastName();
+        this.status = status;
+    }
+    
     public Booking() {
     }
 

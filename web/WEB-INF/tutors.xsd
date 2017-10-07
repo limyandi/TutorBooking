@@ -24,14 +24,14 @@
         </xs:restriction>
     </xs:simpleType>
     
+    <!-- The date of birth format that the form gives back to us is YYYY-MM-DD so we have to match with it. -->
     <xs:simpleType name="dob">
         <xs:restriction base="xs:string">
-            <xs:pattern value="\d{1,2}/\d{1,2}/\d{1,4}"/>
+            <xs:pattern value="\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])"/>
         </xs:restriction>
     </xs:simpleType>
-    
-    
-    <!--TODO: DO WE NEED FOR USERTYPE? -->
+     
+    <!-- TODO: DO WE NEED FOR USERTYPE? -->
     <xs:simpleType name="usertype">
         <xs:restriction base="xs:string">
             <xs:pattern value="tutor"/>

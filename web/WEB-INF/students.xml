@@ -7,8 +7,8 @@
         <firstname>Rico</firstname>
         <lastname>Vico</lastname>
         <email>rico@gmail.com</email>
-        <password>oidsiaidsa1</password>
-        <dateofbirth>09/09/1998</dateofbirth>
+        <password>123456</password>
+        <dateofbirth>1998-09-09</dateofbirth>
         <usertype>student</usertype>
     </student>
     <student>
@@ -16,7 +16,7 @@
         <lastname>Goh</lastname>
         <email>jason@gmail.com</email>
         <password>Digdasd@</password>
-        <dateofbirth>10/10/1997</dateofbirth>
+        <dateofbirth>1997-10-02</dateofbirth>
         <usertype>student</usertype>
     </student>
     <student>
@@ -24,7 +24,7 @@
         <lastname>Poon</lastname>
         <email>kaho@gmail.com</email>
         <password>39289481fmfas@^1</password>
-        <dateofbirth>22/01/1996</dateofbirth>
+        <dateofbirth>1996-01-21</dateofbirth>
         <usertype>student</usertype>
     </student>
     <student>
@@ -32,7 +32,7 @@
         <lastname>Gouw</lastname>
         <email>alviandy@gmail.com</email>
         <password>85218*2813</password>
-        <dateofbirth>03/11/1998</dateofbirth>
+        <dateofbirth>1998-11-03</dateofbirth>
         <usertype>student</usertype> 
     </student>
     <student>
@@ -40,7 +40,7 @@
         <lastname>Tanjaya</lastname>
         <email>deddy@gmail.com</email>
         <password>da0s94k</password>
-        <dateofbirth>21/04/1998</dateofbirth>
+        <dateofbirth>1998-04-21</dateofbirth>
         <usertype>student</usertype>
     </student>
 </students>
