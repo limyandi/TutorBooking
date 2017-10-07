@@ -55,6 +55,15 @@ public class Tutor extends User {
     public Tutor() {
     }
 
+    public void cancelBooking() {
+        this.status = "available";
+    }
+
+    public void completeBooking() {
+        currentBooking.setStatus("completed");
+        this.status = "available";
+    }
+
     public String getFirstName() {
         return this.firstname;
     }
