@@ -34,7 +34,18 @@ public class Booking implements Serializable {
     private String studentLastName;
     @XmlElement(name = "status")
     private String status;
-
+    
+    public Booking(Tutor tutor, Student student){
+        this.status="incomplete";
+        this.studentEmail=student.getEmail();
+        this.studentFirstName=student.getFirstName();
+        this.studentLastName=student.getLastName();
+        this.subjectName=tutor.getSubject();
+        this.tutorEmail=tutor.getEmail();
+        this.tutorFirstName=tutor.getFirstName();
+        this.tutorLastName=tutor.getLastName();
+    }
+    
     public String getTutorEmail() {
         return tutorEmail;
     }

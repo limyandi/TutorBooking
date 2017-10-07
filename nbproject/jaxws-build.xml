@@ -19,6 +19,14 @@
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
         </taskdef>
     </target>
+    <target name="wsgen-BookingSOAP" depends="wsgen-init">
+        <copy todir="${build.classes.dir}/META-INF">
+            <fileset dir="${webinf.dir}" includes="wsit-uts.wsd.soap.BookingSOAP.xml"/>
+        </copy>
+        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="uts.wsd.soap.BookingSOAP" xendorsed="true">
+            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+        </wsgen>
+    </target>
     <target name="wsgen-StudentSOAP" depends="wsgen-init">
         <copy todir="${build.classes.dir}/META-INF">
             <fileset dir="${webinf.dir}" includes="wsit-uts.wsd.soap.StudentSOAP.xml"/>
@@ -27,11 +35,11 @@
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
         </wsgen>
     </target>
-    <target name="wsgen-BookingSOAP" depends="wsgen-init">
+    <target name="wsgen-BookingServiceA" depends="wsgen-init">
         <copy todir="${build.classes.dir}/META-INF">
-            <fileset dir="${webinf.dir}" includes="wsit-uts.wsd.soap.BookingSOAP.xml"/>
+            <fileset dir="${webinf.dir}" includes="wsit-source.soap.BookingServiceA.xml"/>
         </copy>
-        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="uts.wsd.soap.BookingSOAP" xendorsed="true">
+        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="source.soap.BookingServiceA" xendorsed="true">
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
         </wsgen>
     </target>
@@ -51,21 +59,21 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-StudentApp" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/StudentApp"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/StudentApp" destdir="${build.generated.dir}/jax-wsCache/StudentApp" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/StudentApp/wsdl/localhost_8080/webservices/StudentApp.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/webservices/StudentApp?wsdl" xnocompile="true" xendorsed="true" package="uts.wsd.soap.client">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/StudentApp/wsdl/localhost_8080/webservices/StudentApp.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/StudentApp"/>
+    <target name="wsimport-client-BookingServiceA" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/BookingServiceA"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/BookingServiceA" destdir="${build.generated.dir}/jax-wsCache/BookingServiceA" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/BookingServiceA/wsdl/localhost_8080/wsd/BookingServiceA.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/wsd/BookingServiceA?wsdl" xnocompile="true" xendorsed="true" package="source.soap.client">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/BookingServiceA/wsdl/localhost_8080/wsd/BookingServiceA.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/BookingServiceA"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/StudentApp">
+            <fileset dir="${build.generated.dir}/jax-wsCache/BookingServiceA">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-StudentApp" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/uts/wsd/soap/client"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/StudentApp"/>
+    <target name="wsimport-client-clean-BookingServiceA" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/source/soap/client"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/BookingServiceA"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-StudentApp"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-BookingServiceA"/>
 </project>
