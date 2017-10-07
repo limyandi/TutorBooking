@@ -73,6 +73,12 @@
 <message name="getTutorsByStatusResponse">
 <part name="parameters" element="tns:getTutorsByStatusResponse"/>
 </message>
+<message name="getBookingStudentEmail">
+<part name="parameters" element="tns:getBookingStudentEmail"/>
+</message>
+<message name="getBookingStudentEmailResponse">
+<part name="parameters" element="tns:getBookingStudentEmailResponse"/>
+</message>
 <portType name="BookingServiceA">
 <operation name="tutorLogin">
 <input wsam:Action="http://soap.source/BookingServiceA/tutorLoginRequest" message="tns:tutorLogin"/>
@@ -127,6 +133,12 @@
 <output wsam:Action="http://soap.source/BookingServiceA/getTutorsByStatusResponse" message="tns:getTutorsByStatusResponse"/>
 <fault message="tns:IOException" name="IOException" wsam:Action="http://soap.source/BookingServiceA/getTutorsByStatus/Fault/IOException"/>
 <fault message="tns:Exception" name="Exception" wsam:Action="http://soap.source/BookingServiceA/getTutorsByStatus/Fault/Exception"/>
+</operation>
+<operation name="getBookingStudentEmail">
+<input wsam:Action="http://soap.source/BookingServiceA/getBookingStudentEmailRequest" message="tns:getBookingStudentEmail"/>
+<output wsam:Action="http://soap.source/BookingServiceA/getBookingStudentEmailResponse" message="tns:getBookingStudentEmailResponse"/>
+<fault message="tns:IOException" name="IOException" wsam:Action="http://soap.source/BookingServiceA/getBookingStudentEmail/Fault/IOException"/>
+<fault message="tns:Exception" name="Exception" wsam:Action="http://soap.source/BookingServiceA/getBookingStudentEmail/Fault/Exception"/>
 </operation>
 </portType>
 <binding name="BookingServiceAPortBinding" type="tns:BookingServiceA">
@@ -252,6 +264,21 @@
 </fault>
 </operation>
 <operation name="getTutorsByStatus">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+<fault name="IOException">
+<soap:fault name="IOException" use="literal"/>
+</fault>
+<fault name="Exception">
+<soap:fault name="Exception" use="literal"/>
+</fault>
+</operation>
+<operation name="getBookingStudentEmail">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

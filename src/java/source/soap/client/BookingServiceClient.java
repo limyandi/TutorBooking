@@ -79,9 +79,17 @@ public class BookingServiceClient {
                                     System.out.println("Please enter a valid number");
                                     tutorid = 0;
                                 }
-                                
+                                if(tutorid<=0||tutorid>i){
+                                    return;
+                                }
                                 bookingService.makeEmailBooking(student, tutorlist.get(tutorid));
                                 break;
+                            case "3":
+                                for (Booking booking : bookingService.getBookingStudentEmail(student.getEmail())){
+                                    String s;
+                                    s = ("You have a booking with " + booking.getTutorfirstname() + " " + booking.getTutorlastname() + " for " + booking.getSubjectname());
+                                    System.out.println(s);
+                                }
                             default:
                                 System.out.println("Please use a valid number and try again");
                                 break;

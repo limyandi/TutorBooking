@@ -65,12 +65,12 @@ public class BookingServiceA {
         return getUserApp().getTutors().getTutors();
     }
     @WebMethod
-    public ArrayList<Tutor> getTutorsByStatus(String status) throws IOException, Exception{
+    public ArrayList<Tutor> getTutorsByStatus(@WebParam(name="status")String status) throws IOException, Exception{
         return getUserApp().getTutors().getByStatus(status);
     }
     
     @WebMethod
-    public ArrayList<Tutor> getSubjectTutors(String subject) throws IOException, Exception{
+    public ArrayList<Tutor> getSubjectTutors(@WebParam(name="subject")String subject) throws IOException, Exception{
         return getUserApp().getTutors().getBySubject(subject);
     }
     
@@ -104,18 +104,24 @@ public class BookingServiceA {
     }
     
     @WebMethod
-    public void makeBooking(Student student, Tutor tutor) throws JAXBException, IOException, Exception{
+    public void makeBooking(@WebParam(name="student")Student student, @WebParam(name="tutor")Tutor tutor) throws JAXBException, IOException, Exception{
         getUserApp().getBookings().addBooking(new Booking(tutor, student));
         ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
         getUserApp().updateBookingsXML();
     }
     
     @WebMethod
-    public void makeEmailBooking(Student student, String tutorEmail) throws IOException, Exception{
+    public void makeEmailBooking(@WebParam(name="student")Student student, @WebParam(name="tutorEmail")String tutorEmail) throws IOException, Exception{
         Tutor tutor = getUserApp().getTutors().checkExistingEmail(tutorEmail);
         tutor.setStatus("unavailable");
         getUserApp().getBookings().addBooking(new Booking(tutor, student));
         ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
         getUserApp().updateBookingsXML();
+        getUserApp().updateTutorsXML();
+    }
+    
+    @WebMethod
+    public ArrayList<Booking> getBookingStudentEmail(@WebParam(name="studentEmail")String studentEmail) throws IOException, Exception{
+        return getUserApp().getBookings().getByEmail(studentEmail).getBookings();
     }
 }
