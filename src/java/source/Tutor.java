@@ -5,6 +5,7 @@
  */
 package source;
 
+import java.util.ArrayList;
 import javax.xml.bind.annotation.*;
 
 /**
@@ -39,7 +40,6 @@ public class Tutor extends User {
     private String subject;
     @XmlElement(name = "status")
     private String status;
-    private Booking currentBooking;
 
     public Tutor(String firstName, String lastName, String email, String password, String dob, String role, String subject, String status) {
         this.firstname = firstName;
@@ -53,16 +53,6 @@ public class Tutor extends User {
     }
 
     public Tutor() {
-    }
-
-    public void cancelBooking() {
-        currentBooking.setStatus("cancelled");
-        status = "available";
-    }
-
-    public void completeBooking() {
-        currentBooking.setStatus("completed");
-        status = "available";
     }
 
     public String getFirstName() {
@@ -128,12 +118,36 @@ public class Tutor extends User {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    public Booking getCurrentBooking() {
-        return currentBooking;
+    
+    public void cancelBooking(Bookings bookings, int bookingid) {
+        Booking booking = bookings.checkId(bookingid);
+        booking.setStatus("cancelled");
+        setStatus("available");
     }
-
-    public void setCurrentBooking(Booking currentBooking) {
-        this.currentBooking = currentBooking;
+    
+    public void completeBooking(Bookings bookings, int bookingid) {
+        Booking booking = bookings.checkId(bookingid);
+        booking.setStatus("completed");
+        setStatus("available");
+    }
+    
+    public ArrayList<Booking> viewMyBookings(ArrayList<Booking> bookings) {
+       ArrayList<Booking> mybookings = new ArrayList<Booking>();
+       for(Booking booking: bookings) {
+           if(booking.getTutorEmail().equals(email)) {
+               mybookings.add(booking);
+           }
+       }
+       return mybookings;
+    }
+    
+    public Booking viewMyActiveBooking(ArrayList<Booking> bookings) {
+       Booking mybooking = null;
+       for(Booking booking: bookings) {
+           if(booking.getTutorEmail().equals(email) && booking.getStatus().equals("active")) {
+               mybooking = booking;
+           }
+       }
+       return mybooking;
     }
 }
