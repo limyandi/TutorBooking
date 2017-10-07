@@ -6,6 +6,7 @@
 package source.soap;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.annotation.Resource;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -21,6 +22,8 @@ import source.StudentApp;
 import source.Student;
 import source.Tutor;
 import source.TutorApp;
+import source.Tutors;
+import source.UserApp;
 
 /**
  *
@@ -32,43 +35,21 @@ public class BookingServiceA {
     @Resource
     private WebServiceContext context;
 
-    private BookingApp getBookingApp() throws JAXBException, IOException {
+    private UserApp getUserApp() throws JAXBException, IOException, Exception {
         ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
         synchronized (application) {
-            BookingApp bookingApp = (BookingApp) application.getAttribute("bookingApp");
-            if (bookingApp == null) {
-                bookingApp = new BookingApp();
-                bookingApp.setFilePath(application.getRealPath("WEB-INF/bookings.xml"));
-                application.setAttribute("bookingApp", bookingApp);
+            UserApp userApp = (UserApp) application.getAttribute("userApp");
+            if (userApp == null) {
+                userApp = new UserApp();
+                userApp.setBookingFilePath(application.getRealPath("WEB-INF/bookings.xml"));
+                userApp.setStudentFilePath(application.getRealPath("WEB-INF/students.xml"));
+                userApp.setTutorFilePath(application.getRealPath("WEB-INF/tutors.xml"));
+                application.setAttribute("userApp", userApp);
             }
-            return bookingApp;
+            return userApp;
         }
     }
     
-    private StudentApp getStudentApp() throws JAXBException, IOException, Exception {
-        ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
-        synchronized (application) {
-            StudentApp studentApp = (StudentApp) application.getAttribute("studentApp");
-            if (studentApp == null) {
-                studentApp = new StudentApp();
-                studentApp.setFilePath(application.getRealPath("WEB-INF/students.xml"));
-                application.setAttribute("studentApp", studentApp);
-            }
-            return studentApp;
-        }
-    }
-    private TutorApp getTutorApp() throws JAXBException, IOException, Exception {
-        ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
-        synchronized (application) {
-            TutorApp tutorApp = (TutorApp) application.getAttribute("tutorApp");
-            if (tutorApp == null) {
-                tutorApp = new TutorApp();
-                tutorApp.setFilePath(application.getRealPath("WEB-INF/tutor.xml"));
-                application.setAttribute("tutorApp", tutorApp);
-            }
-            return tutorApp;
-        }
-    }
     /**
      * This is a sample web service operation
      * @param txt
@@ -79,6 +60,19 @@ public class BookingServiceA {
         return "Hello " + txt + " !";
     }
     
+    @WebMethod
+    public ArrayList<Tutor> getTutors() throws IOException, Exception{
+        return getUserApp().getTutors().getTutors();
+    }
+    @WebMethod
+    public ArrayList<Tutor> getTutorsByStatus(String status) throws IOException, Exception{
+        return getUserApp().getTutors().getByStatus(status);
+    }
+    
+    @WebMethod
+    public ArrayList<Tutor> getSubjectTutors(String subject) throws IOException, Exception{
+        return getUserApp().getTutors().getBySubject(subject);
+    }
     
     /**
      * @param email
@@ -88,7 +82,7 @@ public class BookingServiceA {
     **/
     @WebMethod
     public Tutor tutorLogin(@WebParam(name="email")String email, @WebParam(name="password") String password) throws IOException, Exception{
-        return getTutorApp().getTutors().login(email, password);
+        return getUserApp().getTutors().login(email, password);
     }
     
     /**
@@ -101,18 +95,18 @@ public class BookingServiceA {
      */
     @WebMethod
     public Student studentLogin(@WebParam(name="email")String email, @WebParam(name="password") String password) throws IOException, Exception{
-        return getStudentApp().getStudents().login(email, password);
+        return getUserApp().getStudents().login(email, password);
     }
     
     @WebMethod
-    public Bookings getAvailable() throws JAXBException, IOException{
-        return getBookingApp().getBookings().getByStatus("available");
+    public Bookings getAvailable() throws JAXBException, IOException, Exception{
+        return getUserApp().getBookings().getByStatus("available");
     }
     
     @WebMethod
-    public void makeBooking(Student student, Tutor tutor) throws JAXBException, IOException{
-        getBookingApp().getBookings().addBooking(new Booking(tutor, student));
+    public void makeBooking(Student student, Tutor tutor) throws JAXBException, IOException, Exception{
+        getUserApp().getBookings().addBooking(new Booking(tutor, student));
         ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
-        getBookingApp().updateBookings(getBookingApp().getBookings(), application.getRealPath("WEB-INF/bookings.xml"));
+        getUserApp().updateBookingsXML();
     }
 }

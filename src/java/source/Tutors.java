@@ -90,4 +90,9 @@ public class Tutors{
         }
         return tutors;
     }
+
+    public ArrayList<Tutor> getTutors() {
+        return tutors;
+    }
+    
 }

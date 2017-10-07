@@ -8,4 +8,5 @@
     <system systemId="http://localhost:8080/wsd/BookingServiceA?xsd=1" uri="wsdl/localhost_8080/wsd/BookingServiceA.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/wsd/BookingServiceA?xsd=2" uri="wsdl/localhost_8080/wsd/BookingServiceA.xsd_2.xsd"/>
     <system systemId="http://localhost:8080/wsd/BookingServiceA?xsd=3" uri="wsdl/localhost_8080/wsd/BookingServiceA.xsd_3.xsd"/>
+    <system systemId="http://localhost:8080/wsd/BookingServiceA?xsd=4" uri="wsdl/localhost_8080/wsd/BookingServiceA.xsd_4.xsd"/>
 </catalog>

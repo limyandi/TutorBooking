@@ -5,7 +5,9 @@
  */
 package source.soap.client;
 
+import static java.lang.Integer.parseInt;
 import java.util.Scanner;
+import java.util.HashMap;
 
 /**
  *
@@ -25,7 +27,7 @@ public class BookingServiceClient {
         while (running) {
             System.out.println("Welcome to the UTS Tutor SOAP Client");
             System.out.println("Please login");
-            System.out.println("Username: ");
+            System.out.println("Email: ");
             String email = scanner.next();
             System.out.println("Password: ");
             String password = scanner.next();
@@ -39,19 +41,59 @@ public class BookingServiceClient {
                     userType = "invalid";
                 }
             }
+            switch (userType) {
+                case "student":
+                    //studentMenu(student);
+                    boolean keep = true;
+                    while (keep) {
+                        System.out.println("Main Menu");
+                        System.out.println("1. Logout");
+                        System.out.println("2. Create a booking");
+                        System.out.println("3. View all bookings");
+                        System.out.println("4. Cancel a booking");
+                        System.out.println("5. Exit");
+                        String choice = scanner.next();
+                        switch (choice) {
+                            case "1":
+                                keep = false;
+                                break;
+                            case "2":
+                                System.out.println("Please select a tutor");
+                                int i = 1;
+                                int tutorid;
+                                HashMap<Integer, String> tutorlist = new HashMap<Integer, String>();
+                                for (Tutor tutora : bookingService.getTutorsByStatus("available")) {
+                                    String s;
+                                    s = (i + " "+tutora.getFirstName()+" "+tutora.getLastName()+", Subject: " +tutora.getSubject());
+                                    tutorlist.put(i, s);
+                                    System.out.println(s);
+                                    i++;
+                                }
+                                try {
+                                    String pre = scanner.next();
+                                    tutorid = parseInt(pre);
+                                }
+                                catch (NumberFormatException e){
+                                    System.out.println("Please enter a valid number");
+                                    tutorid = 0;
+                                }
+                                
+
+                        }
+                        break;
+                    }
+                case "tutor":
+                    //tutorMenu(tutor);
+                    break;
+                case "invalid":
+                    //invalidMenu();
+                    break;
+                default:
+
+            }
 
             //more code here
         }
     }
 
-    private void studentMenu() {
-        System.out.println("Main Menu");
-        System.out.println("1. Login");
-        System.out.println("2. Logout");
-        System.out.println("3. Create a booking");
-        System.out.println("4. View all bookings");
-        System.out.println("5. Cancel a booking");
-        System.out.println("6. Exit");
-        String choice = scanner.next();
-    }
 }
