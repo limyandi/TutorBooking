@@ -40,38 +40,31 @@
         <jsp:useBean id="userApp" class="source.UserApp" scope="application">
             <jsp:setProperty name="userApp" property="studentFilePath" value="<%=studentFilePath%>"/>
             <jsp:setProperty name="userApp" property="tutorFilePath" value="<%=tutorFilePath%>"/>
-        </jsp:useBean>
-            
-        <%
-            if (userType.equals("student")) {
-            Students students = userApp.getStudents();
-            Student student = students.checkExistingEmail(email);
+        </jsp:useBean>      
+        <% 
+                Students students = userApp.getStudents();
+                Tutors tutors = userApp.getTutors();
+                Student student = students.checkExistingEmail(email);
+                Tutor tutor = tutors.checkExistingEmail(email);
 
-            if (student == null) {
-                student = new Student(fname, lname, email, password, dob, userType);
-                session.setAttribute("user", student);
-                userApp.studentRegister(student);
-                response.sendRedirect("main.jsp");
-            } else {
-        %>
-        <p>User with that email already exists, Click <a href="register.jsp"> here </a> to register again.</p>
-        <%            }
-            } else {
-            String specialty = request.getParameter("specialty");
-            Tutors tutors = userApp.getTutors();
-            Tutor tutor = tutors.checkExistingEmail(email);
-
-            if (tutor == null) {
-                tutor = new Tutor(fname, lname, email, password, dob, userType, specialty, "available");
-                session.setAttribute("user", tutor);
-                userApp.tutorRegister(tutor);
-                response.sendRedirect("main.jsp");
-            } else {
-        %>
-        <p>User with that email already exists, Click <a href="register.jsp"> here </a> to register again.</p>
-        <%
+                if(student == null && tutor == null) {
+                    if(userType.equals("student")) {
+                        student = new Student(fname, lname, email, password, dob, userType);
+                        session.setAttribute("user", student);
+                        userApp.studentRegister(student); 
+                    }
+                    else {
+                        String specialty = request.getParameter("specialty");
+                        tutor = new Tutor(fname, lname, email, password, dob, userType, specialty, "available");
+                        session.setAttribute("user", tutor);
+                        userApp.tutorRegister(tutor);
+                    }
+                    response.sendRedirect("main.jsp");
                 }
-             }
+                else {
+        %>
+        <p>User with that email already exists, Click <a href="register.jsp"> here </a> to register again.</p>
+        <%      } 
             }
         %>
     </body>

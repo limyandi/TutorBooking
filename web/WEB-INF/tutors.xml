@@ -7,47 +7,47 @@
         <lastname>Brilliant</lastname>
         <email>bakaka@gmail.com</email>
         <password>123456</password>
-        <dateofbirth>09/09/1998</dateofbirth>
+        <dateofbirth>1998-09-09</dateofbirth>
         <usertype>tutor</usertype>
         <subject>WSD</subject>
         <status>available</status>
     </tutor>
     <tutor>
-        <firstname>Rico</firstname>
-        <lastname>Brilliant</lastname>
+        <firstname>Carl</firstname>
+        <lastname>Genius</lastname>
         <email>rico@koko.com</email>
         <password>123456</password>
-        <dateofbirth>09/09/1998</dateofbirth>
+        <dateofbirth>1998-09-09</dateofbirth>
         <usertype>tutor</usertype>
         <subject>USP</subject>
         <status>unavailable</status>
     </tutor>
     <tutor>
-        <firstname>Rico</firstname>
-        <lastname>Brilliant</lastname>
+        <firstname>Jason</firstname>
+        <lastname>Master</lastname>
         <email>limyandi@gmail.com</email>
         <password>123456</password>
-        <dateofbirth>09/09/1998</dateofbirth>
+        <dateofbirth>1998-09-09</dateofbirth>
         <usertype>tutor</usertype>
         <subject>SEP</subject>
         <status>available</status>
     </tutor>
     <tutor>
-        <firstname>Rico</firstname>
-        <lastname>Brilliant</lastname>
+        <firstname>Yoka</firstname>
+        <lastname>Geek</lastname>
         <email>yokatana@gmail.com</email>
         <password>123456</password>
-        <dateofbirth>09/09/1998</dateofbirth>
+        <dateofbirth>1998-09-09</dateofbirth>
         <usertype>tutor</usertype>
         <subject>AppProg</subject>
         <status>available</status>
     </tutor>
     <tutor>
-        <firstname>Rico</firstname>
-        <lastname>Brilliant</lastname>
+        <firstname>Reus</firstname>
+        <lastname>Marco</lastname>
         <email>atsui@gmail.com</email>
         <password>123456</password>
-        <dateofbirth>09/09/1998</dateofbirth>
+        <dateofbirth>1998-09-09</dateofbirth>
         <usertype>tutor</usertype>
         <subject>MobileApp</subject>
         <status>available</status>

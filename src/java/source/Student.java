@@ -42,18 +42,6 @@ public class Student extends User{
         
     }
     
-    public void addBooking(Booking booking, Tutor tutor) {
-        booking.setTutorEmail(tutor.getEmail());
-        booking.setTutorFirstName(tutor.getFirstName());
-        booking.setTutorLastName(tutor.getLastName());
-        booking.setSubjectName(tutor.getSubject());
-        booking.setStudentEmail(email);
-        booking.setStudentFirstName(firstName);
-        booking.setStudentLastName(lastName);
-        booking.setStatus("active");
-        bookings.addBooking(booking);
-    }
-    
     public void cancelBooking(Booking booking, Tutor tutor) {
         tutor.setStatus("available");
         bookings.removeBooking(booking);
@@ -113,5 +101,11 @@ public class Student extends User{
 
     public void setRole(String role) {
         this.role = role;
+    }
+    
+    public Booking createBooking(Tutor tutor) {
+        Booking booking = new Booking(1, tutor, this, "active");
+        tutor.setStatus("unavailable");
+        return booking;
     }
 }

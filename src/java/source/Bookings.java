@@ -36,7 +36,6 @@ public class Bookings {
         for(Booking booking:bookings.getBookings()){
             this.bookings.add(booking);
         }
-        
     }
     
     public void removeBooking(Booking booking) {

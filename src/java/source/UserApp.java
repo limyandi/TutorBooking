@@ -90,6 +90,13 @@ public class UserApp implements Serializable {
         tutors.removeTutor(tutor);
         updateTutorsXML();
     }
+    
+    public void createBooking(String studentEmail, Tutor tutor) throws Exception {
+        Booking booking = students.checkExistingEmail(studentEmail).createBooking(tutor);
+        bookings.addBooking(booking);
+        updateBookingsXML();
+        updateTutorsXML();
+    }
 
     public String getStudentFilePath() {
         return studentFilePath;

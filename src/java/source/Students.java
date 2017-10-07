@@ -29,6 +29,14 @@ public class Students {
         this.students = students;
     }
     
+    public ArrayList<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(ArrayList<Student> students) {
+        this.students = students;
+    }
+    
     public void addStudent(Student student){
         students.add(student);
     }
@@ -38,32 +46,11 @@ public class Students {
     }
     
     public Student login(String email, String password){
-        validateEmail(email);
-        validatePassword(password);
         for(Student student: students){
             if(student.getEmail().equals(email)&&student.getPassword().equals(password))
                 return student;
         }
         return null;
-    }
-    
-    private void validateEmail(String email) {
-        Pattern emailPattern = Pattern.compile("([A-Za-z\\._]+)@(([a-z-]+)\\.)+([a-z-]+)");
-        Matcher emailMatcher = emailPattern.matcher(email);
-        if(!emailMatcher.find()) {
-            //return error message
-            System.out.println("Error email!");
-        }
-    }
-    
-    private void validatePassword(String password) {
-        Pattern passwordPattern = Pattern.compile("([A-Za-z0-9!@#$%^*\\?]{6,16})");
-        
-        Matcher passwordMatcher = passwordPattern.matcher(password);
-        if(!passwordMatcher.find()) {
-            //return error message
-            System.out.println("Error password!");
-        }
     }
     
     // Check if the student with this email exists.
