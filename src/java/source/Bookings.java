@@ -29,6 +29,16 @@ public class Bookings {
         bookings.add(booking);
     }
     
+    public ArrayList<Booking> getBookings(){
+        return this.bookings;
+    }
+    public void addBookings(Bookings bookings){
+        for(Booking booking:bookings.getBookings()){
+            this.bookings.add(booking);
+        }
+        
+    }
+    
     public void removeBooking(Booking booking) {
         bookings.remove(booking);
     }

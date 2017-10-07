@@ -30,7 +30,7 @@ public class BookingService {
     }
     @Context
     private ServletContext application;
-    
+
     private BookingApp getBookingApp() throws JAXBException, IOException {
         // The web server can handle requests from different clients in parallel.
         // These are called "threads".
@@ -57,32 +57,51 @@ public class BookingService {
     public Bookings getBookings() throws JAXBException, IOException, IOException {
         return getBookingApp().getBookings();
     }
-    
+
+    @Path("search")
+    @GET
+    @Produces("text/xml")
+    public Bookings getBookingGeneral(@QueryParam("email") String email, @QueryParam("subject") String subject, @QueryParam("status") String status, @QueryParam("id") String id) throws Exception {
+        int searchInt;
+        Bookings returnable = new Bookings();
+        returnable.addBookings(getBookingByEmail(email));
+        returnable.addBookings(getBookingByName(subject));
+        returnable.addBookings(getBookingByStatus(status));
+        //convert search to int in case it happens to be an id
+        try {
+            searchInt = Integer.parseInt(id);
+        } catch (NumberFormatException e) {
+            searchInt = 9999;
+        }
+        returnable.addBooking(getBookingByID(searchInt));
+        return returnable;
+    }
+
     @Path("idsearch")
     @GET
     @Produces("text/xml")
-    public Booking getBookingByID(@QueryParam("id")int id) throws Exception{
+    public Booking getBookingByID(@QueryParam("id") int id) throws Exception {
         return getBookingApp().getBookings().getBooking(id);
     }
-    
+
     @Path("emailsearch")
     @GET
     @Produces("text/xml")
-    public Bookings getBookingByEmail(@QueryParam("email")String email) throws Exception{
+    public Bookings getBookingByEmail(@QueryParam("email") String email) throws Exception {
         return getBookingApp().getBookings().getByEmail(email);
     }
-    
+
     @Path("subjectsearch")
     @GET
     @Produces("text/xml")
-    public Bookings getBookingByName(@QueryParam("subject")String name) throws Exception{
+    public Bookings getBookingByName(@QueryParam("subject") String name) throws Exception {
         return getBookingApp().getBookings().getBySubject(name);
     }
-    
+
     @Path("statussearch")
     @GET
     @Produces("text/xml")
-    public Bookings getBookingByStatus(@QueryParam("status")String name) throws Exception{
+    public Bookings getBookingByStatus(@QueryParam("status") String name) throws Exception {
         return getBookingApp().getBookings().getByStatus(name);
     }
 }
