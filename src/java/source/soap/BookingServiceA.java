@@ -178,30 +178,37 @@ public class BookingServiceA {
         userApp.updateBookingsXML();
         userApp.updateTutorsXML();
     }
-    @WebMethod
+        @WebMethod
     public void removeTutor(@WebParam(name="tutor")Tutor tutor) throws IOException, Exception{
         UserApp userApp = getUserApp();
         Tutors tutors = userApp.getTutors();
-        tutors.removeTutor(tutor);
         Bookings bookings = userApp.getBookings();
+        tutors.removeTutor(tutor, bookings.getBookings());
         for (Booking booking : bookings.getBookings()){
             if(booking.getTutorEmail().equals(tutor.getEmail())){
                 booking.setStatus("cancelled");
             }
         }
+        userApp.updateBookingsXML();
+        userApp.updateTutorsXML();
+        userApp.updateStudentsXML();
+        
     }
     
     @WebMethod
     public void removeStudent(@WebParam(name="student")Student student) throws IOException, Exception{
         UserApp userApp = getUserApp();
         Students students = userApp.getStudents();
-        students.removeStudent(student);
         Bookings bookings = userApp.getBookings();
+        students.removeStudent(student, bookings.getBookings(), userApp.getTutors().getTutors());
         for (Booking booking : bookings.getBookings()){
             if(booking.getStudentEmail().equals(student.getEmail())){
                 booking.setStatus("cancelled");
             }
         }
+        userApp.updateBookingsXML();
+        userApp.updateTutorsXML();
+        userApp.updateStudentsXML();
     }
     
 }
