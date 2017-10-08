@@ -30,8 +30,13 @@ public class Tutors{
         this.tutors.add(tutor);
     }
     
-    public void removeTutor(Tutor tutor){
+    public void removeTutor(Tutor tutor, ArrayList<Booking> bookings){
         this.tutors.remove(tutor);
+        for(Booking booking: bookings) {
+            if(booking.getTutorEmail().equals(tutor.getEmail())) {
+                booking.setStatus("cancelled");
+            }
+        }
     }
     
     public Tutor login(String email, String password){

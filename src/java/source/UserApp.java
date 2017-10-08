@@ -81,14 +81,21 @@ public class UserApp implements Serializable {
         updateTutorsXML();
     }
     
+    /*When we remove a student, we need to change the status of the bookings related 
+    so we need Booking here and to change the status of tutor so we need the tutors instance.*/
     public void removeStudent(Student student) throws Exception {
-        students.removeStudent(student);
+        students.removeStudent(student, bookings.getBookings(), tutors.getTutors());
         updateStudentsXML();
+        updateTutorsXML();
+        updateBookingsXML();
     }
     
+    /*When we remove a tutor, we need to change the status of the bookings related 
+    so we need Booking here.*/
     public void removeTutor(Tutor tutor) throws Exception {
-        tutors.removeTutor(tutor);
+        tutors.removeTutor(tutor, bookings.getBookings());
         updateTutorsXML();
+        updateBookingsXML();
     }
     
     public void createBooking(Student student, Tutor tutor) throws Exception {
@@ -116,6 +123,16 @@ public class UserApp implements Serializable {
         tutor.completeBooking(bookings, bookingId);
         updateBookingsXML();
         updateTutorsXML();
+    }
+    
+    public void updateDetails(User user, String firstname, String lastname, String password, String dob) throws Exception {
+        user.updateDetails(firstname, lastname, password, dob);
+        if(user instanceof Tutor) {
+            updateTutorsXML();
+        }
+        else {
+            updateStudentsXML();
+        }
     }
 
     public String getStudentFilePath() {

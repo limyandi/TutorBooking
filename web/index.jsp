@@ -8,10 +8,12 @@
             if (answer != null) {
                 String studentFilePath = application.getRealPath("WEB-INF/students.xml");
                 String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
+                String bookingFilePath = application.getRealPath("WEB-INF/tutors.xml");
     %>    
         <jsp:useBean id="userApp" class="source.UserApp" scope="application">
             <jsp:setProperty name="userApp" property="studentFilePath" value="<%=studentFilePath%>"/>
             <jsp:setProperty name="userApp" property="tutorFilePath" value="<%=tutorFilePath%>"/>
+            <jsp:setProperty name="userApp" property="bookingFilePath" value="<%=bookingFilePath%>"/>
         </jsp:useBean>
         <%
             if (session.getAttribute("user") instanceof Student) {

@@ -41,8 +41,18 @@ public class Students {
         students.add(student);
     }
     
-    public void removeStudent(Student student){
+    public void removeStudent(Student student, ArrayList<Booking> bookings, ArrayList<Tutor> tutors){
         students.remove(student);
+        for(Booking booking: bookings) {
+            if(booking.getStudentEmail().equals(student.getEmail())) {
+                booking.setStatus("cancelled");
+                for(Tutor tutor: tutors) {
+                    if(booking.getTutorEmail().equals(tutor.getEmail())) {
+                        tutor.setStatus("available");
+                    }
+                }
+            }
+        }
     }
     
     public Student login(String email, String password){
