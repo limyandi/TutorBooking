@@ -161,8 +161,9 @@ public class BookingServiceClient {
                                         System.out.println("Password: ");
                                         password = scanner.next();
                                         Student canceller = bookingService.studentLogin(email, password);
+                                        if(student.equals(canceller)){canceller = null;}
                                         if (canceller != null) {
-                                            bookingService.removeStudent(canceller);
+                                            bookingService.removeStudent(student);
                                             System.out.println("Your account has been succesfully deleted. You will now be logged out");
                                             keep = false;
                                         }
@@ -293,8 +294,9 @@ public class BookingServiceClient {
                                         System.out.println("Password: ");
                                         password = scanner.next();
                                         Tutor canceller = bookingService.tutorLogin(email, password);
+                                        if (tutor.equals(canceller)){canceller = null;}
                                         if (canceller != null) {
-                                            bookingService.removeTutor(canceller);
+                                            bookingService.removeTutor(tutor);
                                             System.out.println("Your account has been succesfully deleted. You will now be logged out");
                                             keep = false;
                                         }
