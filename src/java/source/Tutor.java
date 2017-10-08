@@ -60,7 +60,6 @@ public class Tutor extends User {
     }
 
     public void completeBooking() {
-        currentBooking.setStatus("completed");
         this.status = "available";
     }
 
