@@ -19,38 +19,7 @@
             <head>
                 <link rel="stylesheet"   
                       href="./css/style.css" type="text/css"/>
-                <script type="text/javascript">
-                    function userChoice(type) {
-                    var subject = document.getElementById('subject');
-                    var tutorname = document.getElementById('name');
-                    var status = document.getElementById('status');
-                    if (type === 'subject') {
-                    subject.style.display = 'block';
-                    tutorname.style.display = 'none';
-                    status.style.display = 'none';
-                    } else if (type === 'name') {
-                    tutorname.style.display = 'block';
-                    subject.style.display = 'none';
-                    status.style.display = 'none';
-                    } else {
-                    status.style.display = 'block';
-                    tutorname.style.display = 'none';
-                    subject.style.display = 'none';
-                    }
-                    }
-                    function userType(type) {
-                    var specialty = document.getElementById('specialty');
-                    var specialtylabel = document.getElementById('specialtylabel');
-                    if(type === 'tutor') {
-                    specialty.style.display='block';
-                    specialtylabel.style.display='block';
-                    }
-                    else {
-                    specialty.style.display='none';
-                    specialtylabel.style.display='none';
-                    }
-                    }
-                </script>
+                <script type="text/javascript" src="./js/javascript.js"/> 
                 <title>
                     <xsl:value-of select="@title"/>
                 </title>
