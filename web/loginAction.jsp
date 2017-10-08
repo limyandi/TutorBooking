@@ -23,7 +23,7 @@
                 String studentFilePath = application.getRealPath("WEB-INF/students.xml");
                 String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
         %>
-        <jsp:useBean id="userApp" class="source.UserApp" scope="application">
+        <jsp:useBean id="userApp" type="source.UserDao" class="source.UserApp" scope="application">
             <jsp:setProperty name="userApp" property="studentFilePath" value="<%=studentFilePath%>"/>
             <jsp:setProperty name="userApp" property="tutorFilePath" value="<%=tutorFilePath%>"/>
         </jsp:useBean>

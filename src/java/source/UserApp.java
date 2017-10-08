@@ -17,7 +17,7 @@ import javax.xml.bind.Unmarshaller;
  *
  * @author limyandivicotrico
  */
-public class UserApp implements Serializable {
+public class UserApp implements Serializable, UserDao {
     private String studentFilePath;
     private String tutorFilePath;
     private String bookingFilePath;
@@ -38,100 +38,124 @@ public class UserApp implements Serializable {
         this.bookings = bookings;
     }
     
-    public void updateStudentsXML() throws Exception {
-        JAXBContext jc = JAXBContext.newInstance(Students.class);
+    public void updateStudents() {
+        try {
+            JAXBContext jc = JAXBContext.newInstance(Students.class);
 
-        Marshaller marshaller = jc.createMarshaller();
-        FileOutputStream fos = new FileOutputStream(this.studentFilePath);
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            Marshaller marshaller = jc.createMarshaller();
+            FileOutputStream fos = new FileOutputStream(this.studentFilePath);
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-        marshaller.marshal(students, fos);
-        fos.close();
+            marshaller.marshal(students, fos);
+            fos.close(); 
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
     
-    public void updateTutorsXML() throws Exception {
-        JAXBContext jc = JAXBContext.newInstance(Tutors.class);
+    public void updateTutors() {
+        try {
+            JAXBContext jc = JAXBContext.newInstance(Tutors.class);
 
-        Marshaller marshaller = jc.createMarshaller();
-        FileOutputStream fos = new FileOutputStream(this.tutorFilePath);
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            Marshaller marshaller = jc.createMarshaller();
+            FileOutputStream fos = new FileOutputStream(this.tutorFilePath);
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-        marshaller.marshal(tutors, fos);
-        fos.close();
+            marshaller.marshal(tutors, fos);
+            fos.close();
+        }
+        catch(Exception e) {
+            throw new RuntimeException(e);
+        }
     }
     
-    public void updateBookingsXML() throws Exception {
-        JAXBContext jc = JAXBContext.newInstance(Bookings.class);
+    public void updateBookings() {
+        try {
+            JAXBContext jc = JAXBContext.newInstance(Bookings.class);
 
-        Marshaller marshaller = jc.createMarshaller();
-        FileOutputStream fos = new FileOutputStream(this.bookingFilePath);
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            Marshaller marshaller = jc.createMarshaller();
+            FileOutputStream fos = new FileOutputStream(this.bookingFilePath);
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-        marshaller.marshal(bookings, fos);
-        fos.close();
+            marshaller.marshal(bookings, fos);
+            fos.close();
+        }
+        catch(Exception e) {
+            throw new RuntimeException(e);
+        }
     }
     
-    public void studentRegister(Student student) throws Exception {
+    @Override
+    public void addStudent(Student student) {
         students.addStudent(student);
-        updateStudentsXML();
+        updateStudents();
     }
     
-    public void tutorRegister(Tutor tutor) throws Exception {
+    @Override
+    public void addTutor(Tutor tutor) {
         tutors.addTutor(tutor);
-        updateTutorsXML();
+        updateTutors();
     }
     
     /*When we remove a student, we need to change the status of the bookings related 
     so we need Booking here and to change the status of tutor so we need the tutors instance.*/
-    public void removeStudent(Student student) throws Exception {
+    @Override
+    public void removeStudent(Student student) {
         students.removeStudent(student, bookings.getBookings(), tutors.getTutors());
-        updateStudentsXML();
-        updateTutorsXML();
-        updateBookingsXML();
+        updateStudents();
+        updateTutors();
+        updateBookings();
     }
     
     /*When we remove a tutor, we need to change the status of the bookings related 
     so we need Booking here.*/
-    public void removeTutor(Tutor tutor) throws Exception {
+    @Override
+    public void removeTutor(Tutor tutor)  {
         tutors.removeTutor(tutor, bookings.getBookings());
-        updateTutorsXML();
-        updateBookingsXML();
+        updateTutors();
+        updateBookings();
     }
     
-    public void createBooking(Student student, Tutor tutor) throws Exception {
+    @Override
+    public void addBooking(Student student, Tutor tutor) {
         // Create booking requires an id of the booking and the details of the tutor.
         Booking booking = student.createBooking(bookings.getBookings().size() + 1, tutor);
         bookings.addBooking(booking);
-        updateBookingsXML();
-        updateTutorsXML();
+        updateBookings();
+        updateTutors();
     }
     
     // We need tutor here because we need to set the status of tutor become available again.
-    public void studentCancelBooking(int bookingId, Student student, Tutor tutor) throws Exception {
+    @Override
+    public void studentCancelBooking(int bookingId, Student student, Tutor tutor) {
         student.cancelBooking(bookings, bookingId, tutor);
-        updateBookingsXML();
-        updateTutorsXML();
+        updateBookings();
+        updateTutors();
     }
     
-    public void tutorCancelBooking(int bookingId, Tutor tutor) throws Exception {
+    @Override
+    public void tutorCancelBooking(int bookingId, Tutor tutor) {
         tutor.cancelBooking(bookings, bookingId);
-        updateBookingsXML();
-        updateTutorsXML();
+        updateBookings();
+        updateTutors();
     }
     
-    public void completeBooking(int bookingId, Tutor tutor) throws Exception {
+    @Override
+    public void completeBooking(int bookingId, Tutor tutor) {
         tutor.completeBooking(bookings, bookingId);
-        updateBookingsXML();
-        updateTutorsXML();
+        updateBookings();
+        updateTutors();
     }
     
-    public void updateDetails(User user, String firstname, String lastname, String password, String dob) throws Exception {
+    @Override
+    public void updateDetails(User user, String firstname, String lastname, String password, String dob) {
         user.updateDetails(firstname, lastname, password, dob);
         if(user instanceof Tutor) {
-            updateTutorsXML();
+            updateTutors();
         }
         else {
-            updateStudentsXML();
+            updateStudents();
         }
     }
 
@@ -174,6 +198,7 @@ public class UserApp implements Serializable {
         fin.close();
     }
 
+    @Override
     public Students getStudents() {
         return students;
     }
@@ -182,6 +207,7 @@ public class UserApp implements Serializable {
         this.students = students;
     }
 
+    @Override
     public Tutors getTutors() {
         return tutors;
     }
@@ -190,6 +216,7 @@ public class UserApp implements Serializable {
         this.tutors = tutors;
     }
 
+    @Override
     public Bookings getBookings() {
         return bookings;
     }
@@ -197,7 +224,4 @@ public class UserApp implements Serializable {
     public void setBookings(Bookings bookings) {
         this.bookings = bookings;
     }
-    
-    
-    
 }

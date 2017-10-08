@@ -41,9 +41,9 @@ public class Tutor extends User {
     @XmlElement(name = "status")
     private String status;
 
-    public Tutor(String firstName, String lastName, String email, String password, String dob, String role, String subject, String status) {
-        this.firstname = firstName;
-        this.lastname = lastName;
+    public Tutor(String firstname, String lastname, String email, String password, String dob, String role, String subject, String status) {
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
         this.password = password;
         this.dob = dob;

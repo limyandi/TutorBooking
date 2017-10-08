@@ -30,7 +30,7 @@
                 String studentFilePath = application.getRealPath("WEB-INF/students.xml");
                 String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
         %>
-        <jsp:useBean id="userApp" class="source.UserApp" scope="application">
+        <jsp:useBean id="userApp" type="source.UserDao" class="source.UserApp" scope="application">
             <jsp:setProperty name="userApp" property="studentFilePath" value="<%=studentFilePath%>"/>
             <jsp:setProperty name="userApp" property="tutorFilePath" value="<%=tutorFilePath%>"/>
         </jsp:useBean>      
@@ -44,13 +44,13 @@
                     if(userType.equals("student")) {
                         student = new Student(fname, lname, email, password, dob, userType);
                         session.setAttribute("user", student);
-                        userApp.studentRegister(student); 
+                        userApp.addStudent(student); 
                     }
                     else {
                         String specialty = request.getParameter("specialty");
                         tutor = new Tutor(fname, lname, email, password, dob, userType, specialty, "available");
                         session.setAttribute("user", tutor);
-                        userApp.tutorRegister(tutor);
+                        userApp.addTutor(tutor);
                     }
                     response.sendRedirect("main.jsp");
                 }
