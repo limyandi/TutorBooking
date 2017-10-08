@@ -43,10 +43,9 @@ public abstract class User {
         return "";
     }
     
-    public void updateDetails(String firstName, String lastName, String email, String password, String dob) {
+    public void updateDetails(String firstName, String lastName, String password, String dob) {
         setFirstName(firstName);
         setLastName(lastName);
-        setEmail(email);
         setPassword(password);
         setDob(dob);
     }

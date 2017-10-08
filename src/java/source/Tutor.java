@@ -60,7 +60,6 @@ public class Tutor extends User {
     }
 
     public void completeBooking() {
-        currentBooking.setStatus("completed");
         this.status = "available";
     }
 
@@ -158,5 +157,14 @@ public class Tutor extends User {
            }
        }
        return mybooking;
+    }
+    
+    public void updateDetails(String firstName, String lastName, String email, String password, String dob, String specialty) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+        setPassword(password);
+        setDob(dob);
+        setSubject(specialty);
     }
 }
