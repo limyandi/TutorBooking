@@ -11,15 +11,23 @@ package source;
  */
 public interface UserDao {
     // Create
-    void createStudent(Student student);
-    void createTutor(Tutor tutor);
-    void createBooking(Student student, Tutor tutor);
+    void addStudent(Student student);
+    void addTutor(Tutor tutor);
+    void addBooking(Student student, Tutor tutor);
+    
     // Read
+    Students getStudents();
+    Tutors getTutors();
+    Bookings getBookings();
+    
     // Update
-    void updateStudents();
-    void updateTutors();
-    void updateBookings();
+    void updateDetails(User user, String firstname, String lastname, String password, String dob);
+    /* cancel and complete does not delete anything, it just changes status so it is included in update*/
+    void studentCancelBooking(int bookingId, Student student, Tutor tutor);
+    void tutorCancelBooking(int bookingId, Tutor tutor);
+    void completeBooking(int bookingId, Tutor tutor);
+    
     // Delete
-    void deleteStudent(Student student);
-    void deleteTutor(Tutor tutor);
+    void removeStudent(Student student);
+    void removeTutor(Tutor tutor);
 }

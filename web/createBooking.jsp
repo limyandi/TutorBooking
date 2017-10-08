@@ -12,16 +12,15 @@
             String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
             String bookingFilePath = application.getRealPath("WEB-INF/bookings.xml");
         %>
-        <jsp:useBean id="userApp" class="source.UserApp" scope="application">
+        <jsp:useBean id="userApp" type="source.UserDao" class="source.UserApp" scope="application">
             <jsp:setProperty name="userApp" property="tutorFilePath" value="<%=tutorFilePath%>"/>
             <jsp:setProperty name="userApp" property="bookingFilePath" value="<%=bookingFilePath%>"/>
         </jsp:useBean>
         <%
-            userApp.setBookingFilePath(bookingFilePath);
             Tutor tutor = userApp.getTutors().checkExistingEmail(email);
             Student student = (Student) session.getAttribute("user");
             if(tutor.getStatus().equals("available")) {
-                userApp.createBooking(student, tutor);
+                userApp.addBooking(student, tutor);
         %>
             <p><%=tutor.getEmail()%></p>
             <p><%=tutor.getFirstName()%></p>
