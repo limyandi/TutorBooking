@@ -19,46 +19,12 @@
             <head>
                 <link rel="stylesheet"   
                       href="./css/style.css" type="text/css"/>
-                <script type="text/javascript">
-                    function userChoice(type) {
-                    var subject = document.getElementById('subject');
-                    var tutorname = document.getElementById('name');
-                    var status = document.getElementById('status');
-                    if (type === 'subject') {
-                    subject.style.display = 'block';
-                    tutorname.style.display = 'none';
-                    status.style.display = 'none';
-                    } else if (type === 'name') {
-                    tutorname.style.display = 'block';
-                    subject.style.display = 'none';
-                    status.style.display = 'none';
-                    } else {
-                    status.style.display = 'block';
-                    tutorname.style.display = 'none';
-                    subject.style.display = 'none';
-                    }
-                    }
-                    function userType(type) {
-                    var specialty = document.getElementById('specialty');
-                    var specialtylabel = document.getElementById('specialtylabel');
-                    if(type === 'tutor') {
-                    specialty.style.display='block';
-                    specialtylabel.style.display='block';
-                    }
-                    else {
-                    specialty.style.display='none';
-                    specialtylabel.style.display='none';
-                    }
-                    }
-                </script>
+                <script type="text/javascript" src="./js/javascript.js"/> 
                 <title>
                     <xsl:value-of select="@title"/>
                 </title>
             </head>
             <body>
-                <h1>
-                    <xsl:value-of select="@title"/>
-                </h1>
                 <xsl:apply-templates/>
             </body>
         </html>
@@ -66,9 +32,11 @@
     
     <xsl:template match="link">
         <p align="center"> 
-            <a href="{@to}">
+            <p><xsl:value-of select="@label"/>
+                <a href="{@to}">
                 <xsl:apply-templates/>
-            </a> 
+                </a>
+            </p>
         </p>
     </xsl:template>
     
@@ -87,7 +55,7 @@
     
     <xsl:template match="input">
         <tr>
-            <td>
+            <td class="label">
                 <xsl:value-of select="@label"/>
             </td>
             <td>
@@ -98,7 +66,7 @@
     
     <xsl:template match="select">
         <tr>
-            <td>
+            <td class="label">
                 <xsl:value-of select="@label"/>
             </td>
             <td>
@@ -123,12 +91,7 @@
     </xsl:template>
     
     <xsl:template match="error">
-        <tr>
-            <td></td>
-            <td>
-                <xsl:apply-templates/>
-            </td>
-        </tr>
+        <tr><td></td><td class="error"><xsl:apply-templates/></td></tr>
     </xsl:template>
     
     <xsl:template match="para">
@@ -186,7 +149,7 @@
     </xsl:template>
     
     <xsl:template match="tutors">
-        <table>
+        <table class="search">
             <thead>
                 <tr>
                     <th>Email</th>

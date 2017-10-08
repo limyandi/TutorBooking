@@ -35,13 +35,13 @@ public class Login implements Serializable {
         Pattern emailPattern = Pattern.compile("([A-Za-z\\._]+)@(([a-z-]+)\\.)+([a-z-]+)");
         Matcher emailMatcher = emailPattern.matcher(email);
         if(!emailMatcher.find()) {
-            errors.put("email", "Email does not match!");
+            errors.put("email", "Email does not match pattern!");
             allValidated = false;
         }
         Pattern passwordPattern = Pattern.compile("([A-Za-z0-9!@#$%^*\\?]{6,16})");      
         Matcher passwordMatcher = passwordPattern.matcher(password);
         if(!passwordMatcher.find()) {
-            errors.put("password", "Your password needs to be at least 6 characters long and maximum 16 characters");
+            errors.put("password", "Your password should at least have 6 characters and less than 16 characters!");
             allValidated = false;
         }
         return allValidated;

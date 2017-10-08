@@ -12,7 +12,7 @@
                 <title>
                     <xsl:value-of select="@title"/>
                 </title>
-                <script type="text/javascript">
+                <script type="text/javascript" src="javascript.js">
                     function userChoice(type) {
                     var subject = document.getElementById('subject');
                     var tutorname = document.getElementById('name');

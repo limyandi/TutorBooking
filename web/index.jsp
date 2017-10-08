@@ -1,6 +1,7 @@
 <%@page contentType="text/xml" pageEncoding="UTF-8" import="source.*"%><?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="./xsl/styles.xsl"?>
 <!DOCTYPE html>
+
 <page title="Index Page">
     <navnonauth/>
     <%
@@ -8,7 +9,7 @@
             if (answer != null) {
                 String studentFilePath = application.getRealPath("WEB-INF/students.xml");
                 String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
-                String bookingFilePath = application.getRealPath("WEB-INF/tutors.xml");
+                String bookingFilePath = application.getRealPath("WEB-INF/bookings.xml");
     %>    
         <jsp:useBean id="userApp" class="source.UserApp" scope="application">
             <jsp:setProperty name="userApp" property="studentFilePath" value="<%=studentFilePath%>"/>

@@ -25,14 +25,13 @@
 
     if (fname != null && lname != null
             && password != null && dob != null) {
-        //TODO: MARSHAL. (Change the current session of user data and then marshal it.)
         userApp.updateDetails(user, fname, lname, password, dob);
     }
 %>
-<page title="Profile for <%= user.getFirstName()%> <%= user.getLastName()%>">
+<page title="Profile Page">
     <navigation/>
     <inputs action="account.jsp" value="Update">
-        <input type="text" label="First Name" name="Fname"><%= user.getFirstName()%></input>
+        <input type="text" label="First Name" name="Fname"><%= user.getFirstName()%></input>  
         <input type="text" label="Last Name" name="Lname"><%= user.getLastName()%></input>
         <input type="password" label="Password" name="password"><%= user.getPassword()%></input>
         <input type="date" label="Date of Birth" name="dob"><%= user.getDob()%></input>

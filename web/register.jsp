@@ -17,7 +17,7 @@
                 <input type='email' label='Email' name='email'><%=register.getEmail()%></input>
                 <error><%=register.getErrorMessage("email")%></error>
                 <input type='password' label='Password' name='password'><%=register.getPassword()%></input>
-                <error><%=register.getErrorMessage("firstname")%></error>
+                <error><%=register.getErrorMessage("password")%></error>
                 <input type='date' label='Date of Birth' name='dob'></input>
                 <select label='User type' onchange='userType(this.value)' name='usertype'>
                     <option value='student'>Student</option>

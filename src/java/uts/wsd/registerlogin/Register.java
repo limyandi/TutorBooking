@@ -29,11 +29,12 @@ public class Register implements Serializable {
         errors = new Hashtable();
     }
     
-    public Register(String email, String password, String firstname, String lastname, String dob) {
+    public Register(String email, String password, String firstname, String lastname) {
         this.email = email;
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;  
+        errors = new Hashtable();
     }
     
     public boolean validateRegister() {
