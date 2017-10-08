@@ -47,7 +47,7 @@
 
     <%  if (lists != null) {
     %>  
-    <tutors> 
+    <tutors>
         <% for (Tutor tutor : lists) {%>
         <tutor>
             <email><%=tutor.getEmail()%></email>

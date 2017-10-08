@@ -45,6 +45,12 @@ body{
 .nav li a:hover{
     border-top: 3px solid #ff9900;
 }
+
+.nav li a:after{
+    color: yellow;
+    
+}
+
 #login-text{
     font-size: 20px;
 }
@@ -54,4 +60,76 @@ body{
 }
 .booking{
     
+}
+
+.error {
+      color: red;
+      font-style: italic;
+}
+
+.label {
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;  
+}
+
+input {
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+}   
+
+input:focus {
+    background-color: lightblue;
+}
+
+select {
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+    border-radius: none;
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+.search th  {
+    background-color: #007bff;
+    color: white;
+}
+
+.search td  {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.search tr:hover {
+    background-color: #f5f5f5
+}
+
+.search a {
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
 }
