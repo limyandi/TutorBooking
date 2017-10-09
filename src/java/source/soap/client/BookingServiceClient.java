@@ -308,7 +308,6 @@ public class BookingServiceClient {
                             default:
                                 System.out.println("Please use a valid number and try again");
                                 break;
-
                         }
                     }
                     break;

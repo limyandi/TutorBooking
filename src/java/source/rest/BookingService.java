@@ -11,9 +11,10 @@ import javax.xml.bind.JAXBException;
 import source.Bookings;
 import javax.xml.bind.JAXBException;
 import java.io.*;
+import java.util.ArrayList;
 import javax.servlet.ServletContext;
 import source.Booking;
-import source.BookingApp;
+import source.UserApp;
 
 /**
  *
@@ -31,7 +32,7 @@ public class BookingService {
     @Context
     private ServletContext application;
 
-    private BookingApp getBookingApp() throws JAXBException, IOException {
+    private UserApp getUserApp() throws JAXBException, IOException, Exception {
         // The web server can handle requests from different clients in parallel.
         // These are called "threads".
         //
@@ -41,21 +42,21 @@ public class BookingService {
         // The "synchronized" keyword is used to lock the application object while
         // we're manpulating it.
         synchronized (application) {
-            BookingApp bookingApp = (BookingApp) application.getAttribute("bookingApp");
-            if (bookingApp == null) {
-                bookingApp = new BookingApp();
-                bookingApp.setFilePath(application.getRealPath("WEB-INF/bookings.xml"));
-                application.setAttribute("bookingApp", bookingApp);
+            UserApp userApp = (UserApp) application.getAttribute("userApp");
+            if (userApp == null) {
+                userApp = new UserApp();
+                userApp.setBookingFilePath(application.getRealPath("WEB-INF/bookings.xml"));
+                application.setAttribute("userApp", userApp);
             }
-            return bookingApp;
+            return userApp;
         }
     }
 
     @Path("list")
     @GET
     @Produces("text/xml")
-    public Bookings getBookings() throws JAXBException, IOException, IOException {
-        return getBookingApp().getBookings();
+    public Bookings getBookings() throws JAXBException, IOException, IOException, Exception {
+        return getUserApp().getBookings();
     }
 
     @Path("search")
@@ -63,45 +64,72 @@ public class BookingService {
     @Produces("text/xml")
     public Bookings getBookingGeneral(@QueryParam("email") String email, @QueryParam("subject") String subject, @QueryParam("status") String status, @QueryParam("id") String id) throws Exception {
         int searchInt;
-        Bookings returnable = new Bookings();
-        returnable.addBookings(getBookingByEmail(email));
-        returnable.addBookings(getBookingByName(subject));
-        returnable.addBookings(getBookingByStatus(status));
-        //convert search to int in case it happens to be an id
+        UserApp userApp = getUserApp();
+        Bookings bookingRemove = new Bookings();
+        Bookings bookingReturn = userApp.getBookings();
+        if (email != null) {
+            for (Booking booking : bookingReturn.getBookings()) {
+                if (booking.getStudentEmail() != email) {
+                    bookingRemove.addBooking(booking);
+                }
+            }
+        }
+        if (subject != null) {
+            for (Booking booking : bookingReturn.getBookings()) {
+                if (booking.getSubjectName() != subject) {
+                    bookingRemove.addBooking(booking);
+                }
+            }
+        }
+        if (status != null) {
+            for (Booking booking : bookingReturn.getBookings()) {
+                if (booking.getStatus() != status) {
+                    bookingRemove.addBooking(booking);
+                }
+            }
+        }   
+        //convert id to int in case it happens to be in String
         try {
             searchInt = Integer.parseInt(id);
         } catch (NumberFormatException e) {
-            searchInt = 9999;
+            searchInt = 99999;
         }
-        returnable.addBooking(getBookingByID(searchInt));
-        return returnable;
+        if (searchInt != 99999) {
+            for (Booking booking : bookingReturn.getBookings()) {
+                if (booking.getId() != searchInt) {
+                    bookingRemove.addBooking(booking);
+                }
+            }
+        }
+        bookingReturn.removeBookings(bookingRemove);
+        return bookingReturn;
     }
 
     @Path("idsearch")
     @GET
     @Produces("text/xml")
     public Booking getBookingByID(@QueryParam("id") int id) throws Exception {
-        return getBookingApp().getBookings().getBooking(id);
+        return getUserApp().getBookings().getBooking(id);
     }
 
     @Path("emailsearch")
     @GET
     @Produces("text/xml")
     public Bookings getBookingByEmail(@QueryParam("email") String email) throws Exception {
-        return getBookingApp().getBookings().getByEmail(email);
+        return getUserApp().getBookings().getByEmail(email);
     }
 
     @Path("subjectsearch")
     @GET
     @Produces("text/xml")
     public Bookings getBookingByName(@QueryParam("subject") String name) throws Exception {
-        return getBookingApp().getBookings().getBySubject(name);
+        return getUserApp().getBookings().getBySubject(name);
     }
 
     @Path("statussearch")
     @GET
     @Produces("text/xml")
     public Bookings getBookingByStatus(@QueryParam("status") String name) throws Exception {
-        return getBookingApp().getBookings().getByStatus(name);
+        return getUserApp().getBookings().getByStatus(name);
     }
 }

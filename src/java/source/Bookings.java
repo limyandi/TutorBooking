@@ -37,6 +37,9 @@ public class Bookings {
             this.bookings.add(booking);
         }
     }
+    public void removeBookings(Bookings bookings){
+        this.bookings.removeAll(bookings.getBookings());
+    }
     
     public void removeBooking(Booking booking) {
         bookings.remove(booking);
@@ -89,4 +92,9 @@ public class Bookings {
         }
         return null;
     }
+
+    public void setBookings(ArrayList<Booking> bookings) {
+        this.bookings = bookings;
+    }
+    
 }

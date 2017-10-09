@@ -108,7 +108,7 @@ public class BookingServiceA {
     public void makeBooking(@WebParam(name = "student") Student student, @WebParam(name = "tutor") Tutor tutor) throws JAXBException, IOException, Exception {
         getUserApp().getBookings().addBooking(new Booking(tutor, student));
         ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
-        getUserApp().updateBookingsXML();
+        getUserApp().updateBookings();
     }
 
     @WebMethod
@@ -116,8 +116,8 @@ public class BookingServiceA {
         UserApp userApp = getUserApp();
         Booking booking = student.createBooking((userApp.getBookings().getBookings().size() + 1), userApp.getTutors().checkExistingEmail(tutorEmail));
         userApp.getBookings().addBooking(booking);
-        userApp.updateBookingsXML();
-        userApp.updateTutorsXML();
+        userApp.updateBookings();
+        userApp.updateTutors();
     }
 
     @WebMethod
@@ -137,9 +137,10 @@ public class BookingServiceA {
         Tutors tutors = userApp.getTutors();
         String email = userApp.getBookings().getBooking(id).getTutorEmail();
         Tutor tutor = tutors.checkExistingEmail(email);
+        System.out.println(email);
         tutor.cancelBooking();
-        userApp.updateBookingsXML();
-        userApp.updateTutorsXML();
+        userApp.updateBookings();
+        userApp.updateTutors();
     }
 
     @WebMethod
@@ -166,8 +167,8 @@ public class BookingServiceA {
         UserApp userApp = getUserApp();
         userApp.getBookings().getBooking(id).setStatus("cancelled");
         userApp.getTutors().checkExistingEmail(tutor.getEmail()).cancelBooking();
-        userApp.updateBookingsXML();
-        userApp.updateTutorsXML();
+        userApp.updateBookings();
+        userApp.updateTutors();
     }
 
     @WebMethod
@@ -175,8 +176,8 @@ public class BookingServiceA {
         UserApp userApp = getUserApp();
         userApp.getBookings().getBooking(id).setStatus("completed");
         userApp.getTutors().checkExistingEmail(tutor.getEmail()).cancelBooking();
-        userApp.updateBookingsXML();
-        userApp.updateTutorsXML();
+        userApp.updateBookings();
+        userApp.updateTutors();
     }
         @WebMethod
     public void removeTutor(@WebParam(name="tutor")Tutor tutor) throws IOException, Exception{
@@ -189,9 +190,9 @@ public class BookingServiceA {
                 booking.setStatus("cancelled");
             }
         }
-        userApp.updateBookingsXML();
-        userApp.updateTutorsXML();
-        userApp.updateStudentsXML();
+        userApp.updateBookings();
+        userApp.updateTutors();
+        userApp.updateStudents();
         
     }
     
@@ -206,9 +207,9 @@ public class BookingServiceA {
                 booking.setStatus("cancelled");
             }
         }
-        userApp.updateBookingsXML();
-        userApp.updateTutorsXML();
-        userApp.updateStudentsXML();
+        userApp.updateBookings();
+        userApp.updateTutors();
+        userApp.updateStudents();
     }
     
 }
