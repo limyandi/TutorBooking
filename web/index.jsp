@@ -4,6 +4,8 @@
 
 <page title="Index Page">
     <navnonauth/>
+    <pagetitle>About us</pagetitle>
+    <aboutus/>
     <%
             String answer = request.getParameter("delete");
             if (answer != null) {
@@ -17,6 +19,7 @@
             <jsp:setProperty name="userApp" property="bookingFilePath" value="<%=bookingFilePath%>"/>
         </jsp:useBean>
         <%
+            userApp.setBookingFilePath(bookingFilePath);
             if (session.getAttribute("user") instanceof Student) {
                     userApp.removeStudent((Student)session.getAttribute("user"));
                 }

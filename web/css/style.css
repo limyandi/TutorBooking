@@ -12,7 +12,7 @@ body{
     margin: auto;
 }
 .headname h1{
-   font-size: 120px;
+    font-size: 120px;
     margin: auto;
 }
 .headname img{
@@ -37,7 +37,7 @@ body{
     text-decoration: none;
     font-size: 28px;
     color: #ffffff;
-    
+
 }
 .nav li a:visited{
     color: #ffffff;
@@ -48,7 +48,7 @@ body{
 
 .nav li a:after{
     color: yellow;
-    
+
 }
 
 #login-text{
@@ -59,12 +59,12 @@ body{
     margin: auto;
 }
 .booking{
-    
+
 }
 
 .error {
-      color: red;
-      font-style: italic;
+    color: red;
+    font-style: italic;
 }
 
 .label {
@@ -132,4 +132,23 @@ input[type=submit] {
     outline: none;
     text-decoration: none;
     padding: 2px 1px 0;
+}
+
+.heading {
+    font: bold 2em/1em "Times New Roman", "MS Serif", "New York", serif;
+    margin: 5px;
+    padding: 2px;
+    padding-bottom: 5px;
+    color: black;
+    text-align: center;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    display: block;
+}
+
+div.wrapper { 
+    margin: 0 auto; 
+    width: 40%; 
+    border-left: 0px solid #f0e9eb; 
+    border-right: 0px solid #f0e9eb; 
 }
