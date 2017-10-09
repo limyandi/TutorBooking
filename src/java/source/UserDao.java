@@ -41,6 +41,8 @@ public interface UserDao {
     ArrayList<Tutor> getTutorByStatus(String status);
     ArrayList<Tutor> getTutorByFirstName(String firstName);
     ArrayList<Tutor> getTutorByLastName(String lastName);
-    
+    ArrayList<Booking> getBookingByStatus(String status);
+    ArrayList<Booking> getBookingBySubject(String subject);
+    ArrayList<Booking> getBookingByStudentEmail(String email);
     
 }
