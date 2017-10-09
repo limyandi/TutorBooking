@@ -195,6 +195,21 @@ public class UserApp implements Serializable, UserDao {
     public ArrayList<Tutor> getTutorByLastName(String lastName) {
         return tutors.getByLastName(lastName);
     }
+    
+    @Override
+    public ArrayList<Booking> getBookingBySubject(String subject) {
+        return bookings.getBySubject(subject);
+    }
+    
+    @Override
+    public ArrayList<Booking> getBookingByStudentEmail(String email) {
+        return bookings.getByEmail(email);
+    }
+    
+    @Override
+    public ArrayList<Booking> getBookingByStatus(String status) {
+        return bookings.getByStatus(status);
+    }
 
     public String getStudentFilePath() {
         return studentFilePath;

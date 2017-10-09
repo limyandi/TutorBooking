@@ -40,7 +40,7 @@ public class Tutors{
     }
     
     public Tutor login(String email, String password){
-        for(Tutor Tutor: this.tutors){
+        for(Tutor Tutor: tutors){
             if(Tutor.getEmail().equals(email)&&Tutor.getPassword().equals(password))
                 return Tutor;
         }
@@ -49,7 +49,7 @@ public class Tutors{
     
     // Check if the tutor with the existing email exists.
     public Tutor checkExistingEmail(String email) {
-        for(Tutor tutor: this.tutors) {
+        for(Tutor tutor: tutors) {
             if(tutor.getEmail().equals(email))
                 return tutor;
         }
@@ -57,43 +57,43 @@ public class Tutors{
     }
     
     public ArrayList<Tutor> getByStatus(String status) {
-        ArrayList<Tutor> tutors = new ArrayList<Tutor>();
+        ArrayList<Tutor> tutorslist = new ArrayList<Tutor>();
         for(Tutor tutor: this.tutors){
             if(tutor.getStatus().equals(status)){
-                tutors.add(tutor);
+                tutorslist.add(tutor);
             }   
         }
-        return tutors;
+        return tutorslist;
     }
     
     public ArrayList<Tutor> getByFirstName(String firstName) {
-        ArrayList<Tutor> tutors = new ArrayList<Tutor>();
+        ArrayList<Tutor> tutorslist = new ArrayList<Tutor>();
         for(Tutor tutor: this.tutors){
             if(tutor.getFirstName().equals(firstName)){
-                tutors.add(tutor);
+                tutorslist.add(tutor);
             }   
         }
-        return tutors;
+        return tutorslist;
     }
     
     public ArrayList<Tutor> getByLastName(String lastName) {
-        ArrayList<Tutor> tutors = new ArrayList<Tutor>();
+        ArrayList<Tutor> tutorslist = new ArrayList<Tutor>();
         for(Tutor tutor: this.tutors){
             if(tutor.getLastName().equals(lastName)){
-                tutors.add(tutor);
+                tutorslist.add(tutor);
             }   
         }
-        return tutors;
+        return tutorslist;
     }
     
     public ArrayList<Tutor> getBySubject(String subject) {
-        ArrayList<Tutor> tutors = new ArrayList<Tutor>();
+        ArrayList<Tutor> tutorslist = new ArrayList<Tutor>();
         for(Tutor tutor: this.tutors){
             if(tutor.getSubject().equals(subject)){
-                tutors.add(tutor);
+                tutorslist.add(tutor);
             }   
         }
-        return tutors;
+        return tutorslist;
     }
 
     public ArrayList<Tutor> getTutors() {
