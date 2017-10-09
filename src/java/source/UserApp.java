@@ -196,20 +196,7 @@ public class UserApp implements Serializable, UserDao {
         return tutors.getByLastName(lastName);
     }
     
-    @Override
-    public ArrayList<Booking> getBookingBySubject(String subject) {
-        return bookings.getBySubject(subject);
-    }
-    
-    @Override
-    public ArrayList<Booking> getBookingByStudentEmail(String email) {
-        return bookings.getByEmail(email);
-    }
-    
-    @Override
-    public ArrayList<Booking> getBookingByStatus(String status) {
-        return bookings.getByStatus(status);
-    }
+
 
     public String getStudentFilePath() {
         return studentFilePath;
@@ -275,5 +262,20 @@ public class UserApp implements Serializable, UserDao {
 
     public void setBookings(Bookings bookings) {
         this.bookings = bookings;
+    }
+
+    @Override
+    public ArrayList<Booking> getBookingByStatus(String status) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Booking> getBookingBySubject(String subject) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Booking> getBookingByStudentEmail(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

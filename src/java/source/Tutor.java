@@ -119,9 +119,7 @@ public class Tutor extends User {
         this.status = status;
     }
     
-    public void cancelBooking(Bookings bookings, int bookingid) {
-        Booking booking = bookings.checkId(bookingid);
-        booking.setStatus("cancelled");
+    public void cancelBooking() {
         setStatus("available");
     }
     
@@ -159,4 +157,5 @@ public class Tutor extends User {
         setDob(dob);
         setSubject(specialty);
     }
+    
 }

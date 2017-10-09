@@ -109,27 +109,27 @@ public class BookingService {
     @GET
     @Produces("text/xml")
     public Booking getBookingByID(@QueryParam("id") int id) throws Exception {
-        return getUserApp().getBookings().checkId(id);
+        return getUserApp().getBookings().getBooking(id);
     }
 
     @Path("emailsearch")
     @GET
     @Produces("text/xml")
     public Bookings getBookingByEmail(@QueryParam("email") String email) throws Exception {
-        return getUserApp().getBookings().getByEmails(email);
+        return getUserApp().getBookings().getByEmail(email);
     }
 
     @Path("subjectsearch")
     @GET
     @Produces("text/xml")
     public Bookings getBookingByName(@QueryParam("subject") String name) throws Exception {
-        return getUserApp().getBookings().getBySubjects(name);
+        return getUserApp().getBookings().getBySubject(name);
     }
 
     @Path("statussearch")
     @GET
     @Produces("text/xml")
     public Bookings getBookingByStatus(@QueryParam("status") String name) throws Exception {
-        return getUserApp().getBookings().getByStatuses(name);
+        return getUserApp().getBookings().getByStatus(name);
     }
 }
