@@ -8,6 +8,7 @@ package source;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -157,6 +158,42 @@ public class UserApp implements Serializable, UserDao {
         else {
             updateStudents();
         }
+    }
+    
+    @Override
+    public Tutor readTutor(String email) {
+        return tutors.checkExistingEmail(email);
+    }
+    
+    // TODO: DELETE IF NOT NEEDED LATER.
+    @Override
+    public Booking readBooking(int id) {
+        return bookings.checkId(id);
+    }
+    
+    @Override
+    public Student readStudent(String email) {
+        return students.checkExistingEmail(email);
+    }
+    
+    @Override
+    public ArrayList<Tutor> getTutorBySubject(String subject) {
+        return tutors.getBySubject(subject);
+    }
+    
+    @Override
+    public ArrayList<Tutor> getTutorByStatus(String status) {
+        return tutors.getByStatus(status);
+    }
+    
+    @Override
+    public ArrayList<Tutor> getTutorByFirstName(String firstName) {
+        return tutors.getByFirstName(firstName);
+    }
+    
+    @Override
+    public ArrayList<Tutor> getTutorByLastName(String lastName) {
+        return tutors.getByLastName(lastName);
     }
 
     public String getStudentFilePath() {

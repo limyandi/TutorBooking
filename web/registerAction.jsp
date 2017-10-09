@@ -35,11 +35,8 @@
             <jsp:setProperty name="userApp" property="tutorFilePath" value="<%=tutorFilePath%>"/>
         </jsp:useBean>      
         <% 
-                Students students = userApp.getStudents();
-                Tutors tutors = userApp.getTutors();
-                Student student = students.checkExistingEmail(email);
-                Tutor tutor = tutors.checkExistingEmail(email);
-
+                Student student = userApp.readStudent(email);
+                Tutor tutor = userApp.readTutor(email);
                 if(student == null && tutor == null) {
                     if(userType.equals("student")) {
                         student = new Student(fname, lname, email, password, dob, userType);

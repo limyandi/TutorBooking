@@ -17,7 +17,7 @@
             <jsp:setProperty name="userApp" property="bookingFilePath" value="<%=bookingFilePath%>"/>
         </jsp:useBean>
         <%
-            Tutor tutor = userApp.getTutors().checkExistingEmail(email);
+            Tutor tutor = userApp.readTutor(email);
             Student student = (Student) session.getAttribute("user");
             if(tutor.getStatus().equals("available")) {
                 userApp.addBooking(student, tutor);
