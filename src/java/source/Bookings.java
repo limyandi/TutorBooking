@@ -57,10 +57,6 @@ public class Bookings {
         return null;
     }
 
-    public void removeBooking(Booking booking) {
-        bookings.remove(booking);
-    }
-
     public ArrayList<Booking> getByStatus(String status) {
         ArrayList<Booking> bookingslist = new ArrayList<Booking>();
         for (Booking booking : this.bookings) {
@@ -95,4 +91,35 @@ public class Bookings {
         this.bookings = bookings;
     }
     
+    
+    // THIS CODE IS USED FOR THE REST, SINCE WE NEED TO RETURN BOOKINGS INSTEAD OF AN ARRAYLIST.
+    public Bookings getBySubjects(String subject) {
+        Bookings bookingslist = new Bookings();
+        for (Booking booking : this.bookings) {
+            if (booking.getSubjectName().equals(subject)) {
+                bookingslist.addBooking(booking);
+            }
+        }
+        return bookingslist;
+    }
+
+    public Bookings getByStatuses(String status) {
+        Bookings bookingslist = new Bookings();
+        for (Booking booking : this.bookings) {
+            if (booking.getStatus().equals(status)) {
+                bookingslist.addBooking(booking);
+            }
+        }
+        return bookingslist;
+    }
+    
+    public Bookings getByEmails(String email) {
+        Bookings bookingslist = new Bookings();
+        for (Booking booking: this.bookings) {
+            if (booking.getStudentEmail().equals(email)) {
+                bookingslist.addBooking(booking);
+            }
+        }
+        return bookingslist;
+    }
 }
