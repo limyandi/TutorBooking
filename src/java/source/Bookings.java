@@ -39,7 +39,15 @@ public class Bookings {
             this.bookings.add(booking);
         }
     }
-
+    
+    public void removeBookings(Bookings bookings){
+        this.bookings.removeAll(bookings.getBookings());
+    }
+    
+    public void removeBooking(Booking booking) {
+        bookings.remove(booking);
+    }
+    
     public Booking checkId(int id) {
         for (Booking booking : this.bookings) {
             if (booking.getId() == id) {
@@ -82,4 +90,9 @@ public class Bookings {
         }
         return bookingslist;
     }
+
+    public void setBookings(ArrayList<Booking> bookings) {
+        this.bookings = bookings;
+    }
+    
 }
