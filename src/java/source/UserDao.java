@@ -5,6 +5,8 @@
  */
 package source;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author limyandivicotrico
@@ -19,6 +21,9 @@ public interface UserDao {
     Students getStudents();
     Tutors getTutors();
     Bookings getBookings();
+    Tutor readTutor(String email);
+    Booking readBooking(int id);
+    Student readStudent(String email);
     
     // Update
     void updateDetails(User user, String firstname, String lastname, String password, String dob);
@@ -30,4 +35,12 @@ public interface UserDao {
     // Delete
     void removeStudent(Student student);
     void removeTutor(Tutor tutor);
+    
+    // Utility GET FUNCTION
+    ArrayList<Tutor> getTutorBySubject(String subject);
+    ArrayList<Tutor> getTutorByStatus(String status);
+    ArrayList<Tutor> getTutorByFirstName(String firstName);
+    ArrayList<Tutor> getTutorByLastName(String lastName);
+    
+    
 }

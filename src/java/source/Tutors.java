@@ -76,11 +76,11 @@ public class Tutors{
         return tutors;
     }
     
-    public Tutors getByLastName(String lastName) {
-        Tutors tutors = new Tutors();
+    public ArrayList<Tutor> getByLastName(String lastName) {
+        ArrayList<Tutor> tutors = new ArrayList<Tutor>();
         for(Tutor tutor: this.tutors){
             if(tutor.getLastName().equals(lastName)){
-                tutors.addTutor(tutor);
+                tutors.add(tutor);
             }   
         }
         return tutors;

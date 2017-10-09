@@ -26,7 +26,7 @@
         </select>
     </inputs>
     <% String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");%>
-    <jsp:useBean id="userApp" class="source.UserApp" scope="application">
+    <jsp:useBean id="userApp" type="source.UserDao" class="source.UserApp" scope="application">
         <jsp:setProperty name="userApp" property="filePath" value="<%=tutorFilePath%>"/>
     </jsp:useBean>
     <% String choice = request.getParameter("choice");
@@ -34,13 +34,13 @@
         if (choice != null) {
             if (choice.equals("subject")) {
                 String subject = request.getParameter("subject");
-                lists = userApp.getTutors().getBySubject(subject);
+                lists = userApp.getTutorBySubject(subject);
             } else if (choice.equals("name")) {
                 String name = request.getParameter("name");
-                lists = userApp.getTutors().getByFirstName(name);
+                lists = userApp.getTutorByFirstName(name);
             } else if (choice.equals("status")) {
                 String status = request.getParameter("status");
-                lists = userApp.getTutors().getByStatus(status);
+                lists = userApp.getTutorByStatus(status);
             }
         }
     %>
