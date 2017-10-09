@@ -6,20 +6,29 @@
 
 function userChoice(type) {
     var subject = document.getElementById('subject');
-    var tutorname = document.getElementById('name');
+    var tutorname = document.getElementById('firstname');
+    var tutorlastname = document.getElementById('lastname');
     var status = document.getElementById('status');
     if (type === 'subject') {
         subject.style.display = 'block';
         tutorname.style.display = 'none';
+        tutorlastname.style.display='none';
         status.style.display = 'none';
-    } else if (type === 'name') {
+    } else if (type === 'firstname') {
         tutorname.style.display = 'block';
+        subject.style.display = 'none';
+        tutorlastname.style.display='none';
+        status.style.display = 'none';
+    } else if (type === 'lastname') {
+        tutorlastname.style.display = 'block';
+        tutorname.style.display = 'none';
         subject.style.display = 'none';
         status.style.display = 'none';
     } else {
         status.style.display = 'block';
         tutorname.style.display = 'none';
         subject.style.display = 'none';
+        tutorlastname.style.display = 'none';
     }
 }
 function userType(type) {

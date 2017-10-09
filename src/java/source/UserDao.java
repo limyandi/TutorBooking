@@ -45,4 +45,7 @@ public interface UserDao {
     ArrayList<Booking> getBookingBySubject(String subject);
     ArrayList<Booking> getBookingByStudentEmail(String email);
     
+    void setBookingFilePath(String filePath) throws Exception;
+    void setTutorFilePath(String filePath) throws Exception;
+    void setStudentFilePath(String filePath) throws Exception;
 }
