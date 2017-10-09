@@ -121,12 +121,12 @@ public class BookingServiceA {
 
     @WebMethod
     public ArrayList<Booking> getBookingStudentEmail(@WebParam(name = "studentEmail") String studentEmail) throws IOException, Exception {
-        return getUserApp().getBookingByStudentEmail(studentEmail);
+        return getUserApp().getBookings().getByEmail(studentEmail).getBookings();
     }
 
     @WebMethod
     public ArrayList<Booking> getBookingByStatus(@WebParam(name = "status") String status, @WebParam(name = "student") Student student) throws IOException, Exception {
-        return getUserApp().getBookingByStatus(status);
+        return getUserApp().getBookings().getByStatus(status).getBookings();
     }
 
     @WebMethod

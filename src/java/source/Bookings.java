@@ -39,16 +39,12 @@ public class Bookings {
             this.bookings.add(booking);
         }
     }
-    
-    public void removeBookings(Bookings bookings){
-        this.bookings.removeAll(bookings.getBookings());
-    }
-    
+
     public void removeBooking(Booking booking) {
         bookings.remove(booking);
     }
-    
-    public Booking checkId(int id) {
+
+    public Booking getBooking(int id) {
         for (Booking booking : this.bookings) {
             if (booking.getId() == id) {
                 return booking;
@@ -57,69 +53,46 @@ public class Bookings {
         return null;
     }
 
-    public ArrayList<Booking> getByStatus(String status) {
-        ArrayList<Booking> bookingslist = new ArrayList<Booking>();
+    public Bookings getByStatus(String status) {
+        Bookings bookings = new Bookings();
         for (Booking booking : this.bookings) {
             if (booking.getStatus().equals(status)) {
-                bookingslist.add(booking);
+                bookings.addBooking(booking);
             }
         }
-        return bookingslist;
+        return bookings;
     }
 
-    public ArrayList<Booking> getByEmail(String email) {
-        ArrayList<Booking> bookingslist = new ArrayList<Booking>();
+    public Bookings getByEmail(String email) {
+        Bookings bookings = new Bookings();
         for (Booking booking : this.bookings) {
             if (booking.getStudentEmail().equals(email)) {
-                bookingslist.add(booking);
+                bookings.addBooking(booking);
             }
         }
-        return bookingslist;
+        return bookings;
     }
 
-    public ArrayList<Booking> getBySubject(String subject) {
-        ArrayList<Booking> bookingslist = new ArrayList<Booking>();
+    public Bookings getBySubject(String subject) {
+        Bookings bookings = new Bookings();
         for (Booking booking : this.bookings) {
             if (booking.getSubjectName().equals(subject)) {
-                bookingslist.add(booking);
+                bookings.addBooking(booking);
             }
         }
-        return bookingslist;
+        return bookings;
     }
 
-    public void setBookings(ArrayList<Booking> bookings) {
-        this.bookings = bookings;
-    }
-    
-    
-    // THIS CODE IS USED FOR THE REST, SINCE WE NEED TO RETURN BOOKINGS INSTEAD OF AN ARRAYLIST.
-    public Bookings getBySubjects(String subject) {
-        Bookings bookingslist = new Bookings();
-        for (Booking booking : this.bookings) {
-            if (booking.getSubjectName().equals(subject)) {
-                bookingslist.addBooking(booking);
+    public Booking checkId(int id) {
+        for (Booking booking : bookings) {
+            if (booking.getId() == id) {
+                return booking;
             }
         }
-        return bookingslist;
+        return null;
     }
 
-    public Bookings getByStatuses(String status) {
-        Bookings bookingslist = new Bookings();
-        for (Booking booking : this.bookings) {
-            if (booking.getStatus().equals(status)) {
-                bookingslist.addBooking(booking);
-            }
-        }
-        return bookingslist;
-    }
-    
-    public Bookings getByEmails(String email) {
-        Bookings bookingslist = new Bookings();
-        for (Booking booking: this.bookings) {
-            if (booking.getStudentEmail().equals(email)) {
-                bookingslist.addBooking(booking);
-            }
-        }
-        return bookingslist;
+    public void removeBookings(Bookings bookings) {
+        this.bookings.removeAll(bookings.getBookings());
     }
 }
