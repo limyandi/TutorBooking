@@ -9,7 +9,8 @@
     <inputs action="main.jsp" value="Search">
         <select label="Search" onchange="userChoice(this.value)" name="choice">
             <option value="subject">Subject</option>
-            <option value="name">Name</option>
+            <option value="firstname">First Name</option>
+            <option value="lastname">Last Name</option>
             <option value="status">Status</option>
         </select>
         <select name="subject" id="subject" style="display:block;">
@@ -19,7 +20,8 @@
             <option value='AppProg'>Application Programming</option>
             <option value='MobileApp'>Mobile Applications Development</option>
         </select>
-        <input type="text" id="name" name="name" style="display:none;"/>
+        <input type="text" id="firstname" name="firstname" style="display:none;"/>
+        <input type="text" id="lastname" name="lastname" style="display:none;"/>
         <select name="status" id="status" style="display:none;">
             <option value="available">Available</option>
             <option value="unavailable">Unavailable</option>
@@ -35,13 +37,17 @@
             if (choice.equals("subject")) {
                 String subject = request.getParameter("subject");
                 lists = userApp.getTutorBySubject(subject);
-            } else if (choice.equals("name")) {
-                String name = request.getParameter("name");
+            } else if (choice.equals("firstname")) {
+                String name = request.getParameter("firstname");
                 lists = userApp.getTutorByFirstName(name);
-            } else if (choice.equals("status")) {
+            } else if (choice.equals("lastname")) { 
+                String lastName = request.getParameter("lastname");
+                lists = userApp.getTutorByLastName(lastName);
+            }
+            else if (choice.equals("status")) {
                 String status = request.getParameter("status");
                 lists = userApp.getTutorByStatus(status);
-            }
+            } 
         }
     %>
 
