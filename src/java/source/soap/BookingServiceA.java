@@ -137,7 +137,7 @@ public class BookingServiceA {
         String email = userApp.getBookings().getBooking(id).getTutorEmail();
         Tutor tutor = tutors.checkExistingEmail(email);
         System.out.println(email);
-        tutor.cancelBooking();
+        tutor.setStatus("available");
         userApp.updateBookings();
         userApp.updateTutors();
     }

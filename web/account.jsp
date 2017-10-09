@@ -30,6 +30,7 @@
 %>
 <page title="Profile Page">
     <navigation/>
+    <pagetitle>Your Profile</pagetitle>
     <inputs action="account.jsp" value="Update">
         <input type="text" label="First Name" name="Fname"><%= user.getFirstName()%></input>  
         <input type="text" label="Last Name" name="Lname"><%= user.getLastName()%></input>

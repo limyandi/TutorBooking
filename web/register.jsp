@@ -9,6 +9,7 @@
         %>
         <page title="Register">
             <navnonauth/>
+            <pagetitle>Register</pagetitle>
             <inputs action='registerAction.jsp'  value="Register">
                 <input type='text' label='First Name' name='Fname'><%=register.getFirstname()%></input>
                 <error><%=register.getErrorMessage("firstname")%></error>

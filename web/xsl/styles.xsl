@@ -30,17 +30,23 @@
         </html>
     </xsl:template>
     
+    <xsl:template match="pagetitle">
+        <div class="heading"><xsl:apply-templates/></div>
+    </xsl:template>
+    
+    
     <xsl:template match="link">
-        <p align="center"> 
+        <div align="center" class="wrapper"> 
             <p><xsl:value-of select="@label"/>
                 <a href="{@to}">
                 <xsl:apply-templates/>
                 </a>
             </p>
-        </p>
+        </div>
     </xsl:template>
     
     <xsl:template match="inputs">
+        <div class="wrapper">
         <form action="{@action}" method="POST">
             <table>
                 <xsl:apply-templates/>
@@ -51,6 +57,7 @@
                 </tr>
             </table>
         </form>
+        </div>
     </xsl:template>
     
     <xsl:template match="input">
@@ -149,6 +156,7 @@
     </xsl:template>
     
     <xsl:template match="tutors">
+        <div class="wrapper">
         <table class="search">
             <thead>
                 <tr>
@@ -162,6 +170,7 @@
                 <xsl:apply-templates/>
             </tbody>
         </table>
+        </div>
     </xsl:template>
     
     <xsl:template match="tutor">
@@ -173,4 +182,7 @@
         </tr>
     </xsl:template>
     
+    <xsl:template match="aboutus">
+        <div class="wrapper">We are enthusiasts about web development, HTML, CSS, Javascript, PHP, JQuery, React, Angular, you name it!</div>
+    </xsl:template>
 </xsl:stylesheet>

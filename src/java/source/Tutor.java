@@ -119,13 +119,15 @@ public class Tutor extends User {
         this.status = status;
     }
     
-    public void cancelBooking() {
-        setStatus("available");
-    }
-    
     public void completeBooking(Bookings bookings, int bookingid) {
         Booking booking = bookings.checkId(bookingid);
         booking.setStatus("completed");
+        setStatus("available");
+    }
+    
+    public void cancelBooking(Bookings bookings, int bookingid) {
+        Booking booking = bookings.checkId(bookingid);
+        booking.setStatus("cancelled");
         setStatus("available");
     }
     

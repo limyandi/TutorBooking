@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <page title="Main Page">
     <navigation/>
+    <pagetitle>Main Page</pagetitle>
     <% if (session.getAttribute("user") instanceof Student) { %>
     <inputs action="main.jsp" value="Search">
         <select label="Search" onchange="userChoice(this.value)" name="choice">
