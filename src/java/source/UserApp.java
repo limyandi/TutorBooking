@@ -165,7 +165,6 @@ public class UserApp implements Serializable, UserDao {
         return tutors.checkExistingEmail(email);
     }
     
-    // TODO: DELETE IF NOT NEEDED LATER.
     @Override
     public Booking readBooking(int id) {
         return bookings.checkId(id);
@@ -196,7 +195,25 @@ public class UserApp implements Serializable, UserDao {
         return tutors.getByLastName(lastName);
     }
     
-
+    @Override
+    public ArrayList<Booking> getStudentActiveBooking(Student student) {
+        return student.viewMyActiveBookings(bookings.getBookings());
+    }
+    
+    @Override
+    public ArrayList<Booking> getStudentBookingsHistory(Student student) {
+        return student.viewMyBookings(bookings.getBookings());
+    }
+    
+    @Override
+    public ArrayList<Booking> getTutorActiveBooking(Tutor tutor) {
+        return tutor.viewMyActiveBooking(bookings.getBookings());
+    }
+    
+    @Override
+    public ArrayList<Booking> getTutorBookingsHistory(Tutor tutor) {
+        return tutor.viewMyBookings(bookings.getBookings());    
+    }
 
     public String getStudentFilePath() {
         return studentFilePath;
@@ -265,20 +282,5 @@ public class UserApp implements Serializable, UserDao {
 
     public void setBookings(Bookings bookings) {
         this.bookings = bookings;
-    }
-
-    @Override
-    public ArrayList<Booking> getBookingByStatus(String status) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<Booking> getBookingBySubject(String subject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<Booking> getBookingByStudentEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

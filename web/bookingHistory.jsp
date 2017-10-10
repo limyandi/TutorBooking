@@ -2,20 +2,20 @@
 <?xml-stylesheet type="text/xsl" href="./xsl/styles.xsl"?>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
-<page title="Booking Page">
+<page title="Booking History">
     <navigation/>
-    <pagetitle>Active Booking</pagetitle>
+    <pagetitle>Your Bookings History</pagetitle>
     <jsp:useBean id="userApp" type="source.UserDao" class="source.UserApp" scope="application"/>
     <%  String bookingFilePath = application.getRealPath("WEB-INF/bookings.xml");
         userApp.setBookingFilePath(bookingFilePath);
         ArrayList<Booking> lists;
         if (session.getAttribute("user") instanceof Student) {
             Student student = (Student) session.getAttribute("user");
-            lists = userApp.getStudentActiveBooking(student);
+            lists = userApp.getStudentBookingsHistory(student);
         }
         else {
             Tutor tutor = (Tutor) session.getAttribute("user");
-            lists = userApp.getTutorActiveBooking(tutor);
+            lists = userApp.getTutorBookingsHistory(tutor);
         }
     %>
     <% if(lists != null) { %>
@@ -29,13 +29,10 @@
             <studentemail><%=booking.getStudentEmail()%></studentemail>
             <studentname><%=booking.getStudentFirstName()%> <%=booking.getStudentLastName()%></studentname>
             <status><%=booking.getStatus()%></status>
-            <% if (session.getAttribute("user") instanceof Tutor ) { %>
-            <complete/>
-            <% }%>
         </booking>
         <% } %>
     </bookings>
     <%  }
     %>
-    <link to="bookingHistory.jsp">View your Full Bookings History</link>
+    <link to="booking.jsp">Back to your active booking</link>
 </page>

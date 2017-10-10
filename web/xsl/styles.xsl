@@ -10,10 +10,6 @@
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html"/>
-
-    <!-- TODO customize transformation rules 
-         syntax recommendation http://www.w3.org/TR/xslt 
-    -->
     <xsl:template match="page">
         <html>
             <head>
@@ -90,7 +86,6 @@
         </option>
     </xsl:template>
     
-    <!-- TODO: MAKE A CHANGE ON IT (NOT REUSABLE) -->
     <xsl:template match="delete">
         <form method="post" action="index.jsp" onsubmit="return confirm('do you really want to delete your account?')">
             <input type="submit" value="Delete account" name="delete"/>
@@ -193,27 +188,48 @@
         </tr>
     </xsl:template>
     
-    <xsl:template match="details">
+    
+    <xsl:template match="bookings">
         <div class="wrapper">
         <table class="search">
             <thead>
                 <tr>
+                    <th>ID</th>
+                    <th>Subject</th>
                     <th>Tutor Email</th>
-                    <th>Tutor Subject</th>
-                    <th>Tutor First Name</th>
-                    <th>Tutor Last Name</th>
+                    <th>Tutor Name</th>
                     <th>Student Email</th>
+                    <th>Student Name</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
-                <td><xsl:value-of select="tutoremail"/></td>
-                <td><xsl:value-of select="tutorsubject"/></td>
-                <td><xsl:value-of select="tutorfirstname"/></td>
-                <td><xsl:value-of select="tutorlastname"/></td>
-                <td><xsl:value-of select="studentemail"/></td>    
+                <xsl:apply-templates/>
             </tbody>
         </table>
         </div>
+    </xsl:template>
+    
+    <xsl:template match="booking">
+        <tr>
+            <td><xsl:value-of select="id"/></td>
+            <td><xsl:value-of select="subject"/></td>
+            <td><xsl:value-of select="tutoremail"/></td>
+            <td><xsl:value-of select="tutorname"/></td>
+            <td><xsl:value-of select="studentemail"/></td>
+            <td><xsl:value-of select="studentname"/></td>
+            <td><xsl:value-of select="status"/></td>
+            <xsl:apply-templates/>
+            <xsl:choose>
+                <xsl:when test="(status='active')">
+                    <td><a class="cancel-btn" href="cancelBooking.jsp?bookingId={id}&amp;tutorEmail={tutoremail}">Cancel</a></td>
+                </xsl:when>
+            </xsl:choose>
+        </tr>
+    </xsl:template>
+    
+    <xsl:template match="complete">
+        <td><a class="link-btn" href="completeBooking.jsp?bookingId={../id}&amp;tutorEmail={../tutoremail}">Complete</a></td>
     </xsl:template>
     
     <xsl:template match="success">
@@ -225,4 +241,6 @@
     <xsl:template match="aboutus">
         <div class="wrapper">We are enthusiasts about web development, HTML, CSS, Javascript, PHP, JQuery, React, Angular, you name it!</div>
     </xsl:template>
+    
+    <xsl:template match="id|subject|tutoremail|tutorname|studentemail|studentname|status"/>
 </xsl:stylesheet>

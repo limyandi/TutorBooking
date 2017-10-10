@@ -141,11 +141,12 @@ public class Tutor extends User {
        return mybookings;
     }
     
-    public Booking viewMyActiveBooking(ArrayList<Booking> bookings) {
-       Booking mybooking = null;
+    // Tutor active booking should have only returned one booking, but for reuse sake in the view page, we return arraylist.
+    public ArrayList<Booking> viewMyActiveBooking(ArrayList<Booking> bookings) {
+       ArrayList<Booking> mybooking = new ArrayList<Booking>();
        for(Booking booking: bookings) {
            if(booking.getTutorEmail().equals(email) && booking.getStatus().equals("active")) {
-               mybooking = booking;
+               mybooking.add(booking);
            }
        }
        return mybooking;

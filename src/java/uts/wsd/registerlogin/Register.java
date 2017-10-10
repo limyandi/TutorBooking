@@ -39,7 +39,7 @@ public class Register implements Serializable {
     
     public boolean validateRegister() {
         boolean allValidated = true;
-        Pattern emailPattern = Pattern.compile("([A-Za-z\\._]+)@(([a-z-]+)\\.)+([a-z-]+)");
+        Pattern emailPattern = Pattern.compile("([1-9A-Za-z\\._]+)@(([a-z-]+)\\.)+([a-z-]+)");
         Matcher emailMatcher = emailPattern.matcher(email);
         if(!emailMatcher.find()) {
             errors.put("email", "Please enter a valid email");

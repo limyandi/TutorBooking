@@ -31,7 +31,6 @@
         </xs:restriction>
     </xs:simpleType>
      
-    <!-- TODO: DO WE NEED FOR USERTYPE? -->
     <xs:simpleType name="usertype">
         <xs:restriction base="xs:string">
             <xs:pattern value="tutor"/>
@@ -44,7 +43,6 @@
         </xs:restriction>
     </xs:simpleType>
     
-    <!--TODO DO WE NEED FOR STATUS OF TUTOR? -->
     <xs:simpleType name="status">
         <xs:restriction base="xs:string">
             <xs:pattern value="available|unavailable"/>

@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <page title="Create Booking">
     <navigation/>
-    <details>
+    <pagetitle>Tutor Details</pagetitle>
+    <tutors>
         <% 
             String email = request.getParameter("tutorEmail");
             String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
@@ -19,12 +20,14 @@
             Student student = (Student) session.getAttribute("user");
             userApp.addBooking(student, tutor);
         %>
-        <tutoremail><%=tutor.getEmail()%></tutoremail>
-        <tutorsubject><%=tutor.getSubject()%></tutorsubject>
-        <tutorfirstname><%=tutor.getFirstName()%></tutorfirstname>
-        <tutorlastname><%=tutor.getLastName()%></tutorlastname>
-        <studentemail><%=student.getEmail()%></studentemail> 
-    </details>
+        <tutor>
+            <email><%=tutor.getEmail()%></email>
+            <subject><%=tutor.getSubject()%></subject>
+            <firstname><%=tutor.getFirstName()%></firstname>
+            <lastname><%=tutor.getLastName()%></lastname>
+            <status>Active</status>
+        </tutor>
+    </tutors>
     <success>Your booking has been added to your bookings list!</success>
     <link to="main.jsp">Back to Main Menu</link>
     <link to="booking.jsp">Check your Booking</link>
