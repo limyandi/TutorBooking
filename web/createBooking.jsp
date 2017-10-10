@@ -1,12 +1,9 @@
-<%@page import="source.*"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/xml" pageEncoding="UTF-8" import="source.*"%><?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./xsl/styles.xsl"?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
+<page title="Create Booking">
+    <navigation/>
+    <details>
         <% 
             String email = request.getParameter("tutorEmail");
             String tutorFilePath = application.getRealPath("WEB-INF/tutors.xml");
@@ -20,21 +17,15 @@
             userApp.setBookingFilePath(bookingFilePath);
             Tutor tutor = userApp.readTutor(email);
             Student student = (Student) session.getAttribute("user");
-            if(tutor.getStatus().equals("available")) {
-                userApp.addBooking(student, tutor);
+            userApp.addBooking(student, tutor);
         %>
-            <p><%=tutor.getEmail()%></p>
-            <p><%=tutor.getFirstName()%></p>
-            <p><%=tutor.getLastName()%></p>
-            <p><%=tutor.getSubject()%></p>
-            <p><%=student.getEmail()%></p>
-            <p>BOOK SUCCESSFULLY!</p>
-            <p>Click here to go back to Your<a href="main.jsp"> Menu! </a></p>
-        <% } else {
-        %>
-        <p> sorry, this tutor is currently booked by someone else! </p>
-        <p>Click here to go back to Your<a href="main.jsp"> Menu! </a></p>
-        
-        <% } %>
-    </body>
-</html>
+        <tutoremail><%=tutor.getEmail()%></tutoremail>
+        <tutorsubject><%=tutor.getSubject()%></tutorsubject>
+        <tutorfirstname><%=tutor.getFirstName()%></tutorfirstname>
+        <tutorlastname><%=tutor.getLastName()%></tutorlastname>
+        <studentemail><%=student.getEmail()%></studentemail> 
+    </details>
+    <success>Your booking has been added to your bookings list!</success>
+    <link to="main.jsp">Back to Main Menu</link>
+    <link to="booking.jsp">Check your Booking</link>
+</page>

@@ -118,6 +118,14 @@ public class BookingServiceA {
         userApp.updateBookings();
         userApp.updateTutors();
     }
+    
+    @WebMethod
+    public void makeDoubleEmailBooking(@WebParam(name = "studentEmail") String studentEmail, @WebParam(name = "tutorEmail") String tutorEmail) throws IOException, Exception {
+        UserApp userApp = getUserApp();
+        Student student = userApp.readStudent(studentEmail);
+        Tutor tutor = userApp.readTutor(tutorEmail);
+        userApp.addBooking(student, tutor);
+    }
 
     @WebMethod
     public ArrayList<Booking> getBookingStudentEmail(@WebParam(name = "studentEmail") String studentEmail) throws IOException, Exception {
@@ -132,14 +140,9 @@ public class BookingServiceA {
     @WebMethod
     public void cancelBooking(@WebParam(name = "student") Student student, @WebParam(name = "id") int id) throws IOException, Exception {
         UserApp userApp = getUserApp();
-        userApp.getBookings().getBooking(id).setStatus("cancelled");
-        Tutors tutors = userApp.getTutors();
         String email = userApp.getBookings().getBooking(id).getTutorEmail();
-        Tutor tutor = tutors.checkExistingEmail(email);
-        System.out.println(email);
-        tutor.setStatus("available");
-        userApp.updateBookings();
-        userApp.updateTutors();
+        Tutor tutor = userApp.readTutor(email);
+        userApp.studentCancelBooking(id, student, tutor);
     }
 
     @WebMethod

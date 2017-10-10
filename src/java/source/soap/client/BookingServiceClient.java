@@ -90,7 +90,7 @@ public class BookingServiceClient {
                                     valid = false;
                                 }
                                 if (valid) {
-                                    bookingService.makeEmailBooking(student, tutorlist.get(tutorid));
+                                    bookingService.makeDoubleEmailBooking(student.getEmail(), tutorlist.get(tutorid));
                                 }
                                 break;
                             case "3":

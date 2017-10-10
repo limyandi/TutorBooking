@@ -99,7 +99,7 @@ public class Student extends User{
     public void cancelBooking(Bookings bookings, int bookingid, Tutor tutor) {
         Booking booking = bookings.checkId(bookingid);
         tutor.setStatus("available");
-        booking.setStatus("completed");
+        booking.setStatus("cancelled");
     }
     
     public ArrayList<Booking> viewMyBookings(ArrayList<Booking> bookings) {

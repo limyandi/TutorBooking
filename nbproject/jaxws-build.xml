@@ -45,8 +45,8 @@
     </target>
     <target name="wsimport-client-BookingServiceA" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/BookingServiceA"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/BookingServiceA" destdir="${build.generated.dir}/jax-wsCache/BookingServiceA" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/BookingServiceA/wsdl/localhost_8080/wsd/BookingServiceA.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/wsd/BookingServiceA?wsdl" xnocompile="true" xendorsed="true" package="source.soap.client">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/BookingServiceA/wsdl/localhost_8080/wsd/BookingServiceA.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/BookingServiceA" destdir="${build.generated.dir}/jax-wsCache/BookingServiceA" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/BookingServiceA/wsdl/localhost_8080/webservices/BookingServiceA.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/wsd/BookingServiceA?wsdl" xnocompile="true" xendorsed="true" package="source.soap.client">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/BookingServiceA/wsdl/localhost_8080/webservices/BookingServiceA.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/BookingServiceA"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
