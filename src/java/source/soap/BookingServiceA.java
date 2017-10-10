@@ -174,12 +174,14 @@ public class BookingServiceA {
         getUserApp().completeBooking(id, tutor);
     }
         @WebMethod
-    public void removeTutor(@WebParam(name="tutor")Tutor tutor) throws IOException, Exception{
+    public void removeTutor(@WebParam(name="email")String email) throws IOException, Exception{
+        Tutor tutor = getUserApp().getTutors().checkExistingEmail(email);
         getUserApp().removeTutor(tutor);
     }
     
     @WebMethod
-    public void removeStudent(@WebParam(name="student")Student student) throws IOException, Exception{
+    public void removeStudent(@WebParam(name="email")String email) throws IOException, Exception{
+        Student student = getUserApp().getStudents().checkExistingEmail(email); 
         getUserApp().removeStudent(student);
     }
 }

@@ -66,7 +66,8 @@ public class BookingService {
         int searchInt;
         UserApp userApp = getUserApp();
         Bookings bookingRemove = new Bookings();
-        Bookings bookingReturn = userApp.getBookings();
+        Bookings bookingReturn = new Bookings();
+        bookingReturn.addBookings(userApp.getBookings());
         if (email != null) {
             for (Booking booking : bookingReturn.getBookings()) {
                 if (booking.getStudentEmail() != email) {
