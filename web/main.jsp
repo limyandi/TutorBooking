@@ -5,8 +5,11 @@
 <!DOCTYPE html>
 <page title="Main Page">
     <navigation/>
-    <pagetitle>Main Page</pagetitle>
-    <% if (session.getAttribute("user") instanceof Student) { %>
+    <% 
+        if (session.getAttribute("user") instanceof Student) { 
+            Student student = (Student) session.getAttribute("user");
+    %>
+    <pagetitle>Hi Student <%=student.getFirstName()%> <%=student.getLastName()%></pagetitle>
     <inputs action="main.jsp" value="Search">
         <select label="Search" onchange="userChoice(this.value)" name="choice">
             <option value="subject">Subject</option>
@@ -66,5 +69,10 @@
         <% } %>
     </tutors>
     <%}
-    }%>
+    } else { 
+        Tutor tutor = (Tutor) session.getAttribute("user");
+    %>
+    <pagetitle>Hi Tutor <%=tutor.getFirstName()%> <%=tutor.getLastName()%></pagetitle>
+    <%}
+    %>
 </page>

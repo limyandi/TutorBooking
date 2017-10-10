@@ -41,11 +41,14 @@ public interface UserDao {
     ArrayList<Tutor> getTutorByStatus(String status);
     ArrayList<Tutor> getTutorByFirstName(String firstName);
     ArrayList<Tutor> getTutorByLastName(String lastName);
-    ArrayList<Booking> getBookingByStatus(String status);
-    ArrayList<Booking> getBookingBySubject(String subject);
-    ArrayList<Booking> getBookingByStudentEmail(String email);
+    ArrayList<Booking> getTutorActiveBooking(Tutor tutor);
+    ArrayList<Booking> getTutorBookingsHistory(Tutor tutor);
+    ArrayList<Booking> getStudentActiveBooking(Student student);
+    ArrayList<Booking> getStudentBookingsHistory(Student student);
     
     void setBookingFilePath(String filePath) throws Exception;
     void setTutorFilePath(String filePath) throws Exception;
     void setStudentFilePath(String filePath) throws Exception;
+    
+
 }

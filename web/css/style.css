@@ -178,3 +178,18 @@ div.wrapper {
     background-color: #DFF2BF;
     text-align: center;
 }
+
+.cancel-btn {
+    color: white;
+    background: red;
+    padding: 10px 20px;
+    margin: 10px 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+ 
+.cancel-btn:hover {
+    background: #8B0000;
+}

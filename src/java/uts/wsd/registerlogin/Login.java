@@ -32,7 +32,7 @@ public class Login implements Serializable {
     
     public boolean validateLogin() {
         boolean allValidated = true;
-        Pattern emailPattern = Pattern.compile("([A-Za-z\\._]+)@(([a-z-]+)\\.)+([a-z-]+)");
+        Pattern emailPattern = Pattern.compile("([1-9A-Za-z\\._]+)@(([a-z-]+)\\.)+([a-z-]+)");
         Matcher emailMatcher = emailPattern.matcher(email);
         if(!emailMatcher.find()) {
             errors.put("email", "Email does not match pattern!");

@@ -1,64 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-    Document   : bookings.xsl
-    Created on : 19 September 2017, 10:30 PM
-    Author     : Carl
-    Description:
-        Purpose of transformation follows.
--->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
                 xmlns:x="http://www.uts.edu.au/31284/wsd-bookings" exclude-result-prefixes="x">
-    <!-- TODO customize transformation rules 
-         syntax recommendation http://www.w3.org/TR/xslt 
-    -->
+    <xsl:output method="html"/>
+    
     <xsl:template match="x:bookings">
         <html>
+            <head>
+                <title>Booking XML</title>
+                <link rel="stylesheet"   
+                 href="../css/bootstrap.css" type="text/css"/>
+            </head>
             <body>
-                <h2>Booking</h2>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tutor</th>   
-                        <th>Subject</th>   
-                    </tr>
-                    <xsl:apply-templates/>
-                </table>
-                <table>
-                    <tr>
-                        <th>
-                            <form action="createBking.jsp">
-                                <input type="submit" value="Create a booking" />
-                            </form>
-                        </th>
-                        <th>
-                            <form action="viewBking.jsp">
-                                <input type="submit" value="View a booking" />
-                            </form>
-                        </th>
-                    </tr>
-                </table>
+                <h1 align="Center">Booking XML</h1>
+                <xsl:apply-templates/>
             </body>
         </html>
     </xsl:template>
+    
     <xsl:template match="x:booking">
-        <tr>
-            <td>
-                <xsl:value-of select="@id"/>
-            </td>
-            <td>
-                <xsl:value-of select="x:tutorfirstname"/>
-            </td>
-            <td>
-                <xsl:value-of select="x:subjectname"/>
-            </td>
-            <td>
-                <form action="bookingAction.jsp">
-                    <id></id>
-                    <input type="submit" value="cancel"/>
-                </form>
-            </td>
-        </tr>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tutor Email</th>
+                <th>Tutor First Name</th>
+                <th>Tutor Last Name</th>
+                <th>Subject Name</th>
+                <th>Student Email</th>
+                <th>Student First Name</th>
+                <th>Student Last Name</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+                <td><xsl:value-of select="@id"/></td>
+                <xsl:apply-templates/>
+            </tbody>
+        </table>
     </xsl:template>
+    
+    <xsl:template match="x:tutoremail|x:tutorfirstname|x:tutorlastname|x:subjectname|x:studentemail|x:studentfirstname|x:studentlastname|x:status">
+        <td><xsl:apply-templates/></td>
+    </xsl:template>
+   
 </xsl:stylesheet>
-
