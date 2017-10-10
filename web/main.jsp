@@ -61,6 +61,7 @@
             <firstname><%=tutor.getFirstName()%></firstname>
             <lastname><%=tutor.getLastName()%></lastname>
             <subject><%=tutor.getSubject()%></subject>
+            <status><%=tutor.getStatus()%></status>
         </tutor>
         <% } %>
     </tutors>

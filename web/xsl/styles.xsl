@@ -164,6 +164,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Subject</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -175,11 +176,50 @@
     
     <xsl:template match="tutor">
         <tr>
-            <td><a href="./createBooking.jsp?tutorEmail={email}"><xsl:value-of select="email"/></a></td>
+            <td><xsl:value-of select="email"/></td>
             <td><xsl:value-of select="firstname"/></td>
             <td><xsl:value-of select="lastname"/></td>
             <td><xsl:value-of select="subject"/></td>
+            <td><xsl:value-of select="status"/></td>
+            <xsl:choose>
+                <xsl:when test="(status='available')">
+                    <td>
+                        <a class="link-btn" href="./createBooking.jsp?tutorEmail={email}">
+                            Book
+                        </a>
+                    </td>
+                </xsl:when>
+            </xsl:choose>
         </tr>
+    </xsl:template>
+    
+    <xsl:template match="details">
+        <div class="wrapper">
+        <table class="search">
+            <thead>
+                <tr>
+                    <th>Tutor Email</th>
+                    <th>Tutor Subject</th>
+                    <th>Tutor First Name</th>
+                    <th>Tutor Last Name</th>
+                    <th>Student Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td><xsl:value-of select="tutoremail"/></td>
+                <td><xsl:value-of select="tutorsubject"/></td>
+                <td><xsl:value-of select="tutorfirstname"/></td>
+                <td><xsl:value-of select="tutorlastname"/></td>
+                <td><xsl:value-of select="studentemail"/></td>    
+            </tbody>
+        </table>
+        </div>
+    </xsl:template>
+    
+    <xsl:template match="success">
+        <div class="success">
+            <strong>Successful! </strong> <xsl:apply-templates/>
+        </div>
     </xsl:template>
     
     <xsl:template match="aboutus">
